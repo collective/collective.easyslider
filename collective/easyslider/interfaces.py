@@ -213,6 +213,14 @@ class ISliderSettings(Interface):
         default=False
     )
 
+    hover_pause = schema.Bool(
+        title=_(u"label_hover_pause_title_slider_setting",
+            default=u"Pause on mouseover"),
+        description=_(u"label_hover_pause_description_slider_setting",
+            default=u"If this is enabled images will not change when mouse is over theslide"),
+        default=True
+    )
+    
     resume_play = schema.Bool(
         title=_(u"label_resume_play_title_slider_settings",
             default=u"Resume Play"),
@@ -283,13 +291,6 @@ class IViewSliderSettings(ISliderSettings):
         default=0
     )
 
-    hover_pause = schema.Bool(
-        title=_(u"label_hover_pause_title_slider_setting",
-            default=u"Pause on mouseover"),
-        description=_(u"label_hover_pause_description_slider_setting",
-            default=u"If this is enabled images will not change when mouse is over theslide"),
-        default=True
-    )
 
     image_scale = schema.Choice(
         title=_(u"label_image_scale_title_slider_setting",

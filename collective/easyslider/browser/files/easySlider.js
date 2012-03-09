@@ -98,7 +98,7 @@ $.fn.randomize = function(childElem) {
           html += ' <span id="rightb"><a class="leftright" href=\"javascript:void(0);\">&nbsp</a></span>';
           html += '<div id="pauseplay"></div>';
           html += "</div>";
-        } else if(options.navigation_type == "Navigation Bullets"){
+        } else if(options.navigation_type.indexOf("Bullets") >= 0){
           html += "<div id='easySlider-goToButtons' class='easySlider-goToBullets'>";
           var count = 1;
           for(var i=0; i < total_slides+1; i++){ 
@@ -116,7 +116,7 @@ $.fn.randomize = function(childElem) {
           html += "</div>";
           html += '<span class=\"easybutton\" id="'+ options.prevId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
           html += '<span class=\"easybutton\" id="'+ options.nextId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
-        } else if(options.navigation_type == "Big Arrows"){
+        } else if(options.navigation_type.indexOf("Big") >= 0){
           html += ' <span id="'+ options.prevId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
           html += ' <span id="'+ options.nextId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
         } else if(options.navigation_type == "Small Arrows"){
