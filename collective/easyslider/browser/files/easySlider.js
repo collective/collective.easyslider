@@ -38,7 +38,7 @@ $.fn.randomize = function(childElem) {
       navigation_buttons_rendering_type : 'standard',
       resume_play : false,
       randomize: false,
-	  hoverPause: true
+      hoverPause: true, 
     }; 
     
     var options = $.extend(defaults, options);  
@@ -109,7 +109,7 @@ $.fn.randomize = function(childElem) {
               skipped_navigation.push(i);
             }
             if(add){
-              html += "<a class=\"nav-button\" id=\"" + options.goToButtonId + i + "\" href=\"javascript:void(0);\">" + "â€¢" + "</a> ";
+              html += "<a class=\"nav-button\" id=\"" + options.goToButtonId + i + "\" href=\"javascript:void(0);\">" + "•" + "</a> ";
               count++;
             }
           }
@@ -181,18 +181,18 @@ $.fn.randomize = function(childElem) {
       }
       
       function animate_callback(dir, clicked){
-	   if (options.hoverPause){
-		  $('#slider').mouseenter(function(){
-		  animate("stop",true);
-		  });
-		  $('#slider').mouseleave(function(){
-		  if (options.continuous){
-			animate("next",false);
-		  } else {
-			animate("next",true);
-		    }
-		  });
-	    };
+      if (options.hoverPause){
+        $('#slider').mouseenter(function(){ 
+        animate("stop",true);
+       });
+       $('#slider').mouseleave(function(){
+       if (options.continuous){
+		animate("next",false);
+       } else {
+		animate("next",true);
+		}
+       });
+      };
         if($.inArray(current_slide, skipped_navigation) != -1){
           schedule(function(){ animate(dir, clicked, container); });
         }
@@ -313,8 +313,8 @@ $.fn.randomize = function(childElem) {
           case "last":
             current_slide = total_slides;
             break; 
-		  case "stop":
-			break;
+          case "stop":
+            break;
           default:
             if(typeof(dir) == "number"){
               current_slide = dir;
@@ -504,4 +504,5 @@ $.fn.randomize = function(childElem) {
     });
   }
 })(jQuery);
+
 

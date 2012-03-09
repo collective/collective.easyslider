@@ -58,7 +58,8 @@ jQuery(document).ready(function(){
         navigation_buttons_rendering_type:
             '%(navigation_buttons_rendering_type)s',
         resume_play: %(resume_play)s,
-        randomize: %(randomize)s
+        randomize: %(randomize)s,
+        hoverPause: %(hover_pause)s,
     });
 });
         """ % {
@@ -76,5 +77,7 @@ jQuery(document).ready(function(){
             'navigation_buttons_rendering_type':
                 self.settings.navigation_buttons_rendering_type.lower(),
             'resume_play': str(self.settings.resume_play).lower(),
-            'randomize': str(self.settings.randomize).lower()
+            'randomize': str(self.settings.randomize).lower(),
+            'hover_pause': str(self.settings.hover_pause).lower(),
+            
         }
