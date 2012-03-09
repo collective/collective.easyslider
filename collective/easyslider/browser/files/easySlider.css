@@ -2,7 +2,6 @@
 #slider-container {
 	border: 1px solid #b8b8b8;
 	margin: auto;
-	overflow: hidden;
 }
 
 .slider,
@@ -50,6 +49,7 @@ img.news-slide-image {
 }
 
 #prevBtn a, #nextBtn a{  
+	position: relative;
 	display:block;
 	color: transparent;
 	width:30px;

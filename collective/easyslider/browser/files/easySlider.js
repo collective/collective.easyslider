@@ -119,7 +119,7 @@ $.fn.randomize = function(childElem) {
         } else if(options.navigation_type.indexOf("Big") >= 0){
           html += ' <span id="'+ options.prevId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
           html += ' <span id="'+ options.nextId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
-        } else if(options.navigation_type == "Small Arrows"){
+        } else if(options.navigation_type.indexOf("Small") >= 0){
           html += "<div id='smallButtons'>";
           html += ' <span id="'+ options.prevId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
           html += ' <span id="'+ options.nextId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
