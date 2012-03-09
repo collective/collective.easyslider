@@ -1,0 +1,21 @@
+<configure 
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:plone="http://namespaces.plone.org/plone"
+  i18n_domain="collective.easyslider">
+         
+  <permission
+    id="collective.easyslider.AddSliderPortlet"
+    title="collective.easyslider: Add Slider portlet" />
+       
+  <plone:portlet
+    name="collective.easyslider.portlet.slider"
+    interface=".slider.ISliderPortlet"
+    assignment=".slider.Assignment"
+    renderer=".slider.Renderer"
+    edit_permission="collective.easyslider.AddSliderPortlet"
+    view_permission="zope2.View"
+    addview=".slider.AddForm"
+    editview=".slider.EditForm" />
+       
+</configure>

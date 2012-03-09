@@ -1,0 +1,4 @@
+<div class="slider-portlet portlet" tal:attributes="style string:height:${view/data/height}px;">
+  <div class="slider-over" tal:content="structure view/data/over" />
+  <div class="slider-under" tal:content="structure view/data/under" />
+</div>

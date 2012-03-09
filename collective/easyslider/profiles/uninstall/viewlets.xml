@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<object>
+    <order manager="plone.belowcontenttitle">
+        <viewlet name="collective.easyslider" insert-after="*" remove="True"/>
+    </order>
+    <order manager="plone.htmlhead.links">
+        <viewlet name="collective.easyslider.head" insert-after="*" remove="True"/>
+    </order>
+</object>

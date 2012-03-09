@@ -1,0 +1,65 @@
+<div id="slides-view"
+     lang="en"
+     xml:lang="en"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     xmlns:metal="http://xml.zope.org/namespaces/metal"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     tal:define="slides python: view.settings.slides"
+     i18n:domain="plone">
+     
+  <style tal:content="structure view/css" type="text/css" />
+  <input type="hidden" 
+         id="slides-view-url" 
+         tal:attributes="value string:${view/slider_url}/--slides--" />     
+    <p class='discreet'><tal:empty tal:replace="python: len(slides)" /> total slides</p>
+    <div class="add-new-buttons" i18n:domain="collective.easyslider">
+    <a class='add-new'
+        tal:condition="python: len(slides) > 0"
+        i18n:translate=""
+        tal:attributes="href string:${view/slider_url}/@@edit-slide?index=-1">
+        add new slide
+    </a>
+  </div>
+  <ul id="slidelist">
+  <tal:rep tal:repeat="slide slides">
+    <li class="sortslide" tal:attributes="data-index repeat/slide/index">
+    <div class="slide-wrapper" i18n:domain="collective.easyslider">
+      <div class="slider-container">
+          <div class="slider">
+               <ul class="slides-list slider-list">
+                   <li class="slide" tal:content="structure slide" />
+               </ul>
+          </div>
+      </div>
+      <div class="slide-buttons">
+        <b class="slide-number">#<tal:replace tal:replace="repeat/slide/number" /></b> 
+        &raquo;        
+        <a class="edit" tal:attributes="href string:${view/slider_url}/@@edit-slide?index=${repeat/slide/index}" i18n:translate="">
+          edit
+        </a> 
+        &minus;
+        <a class="move-up" tal:attributes="href string:${view/slider_url}/--slides--/${repeat/slide/index}/@@move-slide-up" i18n:translate="">
+          up
+        </a> 
+        &minus; 
+        <a class="move-down" tal:attributes="href string:${view/slider_url}/--slides--/${repeat/slide/index}/@@move-slide-down" i18n:translate="">
+          down
+        </a> 
+        &minus; 
+        <a class="remove" tal:attributes="href string:${view/slider_url}/--slides--/${repeat/slide/index}/@@remove-slide" i18n:translate="">
+          remove
+        </a>
+      </div>
+    </div>
+    </li>
+  </tal:rep>
+  </ul>
+  <div class="add-new-buttons" i18n:domain="collective.easyslider">
+    <a class='add-new'
+       i18n:translate=""
+       tal:attributes="href string:${view/slider_url}/@@edit-slide?index=-1">
+      add new slide
+    </a>
+  </div>
+</div>

@@ -1,0 +1,308 @@
+This file demonstrates how you go about adding and removing an easySlider to different content on a Plone site.
+
+things to test
+adding slides
+removing slides
+editing easySlider
+
+
+   >>> from Products.Five.testbrowser import Browser
+   >>> from collective.easyslider.settings import PageSliderSettings
+	>>> from zope.testbrowser import interfaces
+	>>> from zope.interface.verify import verifyObject
+	>>> self.setRoles(("Manager",))
+	
+   >>> browser = Browser()
+   >>> browser.handleErrors = False
+   >>> portal_url = self.portal.absolute_url()
+   >>> from Products.PloneTestCase.setup import portal_owner, default_password
+
+   >>> browser.open(portal_url + '/login_form?came_from=' + portal_url)
+   >>> browser.getControl(name='__ac_name').value = portal_owner
+   >>> browser.getControl(name='__ac_password').value = default_password
+   >>> browser.getControl(name='submit').click()
+
+Alright, first off lets make sure that links to add easySliders are added across the board on all different content types.  Should go to slider settings after you've added the slider
+
+Check Page type first,
+
+   >>> browser.open(self.portal.absolute_url())
+   >>> browser.getLink(text="Page").click()
+   >>> browser.getControl(name="title").value = "test-page"
+   >>> browser.getControl("Save").click()
+   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.url == self.portal['test-page'].absolute_url() + "/@@slider-settings"
+   True
+
+   >>> page_url = self.portal['test-page'].absolute_url()
+    
+Now a collection...
+
+   >>> browser.open(self.portal.absolute_url())
+   >>> browser.getLink(text="Collection").click()
+   >>> browser.getControl(name="title").value = "test-collection"
+   >>> browser.getControl("Save").click()
+   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.url == self.portal['test-collection'].absolute_url() + "/@@slider-settings"
+   True
+    
+A Folder
+
+   >>> browser.open(self.portal.absolute_url())
+   >>> browser.getLink(text="Folder").click()
+   >>> browser.getControl(name="title").value = "test-folder"
+   >>> browser.getControl('Save').click()
+   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.url == self.portal['test-folder'].absolute_url() + "/@@slider-settings"
+   True
+    
+A News Item
+
+   >>> browser.open(self.portal.absolute_url())
+   >>> browser.getLink(text="News Item").click()
+   >>> browser.getControl(name="title").value = "test-news-item"
+   >>> browser.getControl('Save').click()
+   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.url == self.portal['test-news-item'].absolute_url() + "/@@slider-settings"
+   True
+    
+Let's get into the meat of this now.  From now on, we'll just play with the test page we created.
+
+   >>> browser.getLink(text='test-page').click()
+
+Make sure the Slider settings link is there and the remove slider link is there.
+
+   >>> 'href="' + page_url + '/@@disable_slider"' in browser.contents 
+   True
+   >>> 'href="' + page_url + '/@@slider-settings"' in browser.contents 
+   True
+    
+Go to the slider settings, edit the page, should bring you back to the page after your done
+
+   >>> browser.getLink(text="Slider Settings").click()
+   >>> browser.getControl(name="form.width").value = "700"
+   >>> browser.getControl(name="form.height").value = "400"
+   >>> browser.getControl(name="form.actions.save").click()
+   >>> browser.url == self.portal['test-page'].absolute_url()
+   True
+    
+Slider should not be in the page contents yet because there are no slides yet.
+
+   >>> '<div id="slider-container">' not in browser.contents
+   True
+    
+add one slide so it'll actually show.
+
+   >>> settings = PageSliderSettings(self.portal['test-page'])
+   >>> settings.slides = ['a slide']
+    
+Slider should now show.
+
+   >>> browser.open(self.portal['test-page'].absolute_url())
+   >>> '<div id="slider-container"' in browser.contents
+   True
+    
+The width and height should be set accordingly.
+
+   >>> "width: 700px" in browser.contents
+   True
+   >>> "height: 400px" in browser.contents
+   True
+    
+Edit it again and hide it this time.  Does it still show?
+
+   >>> browser.getLink(text="Slider Settings").click()
+   >>> browser.getControl(name="form.show").value = False
+   >>> browser.getControl(name="form.actions.save").click()
+   >>> '<div id="slider-container">' in browser.contents
+   False
+    
+Show it again now
+
+   >>> browser.getLink(text="Slider Settings").click()
+   >>> browser.getControl(name="form.show").value = True
+   >>> browser.getControl(name="form.actions.save").click()
+    
+Add some slides now shall we? Well, can't do it with the browser testing here because the kupu widget we use doesn't have support without ajax.  So we'll just do some programming for it...
+
+   >>> browser.getLink(text="Slider Settings").click()
+   >>> "add new slide" in browser.contents
+   True
+
+   >>> settings = PageSliderSettings(self.portal['test-page'])
+    
+the slides are just a list of html text
+   >>> settings.slides = ['my first slide', 'my second slide', 'my third slide']
+    
+Render the page again and make sure the slides are there.
+   >>> browser.open(self.portal['test-page'].absolute_url())
+   >>> 'my first slide' in browser.contents
+   True
+   >>> 'my second slide' in browser.contents
+   True
+   >>> 'my third slide' in browser.contents
+   True
+    
+Go to the settings page and check a few things about our expected slider.
+
+   >>> browser.getLink(text='Slider Settings').click()
+   >>> "3 total slides" in browser.contents
+   True
+
+Check the wrapper structures are present for each of the slides.
+
+   >>> browser.contents.count('div class="slide-wrapper"')
+   3
+   >>> browser.contents.count('div class="slider"')
+   3
+   >>> browser.contents.count('ul class="slides-list slider-list"')
+   3
+   >>> browser.contents.count('li class="slide"')
+   3
+
+Check our old structure is gone. 
+
+   >>> browser.contents.count('li class="slide-edit"')
+   0
+
+Make sure all the slide manipulation links are there...
+
+   >>> 'href="' + page_url + '/@@edit-slide?index=0"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/0/@@move-slide-up"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/0/@@move-slide-down"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/0/@@remove-slide"' in browser.contents
+   True
+
+   >>> 'href="' + page_url + '/@@edit-slide?index=1"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/1/@@move-slide-up"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/1/@@move-slide-down"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/1/@@remove-slide"' in browser.contents
+   True
+
+   >>> 'href="' + page_url + '/@@edit-slide?index=2"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/2/@@move-slide-up"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/2/@@move-slide-down"' in browser.contents
+   True
+   >>> 'href="' + page_url + '/--slides--/2/@@remove-slide"' in browser.contents
+   True
+    
+Move the first slide down
+
+   >>> browser.getLink(url=page_url + '/--slides--/0/@@move-slide-down').click()
+    
+Check the order
+
+   >>> settings = PageSliderSettings(self.portal['test-page'])
+   >>> settings.slides[0] == 'my second slide'
+   True
+   >>> settings.slides[1] == 'my first slide'
+   True
+    
+Move the last slide up now
+
+   >>> browser.getLink(url=page_url + '/--slides--/2/@@move-slide-up').click()
+    
+Check the order again
+    
+   >>> settings = PageSliderSettings(self.portal['test-page'])
+   >>> settings.slides[1] == 'my third slide'
+   True
+   >>> settings.slides[2] == 'my first slide'
+   True
+
+Try and move the end slides around to test what happens. An error should
+happen here for both situations.
+
+Attempt to move the last slide down - this should fail.
+ 
+   >>> slider_settings_url = self.portal['test-page'].absolute_url()+'/@@slider-settings'
+   >>> browser.open(slider_settings_url)
+   >>> browser.getLink(url=page_url + '/--slides--/2/@@move-slide-down').click()
+   Traceback (most recent call last):
+       ...
+   HTTPError: HTTP Error 403: Forbidden
+   
+Attempt to move the first slide up - this should fail.
+
+   >>> browser.open(slider_settings_url)
+   >>> browser.getLink(url=page_url + '/--slides--/0/@@move-slide-up').click()
+   Traceback (most recent call last):
+       ...
+   HTTPError: HTTP Error 403: Forbidden
+
+Attempt to delete a non-existant slide - this should fail.
+
+   >>> browser.open(self.portal['test-page'].absolute_url() + '/--slides--/99/@@remove-slide')
+   Traceback (most recent call last):
+       ...
+   HTTPError: HTTP Error 403: Forbidden
+
+Check that the slides are still all in the same positions as before.
+
+   >>> settings = PageSliderSettings(self.portal['test-page'])
+   >>> settings.slides[1] == 'my third slide'
+   True
+   >>> settings.slides[2] == 'my first slide'
+   True
+   
+Return back to normality and carry on
+ 
+   >>> browser.open(slider_settings_url)
+
+Now remove the last slide which was the first...
+
+   >>> browser.getLink(url=page_url + '/--slides--/2/@@remove-slide').click()
+   >>> settings = PageSliderSettings(self.portal['test-page'])
+   >>> "2 total slides" in browser.contents
+   True
+   >>> len(settings.slides) == 2
+   True
+    
+Should only show 2 slides now
+
+   >>> browser.open(page_url)
+   >>> 'my first slide' in browser.contents
+   False
+   >>> 'my second slide' in browser.contents
+   True
+   >>> 'my third slide' in browser.contents
+   True
+
+Check the slider effect settings defaults.
+   
+   >>> settings = PageSliderSettings(self.portal['test-page'])
+   >>> print settings.effect
+   Slide
+
+   >>> browser.open(page_url)
+   >>> "effect: 'Slide'," in browser.contents
+   True
+
+Try changing the effect settings
+
+   >>> settings.effect = 'Crossfade'
+   >>> browser.open(page_url)
+   >>> "effect: 'Slide'," in browser.contents
+   False
+   >>> "effect: 'Crossfade'," in browser.contents
+   True
+
+Okay, backup and remove the whole easy slider
+
+   >>> browser.open(page_url)
+   >>> browser.getLink(text="Remove Slider").click()
+   >>> "Add Slider" in browser.contents
+   True
+   >>> '<div id="slider-container">' in browser.contents
+   False
+   
+   
+   

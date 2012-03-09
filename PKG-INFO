@@ -1,0 +1,415 @@
+Metadata-Version: 1.0
+Name: collective.easyslider
+Version: 0.8.1b1
+Summary: The product will allow you to apply an easyslider to any page with the ability to create each slide using a WYSIWYG editor. It also provides a slider view for Folders and Collections.
+Home-page: http://plone.org/products/collective.easyslider/
+Author: Nathan Van Gheem
+Author-email: vangheem@gmail.com
+License: GPL
+Description: Introduction
+        ============
+        This product allows you to easily add an easySlider content rotator to any page on a plone site using a WYSIWYG editor to design each slide.
+        
+        How-to
+        ------
+        On a page, click actions -> Add Slider.  It should bring you to a slider settings page where you can modify different aspects of the slider and add/remove slides using a WYSWGY editor.  Keep in mind that the slides are fixed width so you need to specify the size you want.  Then you'll want to start adding your slides.  To do this just click ``add new slide`` near the bottom of the page.  Once you've finished adding slides and re-ordering slides, click ``save`` and you should see the slider on your page now.
+        
+        You can also select a slider view for Folder and Collection content types.  Then the slider settings for that page will include settings to limit the amount of slides to have and to limit the type of slides used.
+        
+        Examples
+        --------
+        Examples of this being used in the wild.
+        
+        * http://www.fbi.gov/
+        * http://www.chicagohistory.org
+        * http://www.reamp.org
+        * http://www.rehabpro.org
+        * http://swca.org/
+        
+        Installation
+        ------------
+        * add collective.easyslider to your eggs and zcml sections
+        * re-run buildout
+        * install the product like you would any other Plone product
+        
+        Uninstall
+        ---------
+        * Uninstall like normal
+        * go to portal_setup in the zmi, click the 'import' tab, select "collective.easyslider uninstall" and click the "Import all steps" button at the bottom to perform clean up.
+        
+        
+        Easy Template Integration
+        -------------------------
+        
+        If you'd like to add dynamic content to your slides, add collective.easytemplate
+        to your eggs section in buildout, re-run buildout and restart your installation.
+        Then in the slider settings make sure you enable Easy Template.
+        
+        You can also render sliders in a Easy Template. The syntax is:
+        
+            {{ slider("../front-page") }}
+        
+        And for the sliderview
+        
+            {{ sliderview("../a-collection") }}
+        
+        
+        Rendering Slider in Templates
+        -----------------------------
+        
+        You can also easily render your slider in a page template
+        if you'd like even more control over how it is displayed:
+        
+            <tal:slider tal:content="structure context/../front-page/@@slider_util/render_inline" />
+            
+        And for the sliderview
+        
+            <tal:slider tal:content="structure context/../front-page/@@slider_util/render_sliderview_inline" />
+        
+        
+        Credits and Contributions
+        -------------------------
+        * a lot of the credit for the inspiration, styling and insight into this product belongs to Espen Moe-Nilssen 
+        
+        Changelog
+        =========
+        
+        0.8.1b1 (2012-02-16)
+        --------------------
+        
+        - Add randomize feature
+          [vangheem]
+        
+        - allow drag n drop reordering of slides
+          [vangheem]
+        
+        
+        0.8.0b2 (2012-02-15)
+        --------------------
+        
+        - Ensure that users with the Site Administrator role can edit slider settings
+          under Plone 4.1+.
+          [davidjb]
+        - Fix failing test under Plone 3.
+          [davidjb]
+        - Remove bottom border for navigation bullets under <= IE6.
+          [davidjb]
+        - Allow active navigation bullets to change on slide transition under new
+          *Navigation Bullets* layout.
+          [davidjb]
+        - Added a new layout with bullets.
+          [espenmn]
+        - Ensure slider JS selects only ``li`` elements that are slides. This fixes
+          transition problems when lists are within slides.
+          [davidjb]
+        - Fix IE 5/6 display issue with slider container showing overflow.
+          [davidjb]
+        - Return an error if the user's attempt to move/remove a slide fails.
+          This prevents unnecessary AJAX calls from the client to reload slides.
+          [davidjb]
+        - Prevent index out of range error when attempting to move a slide down
+          if that slide is already at the end.
+          [davidjb]
+        - Simplify CSS for settings page as existing slider styles are now applicable.
+          [davidjb]
+        - Change slider settings page to ensure that ``li`` slide elements are
+          correctly wrapped in a ``ul`` by mimicking actual slider structures.  This
+          fixes settings page issues under IE 6 and 7 by ensuring the page produces
+          valid list markup.
+          [davidjb]
+        - Add CSS class selectors for slider and slider containers rather than just
+          ID-based selectors. This allows multiple slider structures on the same page
+          (eg the settings page). Slider display templates continue to use ID-based
+          structures.
+          [davidjb]
+        - Style ``li`` elements on the Slider Settings page using specific class to
+          avoid affecting lists within slides.
+          [davidjb]
+        - Ensure ``ul`` elements within slides don't get styled by default.
+          [davidjb]
+        
+        
+        0.8.0b1 ~ 2011-11-20
+        --------------------
+        
+        - Add 'Crossfade' effect to the slider. This option transitions slides into
+          each other with a crossfading effect, which contrasts with the standard
+          fade which fades out a slide before fading the next one in. Customise the
+          relevant CSS if you need custom z-indexes.
+          [davidjb]
+        
+        - Prevent big arrow buttons from having a bottom border. This prevents a
+          conflict with the default Sunburst theme in Plone 4.1+.
+          [davidjb]
+        
+        0.7.4 ~ 2011-10-05
+        ------------------
+        
+        - add portal transform to transform resolveuid/uid links to path links.
+          [thor27]
+        
+        
+        0.7.3 ~ 2011-10-05
+        ------------------
+        
+        - add js events.
+          [vangheem]
+        
+        - handle objects that do not have a UID(plone site root).
+          [vangheem]
+        
+        
+        0.7.2 ~ July 28, 2011
+        ---------------------
+        
+        - final release
+          [vangheem]
+          
+        
+        0.7.2a1 ~ July 22, 2011
+        -----------------------
+        
+        - More fixes for transitions on skipped slides--make it seemless.
+          [vangheem]
+          
+        - Allow to restart playing the slider after user interaction via configuration.
+          [vangheem]
+        
+        
+        0.7.1a2 ~ July 21, 2011
+        -----------------------
+        
+        - fixed auto transitions and numbering for skipped
+          navigation buttons.
+          [vangheem]
+          
+        
+        0.7.1a1 ~ July 19, 2011
+        -----------------------
+        
+        - continuous slide now no longer has "rewind" effect.
+          [vangheem]
+          
+        - allow some customization of what numbers show up 
+          for Navigation buttons.
+          [vangheem]
+          
+        - implement locking behavior on transitions to help 
+          keep transitions and buttons clicks seem a little more
+          controllable
+          [vangheem]
+        
+        
+        0.7.0a1 ~ July 17, 2011
+        -----------------------
+        
+        - add ability to have different transition and pause speeds
+          for even and odd slides.
+          [vangheem]
+          
+        
+        0.6.2rc1 ~ July 8, 2011
+        -----------------------
+        
+        - retrieve image sizes from plone.app.imaging settings
+          [espen]
+        
+        
+        0.6.2b1 ~ July 7, 2011
+        ----------------------
+        
+        - make slider work with multiple on one page
+          [vangheem]
+        
+        0.6.1 ~ July 6, 2011
+        --------------------
+        
+        - reference css and js from root
+          [vangheem]
+          
+        
+        0.6.0 ~ July 6, 2011
+        --------------------
+        
+        - Fix tests base
+          [toutpt]
+        
+        - Add french translations and improve localization
+          [toutpt]
+          
+        - add ability to render the sliderview inline and with easytemplate
+          [vangheem]
+          
+        
+        0.5.4 ~ February 20, 2011
+        -------------------------
+        
+        - Fixed automatic transition not turning off when using
+          the fade effect. Fixes http://plone.org/products/collective.easyslider/issues/18
+          [vangheem]
+          
+        - fixed slider view only showing last slide. Fixes http://plone.org/products/collective.easyslider/issues/16
+          [vangheem]
+          
+        - provide ability to choose the image scale used for image and news item collection
+          slider views. Implements http://plone.org/products/collective.easyslider/issues/2
+          [vangheem]
+          
+        
+        0.5.3 ~ February 14, 2011
+        -------------------------
+        
+        - on uninstall method, check that they are not reinstalling
+          the product. Otherwise, it will wipe all sliders..
+          [vangheem]
+        
+        0.5.2 ~ January 8, 2011
+        -----------------------
+        
+        - Add old style uninstall method so 
+          the uninstall profile is automatically called.
+          [vangheem]
+        
+        0.5.1 ~ January 7, 2011
+        -----------------------
+        
+        - fixed css_slot in slider view. Closes http://plone.org/products/collective.easyslider/issues/11
+          [vangheem]
+        
+        
+        0.5.0 ~ January 7, 2011
+        -----------------------
+        
+        - Fix some settings not working
+          [vangheem]
+        
+        - add ability to render slider inline in page templates or
+          in an Easy Template. See Documentation.
+          [vangheem]
+        
+        
+        0.4.1 ~ January 7, 2011 
+        -----------------------
+        
+        - fix slider not being able to be customized TTW in Plone 4
+          without an error
+          [vangheem]
+        
+        0.4.0 ~ January 6, 2011
+        -----------------------
+        
+        * add integration with collective.easytemplate. You can now
+          easy create dynamic content in slides as you enable it in
+          the slide settings.
+        
+        
+        0.3.2 ~ August 28, 2010
+        -----------------------
+        
+        * Fix plone 4 compatibility with interface
+          fixes http://plone.org/products/collective.easyslider/issues/9
+        
+        * no longer set width and height in js
+          fixes http://plone.org/products/collective.easyslider/issues/7
+        
+        
+        0.3.1 ~ May 14, 2010
+        --------------------
+        
+        * don't use SESSION to store the index since a user
+          could potentially abuse this...
+          [vangheem]
+        
+        
+        0.3 ~ May 13, 2010
+        ------------------
+        
+        * remove getSite call from upgrade step as it's unneeded anyways.
+          [vangheem]
+        
+        * no longer open edit slide in light box thing by tranversing a transient
+          object--now works with any editor(TinyMCE) fixes http://plone.org/products/collective.easyslider/issues/1
+          [vangheem]
+          
+        
+        0.3rc4 ~ April 4, 2010
+        ----------------------
+        
+        * fixed problem where annotations settings were getting
+          set from the previous slides since the default values
+          were getting changed. fixes http://plone.org/products/collective.easyslider/issues/4
+          [vangheem]
+        
+        * added type='text/css' to style tags
+          [vangheem]
+          
+        
+        0.3rc3 ~ April 16, 2010
+        -----------------------
+        
+        * set z-index to 1 on slide-over class since it messes with live search.
+          fixes http://plone.org/products/collective.easyslider/issues/3
+          [vangheem]
+        
+        * added pause/play button ability for navigation buttons.
+          [vangheem]
+          
+        * adds fading navigation functionality 
+          [vangheem]
+          
+        
+        0.3rc2
+        ------
+        * added ability for different slide effects
+        * removed Zope2 style install and uninstall
+        * added slider portlet
+        * added no buttons option for navigation type
+        
+        0.3rc1
+        ------
+        * added small buttons option for a navigation type
+        
+        0.3b4
+        -----
+        * fixed bug where if a content item had a slider page in it's acquisition chain it would throw an error.
+        
+        0.3b3.1
+        -------
+        * quick fix for uninstall problem...  should have tested it better!
+        
+        0.3b3
+        -----
+        * fixed link issues for images
+        
+        0.3b2
+        -----
+        * made some fixes to go to button implementation.
+        * added centering attribute
+        * can now choose to show the large left right buttons or the go to buttons.
+        
+        0.3b1.1
+        -------
+        * moved to easySlider 1.5
+        * added auto, pause and continuous options
+        * added sliderview to Folder and Collection types
+        * added go to buttons and options for slider
+        
+        0.2b1
+        -----
+        * better test support
+        * better design of settings page
+        * changed some descriptions
+        * reorganized some code
+        * confirmation to remove slide
+        
+        0.2a1
+        -----
+        * Everything ready to go
+        * no vast browser testing
+        * no code testing yet either
+        
+Keywords: plone easyslider
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

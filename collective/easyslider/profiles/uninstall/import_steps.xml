@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<import-steps>
+
+  <import-step id="collective.easyslider.uninstall"
+               version="1"
+               handler="collective.easyslider.importexport.uninstall"
+               title="collective.easyslider: Various cleanup to be done when removing the product.">
+
+  </import-step>
+
+</import-steps>

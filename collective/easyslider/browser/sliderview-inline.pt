@@ -1,0 +1,8 @@
+<tal:block tal:define="portal_state context/@@plone_portal_state;">
+  <link rel="stylesheet" type="text/css" href="++resource++easySlider.css" tal:attributes="href string:${portal_state/portal_url}/++resource++easySlider.css" media="screen" />
+  <script type="text/javascript" src="++resource++easySlider.js" tal:attributes="src string:${portal_state/portal_url}/++resource++easySlider.js" ></script>
+  <script type="text/javascript" tal:content="view/js"></script>
+  <style tal:content="structure view/css" type="text/css" />
+
+  <metal:block use-macro="options/sliderview/macros/slider" />
+</tal:block>

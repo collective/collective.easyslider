@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<portlets
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n_domain="collective.easyslider">
+ 
+ <!-- Portlet type registrations -->
+ 
+ <portlet
+   addview="collective.easyslider.portlet.slider"
+   title="Slider portlet"
+   remove="True"
+   description="A portlet which can display static HTML text"
+   i18n:attributes="title title_slider_portlet;
+                    description description_slider_portlet"
+   />
+ 
+</portlets>

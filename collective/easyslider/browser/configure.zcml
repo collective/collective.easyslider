@@ -1,0 +1,161 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:plone="http://namespaces.plone.org/plone"
+  i18n_domain="collective.easyslider">
+
+  <include package="plone.app.contentmenu" />
+    
+  <browser:page
+    name="slider-settings"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".forms.SliderPageSettingsForm"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+    
+  <adapter 
+    for="collective.easyslider.interfaces.ISliderPage"
+    provides="collective.easyslider.interfaces.IPageSliderSettings"
+    factory="collective.easyslider.settings.PageSliderSettings" />
+    
+  <browser:page 
+    name="sliderview"
+    for="collective.easyslider.interfaces.IViewEasySlider"
+    permission="zope2.View"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    class=".views.SliderView"
+    template="sliderview.pt" />
+    
+  <browser:menuItem
+    for="collective.easyslider.interfaces.IViewEasySlider"
+    menu="plone_displayviews"
+    title="EasySlider View"
+    action="sliderview"
+    description="Shows an easyslider for the contents." />
+
+  <browser:page
+    name="view-slider-settings"
+    for="collective.easyslider.interfaces.IViewEasySlider"
+    class=".forms.SliderViewSettingsForm"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+    
+  <adapter 
+    for="collective.easyslider.interfaces.IViewEasySlider"
+    provides="collective.easyslider.interfaces.IViewSliderSettings"
+    factory="collective.easyslider.settings.ViewSliderSettings" />
+    
+  <browser:page 
+    name="enable_slider"
+    for="*"
+    permission="collective.easyslider.ManageSliderSettings"
+    allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
+    attribute="enable"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    class=".utils.SliderUtilProtected" />
+    
+  <browser:page 
+    name="disable_slider"
+    for="*"
+    permission="collective.easyslider.ManageSliderSettings"
+    allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
+    attribute="disable"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    class=".utils.SliderUtilProtected" />
+                   
+   <browser:page 
+     name="slider_util"
+     for="*"
+     permission="zope2.View"
+     allowed_interface="collective.easyslider.interfaces.ISliderUtil"
+     layer="collective.easyslider.interfaces.ISliderLayer"
+     class=".utils.SliderUtil" />
+  
+  <browser:viewlet
+    name="collective.easyslider"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+    class=".viewlet.EasySlider"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="zope2.View"
+    template="viewlet.pt" />
+        
+  <browser:viewlet
+    name="collective.easyslider.head"
+    manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
+    class=".viewlet.EasySliderHead"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="zope2.View"
+    template="headviewlet.pt" />
+  
+  <adapter factory=".forms.AddSlideAdapter" />
+  <browser:page
+    name="edit-slide"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".forms.AddSlideForm"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+  
+  <browser:page
+    name="move-slide-up"
+    for="collective.easyslider.interfaces.ISlideContext"
+    class=".views.SlideView"
+    attribute="move_up"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+    
+  <browser:page
+    name="move-slide-down"
+    for="collective.easyslider.interfaces.ISlideContext"
+    class=".views.SlideView"
+    attribute="move_down"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+    
+  <browser:page
+    name="remove-slide"
+    for="collective.easyslider.interfaces.ISlideContext"
+    class=".views.SlideView"
+    attribute="remove"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+
+  <browser:page
+    name="--slides--"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".transient.SlidesContext"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+  
+  <browser:page
+    name="view"
+    for="collective.easyslider.interfaces.ISlidesContext"
+    class=".views.SlidesView"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+  
+  <browser:page
+    name="order-slides"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".views.OrderSlides"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="collective.easyslider.ManageSliderSettings" />
+
+  <browser:resource name="easySlider.js" file="files/easySlider.js" />
+  <browser:resource name="easySlider.css" file="files/easySlider.css" />
+  <browser:resource name="slider-settings.js" file="files/slider-settings.js" />
+  <browser:resource name="slider-settings.css" file="files/slider-settings.css" />
+  <browser:resource name="easyslider-portlet.js" file="files/portlet.js" />
+  <browser:resource name="easyslider-portlet.css" file="files/portlet.css" />
+  <browser:resource name="btn_prev.gif" file="files/btn_prev.gif" />
+  <browser:resource name="btn_next.gif" file="files/btn_next.gif" />
+  <browser:resource name="arrowr2.gif" file="files/arrowr2.gif" />
+  <browser:resource name="arrowl2.gif" file="files/arrowl2.gif" />
+  <browser:resource name="greynote.jpg" file="files/greynote.jpg" />
+  <browser:resource name="nextII.gif" file="files/nextII.gif" />
+  <browser:resource name="prevII.gif" file="files/prevII.gif" />
+  <browser:resource name="sliderpause.png" file="files/pause.png" />
+  <browser:resource name="sliderplay.png" file="files/play.png" />
+  <browser:resource name="arrow-left.png" file="files/arrow-left.png" />
+  <browser:resource name="arrow-right.png" file="files/arrow-right.png" />
+
+</configure>

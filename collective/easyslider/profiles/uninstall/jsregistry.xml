@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts">
+
+    <javascript 
+        cacheable="True" 
+        compression="safe" 
+        cookable="True"
+        enabled="True" 
+        expression="here/@@slider_util/should_include"
+        id="++resource++easySlider.js"
+        inline="False"
+        remove="True"
+    />
+    
+    <javascript 
+        cacheable="True" 
+        compression="none" 
+        cookable="True"
+        enabled="True" 
+        expression=""
+        id="++resource++easyslider-portlet.js"
+        inline="False"
+        remove="True"
+    />
+    
+    <javascript 
+        cacheable="True" 
+        compression="safe" 
+        cookable="True"
+        enabled="True" 
+        expression="python: request.get('ACTUAL_URL').endswith('@@slider-settings')"
+        id="++resource++slider-settings.js"
+        inline="False"
+        remove="True"
+    />
+
+</object>

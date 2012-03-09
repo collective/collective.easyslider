@@ -1,0 +1,339 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-11-23 04:45+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.easyslider\n"
+
+#: ./portlets/slider.py:33
+msgid "Height"
+msgstr ""
+
+#: ./portlets/slider.py:41
+msgid "Hide portlet"
+msgstr ""
+
+#: ./portlets/slider.py:23
+msgid "Over"
+msgstr ""
+
+#: ./portlets/slider.py:34
+msgid "Required since it is difficult to know the height when using two different over and under elements."
+msgstr ""
+
+#: ./portlets/slider.py:24
+msgid "The cover text. You might want an image here."
+msgstr ""
+
+#: ./portlets/slider.py:29
+msgid "The text you'll see when a user hovers."
+msgstr ""
+
+#: ./portlets/slider.py:42
+msgid "Tick this box if you want to temporarily hide the portlet without losing your text."
+msgstr ""
+
+#: ./portlets/slider.py:28
+msgid "Under"
+msgstr ""
+
+#: ./browser/slides.pt:17
+msgid "add new slide"
+msgstr ""
+
+#: ./browser/forms.py:65
+msgid "description_add_slide_form"
+msgstr ""
+
+#. Default: "A portlet which can display a something for the user and when they hover, it'll slide down revealing other text."
+#: ./portlets/slider.py:102
+msgid "description_slider_portlet"
+msgstr ""
+
+#. Default: "Configure the parameters for this slider."
+#: ./browser/forms.py:106
+msgid "description_slider_settings_form"
+msgstr ""
+
+#: ./browser/slides.pt:44
+msgid "down"
+msgstr ""
+
+#: ./browser/slides.pt:36
+msgid "edit"
+msgstr ""
+
+#: ./browser/forms.py:64
+msgid "heading_add_slide_form"
+msgstr ""
+
+#. Default: "Slider Settings"
+#: ./browser/forms.py:105
+msgid "heading_slider_settings_form"
+msgstr ""
+
+#. Default: "Select the types that will be show in this slider."
+#: ./interfaces.py:228
+msgid "label_allowed_types_description_slider_setting"
+msgstr ""
+
+#. Default: "Available Slide Types"
+#: ./interfaces.py:227
+msgid "label_allowed_types_title_slider_setting"
+msgstr ""
+
+#. Default: "Should the slider automatically transition?"
+#: ./interfaces.py:129
+msgid "label_auto_description_slider_setting"
+msgstr ""
+
+#. Default: "Auto?"
+#: ./interfaces.py:128
+msgid "label_auto_title_slider_setting"
+msgstr ""
+
+#. Default: "Should the easyslider be centered?"
+#: ./interfaces.py:157
+msgid "label_centered_description_slider_setting"
+msgstr ""
+
+#. Default: "Centered?"
+#: ./interfaces.py:156
+msgid "label_centered_title_slider_setting"
+msgstr ""
+
+#. Default: "Should the slider continuously loop?"
+#: ./interfaces.py:150
+msgid "label_continuous_description_slider_setting"
+msgstr ""
+
+#. Default: "Continuous?"
+#: ./interfaces.py:149
+msgid "label_continuous_title_slider_setting"
+msgstr ""
+
+#. Default: "If collective.easytemplate is installed, this will put it through the rendering engine"
+#: ./interfaces.py:209
+msgid "label_easytemplate_enabled_description_slider_setting"
+msgstr ""
+
+#. Default: "Easy Template Enabled?"
+#: ./interfaces.py:208
+msgid "label_easytemplate_enabled_title_slider_setting"
+msgstr ""
+
+#. Default: "I know the product is called easySLIDER, but we decided to let you choose multiple effects now"
+#: ./interfaces.py:95
+msgid "label_effect_description_slider_setting"
+msgstr ""
+
+#. Default: "Effect Type"
+#: ./interfaces.py:94
+msgid "label_effect_title_slider_setting"
+msgstr ""
+
+#. Default: "Should the navigation fade in and out when a user hovers of the slider?"
+#: ./interfaces.py:189
+msgid "label_fade_navigation_description_slider_settings"
+msgstr ""
+
+#. Default: "Fade Navigation?"
+#: ./interfaces.py:188
+msgid "label_fade_navigation_title_slider_settings"
+msgstr ""
+
+#. Default: "The fixed height of the slider."
+#: ./interfaces.py:79
+msgid "label_height_description_slider_setting"
+msgstr ""
+
+#. Default: "Height"
+#: ./interfaces.py:78
+msgid "label_height_title_slider_setting"
+msgstr ""
+
+#. Default: "Choose the scale used for this image."
+#: ./interfaces.py:250
+msgid "label_image_scale_description_slider_setting"
+msgstr ""
+
+#. Default: "Image Scale."
+#: ./interfaces.py:249
+msgid "label_image_scale_title_slider_setting"
+msgstr ""
+
+#. Default: "The max amount of content items to use for slides.  Set to 0 for unlimited."
+#: ./interfaces.py:243
+msgid "label_limit_description_slider_setting"
+msgstr ""
+
+#. Default: "Max Slides"
+#: ./interfaces.py:242
+msgid "label_limit_title_slider_setting"
+msgstr ""
+
+#. Default: "Only for 'Navigation Buttons' navigation type. Used to customize the rendering of navigation buttons."
+#: ./interfaces.py:177
+msgid "label_navigation_buttons_rendering_type_description"
+msgstr ""
+
+#. Default: "Navigation Buttons Rendering Type"
+#: ./interfaces.py:176
+msgid "label_navigation_buttons_rendering_type_title"
+msgstr ""
+
+#. Default: "Choose the type of navigation to use."
+#: ./interfaces.py:164
+msgid "label_navigation_type_description_slider_setting"
+msgstr ""
+
+#. Default: "Type of Navigation."
+#: ./interfaces.py:163
+msgid "label_navigation_type_title_slider_setting"
+msgstr ""
+
+#. Default: "How long the slide should pause before it is automatically transitioned for odd numbered slides(0 to use normal pause setting)."
+#: ./interfaces.py:143
+msgid "label_odd_pause_description_slider_setting"
+msgstr ""
+
+#. Default: "Odd Slide Pause"
+#: ./interfaces.py:142
+msgid "label_odd_pause_title_slider_setting"
+msgstr ""
+
+#. Default: "Speed at which the slide will transition for odd numbered slides(0 to use normal speed setting)."
+#: ./interfaces.py:122
+msgid "label_odd_speed_description_slider_setting"
+msgstr ""
+
+#. Default: "Odd Slide Speed"
+#: ./interfaces.py:121
+msgid "label_odd_speed_title_slider_setting"
+msgstr ""
+
+#. Default: "How long the slide should pause before it is automatically transitioned."
+#: ./interfaces.py:136
+msgid "label_pause_description_slider_setting"
+msgstr ""
+
+#. Default: "Pause"
+#: ./interfaces.py:135
+msgid "label_pause_title_slider_setting"
+msgstr ""
+
+#. Default: "Resume playing the slider after the user has manually clicked on slides(normally this behavior will disabling playing the slider)"
+#: ./interfaces.py:196
+msgid "label_replay_description_slider_settings"
+msgstr ""
+
+#. Default: "Resume Play"
+#: ./interfaces.py:195
+msgid "label_resume_play_title_slider_settings"
+msgstr ""
+
+#. Default: "Save"
+#: ./browser/forms.py:68
+msgid "label_save"
+msgstr ""
+
+#. Default: "Do you want the easy slider to show on this page?"
+#: ./interfaces.py:87
+msgid "label_show_description_slider_setting"
+msgstr ""
+
+#. Default: "Show it?"
+#: ./interfaces.py:86
+msgid "label_show_title_slider_setting"
+msgstr ""
+
+#. Default: "Slide"
+#: ./interfaces.py:259
+msgid "label_slide_title_slider_setting"
+msgstr ""
+
+#. Default: "These are the slides that will show up in the easySlider for this page."
+#: ./interfaces.py:216
+msgid "label_slides_description_slider_settings"
+msgstr ""
+
+#. Default: "Slides"
+#: ./interfaces.py:215
+msgid "label_slides_title_slider_setting"
+msgstr ""
+
+#. Default: "Speed at which the slide will transition."
+#: ./interfaces.py:115
+msgid "label_speed_description_slider_setting"
+msgstr ""
+
+#. Default: "Speed"
+#: ./interfaces.py:114
+msgid "label_speed_title_slider_setting"
+msgstr ""
+
+#. Default: "Should the slide transition vertically?"
+#: ./interfaces.py:108
+msgid "label_vertical_description_slider_setting"
+msgstr ""
+
+#. Default: "Vertical?"
+#: ./interfaces.py:107
+msgid "label_vertical_title_slider_setting"
+msgstr ""
+
+#. Default: "The fixed width of the slider."
+#: ./interfaces.py:71
+msgid "label_width_description_slider_setting"
+msgstr ""
+
+#. Default: "Width"
+#: ./interfaces.py:70
+msgid "label_width_title_slider_setting"
+msgstr ""
+
+#: ./browser/slides.pt:48
+msgid "remove"
+msgstr ""
+
+#. Default: "Add/Update Slide"
+#: ./browser/forms.py:66
+msgid "title_add_slide_form"
+msgstr ""
+
+#. Default: "Add slider portlet"
+#: ./portlets/slider.py:100
+msgid "title_add_slider_portlet"
+msgstr ""
+
+#. Default: "Edit slider portlet"
+#: ./portlets/slider.py:120
+msgid "title_edit_slider_portlet"
+msgstr ""
+
+#. Default: "Slider portlet"
+#: ./portlets/slider.py:57
+msgid "title_slider_portlet"
+msgstr ""
+
+#. Default: "Slider settings"
+#: ./browser/forms.py:107
+msgid "title_slider_settings_form"
+msgstr ""
+
+#: ./browser/slides.pt:40
+msgid "up"
+msgstr ""
+

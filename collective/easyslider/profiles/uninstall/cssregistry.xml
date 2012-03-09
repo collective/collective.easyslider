@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<object name="portal_css">
+	
+    <stylesheet 
+        title="" 
+        cacheable="True" 
+        compression="safe" 
+        cookable="True"
+        enabled="True"
+        expression="here/@@slider_util/should_include"
+        id="++resource++easySlider.css" media="screen" rel="stylesheet" 
+        rendering="import"
+        remove="True"
+    />	
+    
+    <stylesheet 
+        title="" 
+        cacheable="True" 
+        compression="safe" 
+        cookable="True"
+        enabled="True"
+        expression=""
+        id="++resource++easyslider-portlet.css" media="screen" rel="stylesheet" 
+        rendering="import"
+        remove="True"
+    />
+    
+    <stylesheet 
+        title="" 
+        cacheable="True" 
+        compression="safe" 
+        cookable="True"
+        enabled="True"
+        expression="python: request.get('ACTUAL_URL').endswith('@@slider-settings')"
+        id="++resource++slider-settings.css" media="screen" rel="stylesheet" 
+        rendering="import"
+        remove="True"
+    />
+
+</object>

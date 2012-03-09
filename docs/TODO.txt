@@ -1,0 +1,8 @@
+Todo
+====
+
+* Should do something to mitigate potential client-slide mistakes on the 
+  slider settings page when moving up/down slides (and thus reduce HTTP
+  request required). Slide at the top shouldn't provide an 'up' button
+  and slide at the bottom shouldn't provide a 'down' button (eg disable these
+  or not send request).
