@@ -49,7 +49,6 @@ img.news-slide-image {
 }
 
 #prevBtn a, #nextBtn a{  
-	position: relative;
 	display:block;
 	color: transparent;
 	width:30px;
