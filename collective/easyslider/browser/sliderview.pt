@@ -48,7 +48,7 @@
                     <a tal:attributes="href slide/getURL">
                       <img class="news-slide-image" 
                            tal:attributes="alt slide/Title;
-                                           src string:${slide/getURL}/${image_scale}" />
+                                           src string:${slide/getURL}${image_scale}" />
                     </a>
                     <div class="slide-news-content">
                       <p class="documentDescription">
@@ -68,7 +68,7 @@
                   </div>
                   <div class="slider-image">
                     <a tal:attributes="href slide/getURL">            
-                      <img tal:attributes="src string:${slide/getURL}/${image_scale};
+                      <img tal:attributes="src string:${slide/getURL}${image_scale};
                                            title slide/Title;
                                            alt slide/Description" />
                     </a>

@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.9b1 (unreleased)
+------------------
+
+- allow original scale for slider view
+  [vangheem]
+
+
 0.8.1b1 (2012-02-16)
 --------------------
 

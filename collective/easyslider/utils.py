@@ -1,4 +1,7 @@
 
+ORIGINAL_SCALE_NAME = '--ORIGINAL--'
+
+
 def slider_settings_css(settings):
     """
     defined here because then it can be used in the widget

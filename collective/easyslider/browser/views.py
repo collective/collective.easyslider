@@ -8,6 +8,7 @@ from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
 from collective.easyslider.settings import PageSliderSettings
 from collective.easyslider.settings import ViewSliderSettings
 from collective.easyslider.utils import slider_settings_css
+from collective.easyslider.utils import ORIGINAL_SCALE_NAME
 from collective.easyslider.browser.base import AbstractSliderView
 
 
@@ -20,7 +21,12 @@ class SliderView(BrowserView, AbstractSliderView):
 
     @property
     def scale(self):
-        return self.settings.image_scale or 'image_preview'
+        scale = self.settings.image_scale
+        if not scale:
+            return '/image_preview'
+        if scale == ORIGINAL_SCALE_NAME:
+            return ''
+        return '/' + scale
 
     def get_items(self):
         if IATFolder.providedBy(self.context) or \
