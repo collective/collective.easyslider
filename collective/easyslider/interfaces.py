@@ -59,7 +59,7 @@ class ISliderUtil(Interface):
         """
         Render a slide in a template somewhere else(a page template
         or easytemplate). Even if the slider is set to hidden, this will
-        render it. 
+        render it.
         """
 
     def render_sliderview_inline(context=None):
@@ -75,7 +75,7 @@ class ISliderSettings(Interface):
 
     width = schema.Int(
         title=_(u'label_width_title_slider_setting', default=u"Width"),
-        description=_(u"label_width_description_slider_setting", 
+        description=_(u"label_width_description_slider_setting",
             default=u"The fixed width of the slider."),
         default=600,
         required=True
@@ -83,7 +83,7 @@ class ISliderSettings(Interface):
 
     height = schema.Int(
         title=_(u'label_height_title_slider_setting', default=u"Height"),
-        description=_(u"label_height_description_slider_setting", 
+        description=_(u"label_height_description_slider_setting",
             default=u"The fixed height of the slider."),
         default=230,
         required=True
@@ -112,7 +112,7 @@ class ISliderSettings(Interface):
 
     vertical = schema.Bool(
         title=_(u"label_vertical_title_slider_setting", default=u"Vertical?"),
-        description=_(u"label_vertical_description_slider_setting", 
+        description=_(u"label_vertical_description_slider_setting",
             default=u"Should the slide transition vertically?"),
         default=False
     )
@@ -191,7 +191,7 @@ class ISliderSettings(Interface):
     navigation_buttons_rendering_type = schema.Choice(
         title=_(u"label_navigation_buttons_rendering_type_title",
             default=u"Navigation Buttons Rendering Type"),
-        description=_(u"label_navigation_buttons_rendering_type_description", 
+        description=_(u"label_navigation_buttons_rendering_type_description",
             default=u"Only for 'Navigation Buttons' navigation type. Used to "
                     u"customize the rendering of navigation buttons."),
         default=u"standard",
@@ -217,10 +217,11 @@ class ISliderSettings(Interface):
         title=_(u"label_hover_pause_title_slider_setting",
             default=u"Pause on mouseover"),
         description=_(u"label_hover_pause_description_slider_setting",
-            default=u"If this is enabled images will not change when mouse is over theslide"),
-        default=True
+            default=u"If this is enabled images will not change when mouse "
+                    u"is over theslide"),
+        default=False
     )
-    
+
     resume_play = schema.Bool(
         title=_(u"label_resume_play_title_slider_settings",
             default=u"Resume Play"),
@@ -270,7 +271,7 @@ class IViewSliderSettings(ISliderSettings):
     allowed_types = schema.Tuple(
         title=_(u"label_allowed_types_title_slider_setting",
             default=u'Available Slide Types'),
-        description=_(u"label_allowed_types_description_slider_setting", 
+        description=_(u"label_allowed_types_description_slider_setting",
             default=u"Select the types that will be show in this slider."),
         required=True,
         missing_value=None,
@@ -285,12 +286,11 @@ class IViewSliderSettings(ISliderSettings):
 
     limit = schema.Int(
         title=_(u"label_limit_title_slider_setting", default=u"Max Slides"),
-        description=_(u"label_limit_description_slider_setting", 
+        description=_(u"label_limit_description_slider_setting",
             default=u"The max amount of content items to use for slides.  "
                     u"Set to 0 for unlimited."),
         default=0
     )
-
 
     image_scale = schema.Choice(
         title=_(u"label_image_scale_title_slider_setting",

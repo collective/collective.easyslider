@@ -7,6 +7,9 @@ Changelog
 - allow original scale for slider view
   [vangheem]
 
+- add pause on hover option
+  [espen]]
+
 
 0.8.1b1 (2012-02-16)
 --------------------
