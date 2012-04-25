@@ -6,31 +6,24 @@ removing slides
 editing easySlider
 
 
-   >>> from Products.Five.testbrowser import Browser
-   >>> from collective.easyslider.settings import PageSliderSettings
-	>>> from zope.testbrowser import interfaces
-	>>> from zope.interface.verify import verifyObject
-	>>> self.setRoles(("Manager",))
-	
-   >>> browser = Browser()
+   >>> from plone.testing.z2 import Browser
+   >>> import transaction
+    
+   >>> browser = Browser(self.app)
    >>> browser.handleErrors = False
-   >>> portal_url = self.portal.absolute_url()
-   >>> from Products.PloneTestCase.setup import portal_owner, default_password
-
-   >>> browser.open(portal_url + '/login_form?came_from=' + portal_url)
-   >>> browser.getControl(name='__ac_name').value = portal_owner
-   >>> browser.getControl(name='__ac_password').value = default_password
-   >>> browser.getControl(name='submit').click()
+   >>> from collective.easyslider.testing import browserLogin
+   >>> browserLogin(self.portal, browser)
+   >>> from collective.easyslider.settings import PageSliderSettings
 
 Alright, first off lets make sure that links to add easySliders are added across the board on all different content types.  Should go to slider settings after you've added the slider
 
 Check Page type first,
 
    >>> browser.open(self.portal.absolute_url())
-   >>> browser.getLink(text="Page").click()
+   >>> browser.getLink(id="document").click()
    >>> browser.getControl(name="title").value = "test-page"
    >>> browser.getControl("Save").click()
-   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.getLink(id="enable_slider").click()
    >>> browser.url == self.portal['test-page'].absolute_url() + "/@@slider-settings"
    True
 
@@ -39,30 +32,30 @@ Check Page type first,
 Now a collection...
 
    >>> browser.open(self.portal.absolute_url())
-   >>> browser.getLink(text="Collection").click()
+   >>> browser.getLink(id="topic").click()
    >>> browser.getControl(name="title").value = "test-collection"
    >>> browser.getControl("Save").click()
-   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.getLink(id="enable_slider").click()
    >>> browser.url == self.portal['test-collection'].absolute_url() + "/@@slider-settings"
    True
     
 A Folder
 
    >>> browser.open(self.portal.absolute_url())
-   >>> browser.getLink(text="Folder").click()
+   >>> browser.getLink(id="folder").click()
    >>> browser.getControl(name="title").value = "test-folder"
    >>> browser.getControl('Save').click()
-   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.getLink(id="enable_slider").click()
    >>> browser.url == self.portal['test-folder'].absolute_url() + "/@@slider-settings"
    True
     
 A News Item
 
    >>> browser.open(self.portal.absolute_url())
-   >>> browser.getLink(text="News Item").click()
+   >>> browser.getLink(id="news-item").click()
    >>> browser.getControl(name="title").value = "test-news-item"
    >>> browser.getControl('Save').click()
-   >>> browser.getLink(text="Add Slider").click()
+   >>> browser.getLink(id="enable_slider").click()
    >>> browser.url == self.portal['test-news-item'].absolute_url() + "/@@slider-settings"
    True
     
@@ -95,6 +88,7 @@ add one slide so it'll actually show.
 
    >>> settings = PageSliderSettings(self.portal['test-page'])
    >>> settings.slides = ['a slide']
+   >>> transaction.commit()
     
 Slider should now show.
 
@@ -133,7 +127,8 @@ Add some slides now shall we? Well, can't do it with the browser testing here be
     
 the slides are just a list of html text
    >>> settings.slides = ['my first slide', 'my second slide', 'my third slide']
-    
+   >>> transaction.commit()
+
 Render the page again and make sure the slides are there.
    >>> browser.open(self.portal['test-page'].absolute_url())
    >>> 'my first slide' in browser.contents
@@ -289,6 +284,7 @@ Check the slider effect settings defaults.
 Try changing the effect settings
 
    >>> settings.effect = 'Crossfade'
+   >>> transaction.commit()
    >>> browser.open(page_url)
    >>> "effect: 'Slide'," in browser.contents
    False

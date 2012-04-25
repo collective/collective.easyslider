@@ -1,8 +1,9 @@
+.gitignore
 MANIFEST.in
+PKG-INFO
 README.txt
 setup.cfg
 setup.py
-collective/.DS_Store
 collective/__init__.py
 collective.easyslider.egg-info/PKG-INFO
 collective.easyslider.egg-info/SOURCES.txt
@@ -12,7 +13,6 @@ collective.easyslider.egg-info/namespace_packages.txt
 collective.easyslider.egg-info/not-zip-safe
 collective.easyslider.egg-info/requires.txt
 collective.easyslider.egg-info/top_level.txt
-collective/easyslider/.DS_Store
 collective/easyslider/__init__.py
 collective/easyslider/browser.txt
 collective/easyslider/configure.zcml
@@ -28,7 +28,6 @@ collective/easyslider/version.txt
 collective/easyslider/vocabularies.py
 collective/easyslider/widgets.py
 collective/easyslider/Extensions/Install.py
-collective/easyslider/browser/.DS_Store
 collective/easyslider/browser/__init__.py
 collective/easyslider/browser/base.py
 collective/easyslider/browser/configure.zcml
@@ -60,7 +59,6 @@ collective/easyslider/browser/files/prevII.gif
 collective/easyslider/browser/files/slider-settings.css
 collective/easyslider/browser/files/slider-settings.js
 collective/easyslider/locales/collective.easyslider.pot
-collective/easyslider/locales/fr/LC_MESSAGES/collective.easyslider.mo
 collective/easyslider/locales/fr/LC_MESSAGES/collective.easyslider.po
 collective/easyslider/portlets/__init__.py
 collective/easyslider/portlets/configure.zcml
