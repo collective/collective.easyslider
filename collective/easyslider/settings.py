@@ -1,23 +1,20 @@
 from zope.interface import implements
 from persistent.dict import PersistentDict
-try:
-    #For Zope 2.10.4
-    from zope.annotation.interfaces import IAnnotations
-except ImportError:
-    #For Zope 2.9
-    from zope.app.annotation.interfaces import IAnnotations
+from zope.annotation.interfaces import IAnnotations
+from collective.easyslider.interfaces import IPageSliderSettings
+from collective.easyslider.interfaces import IViewSliderSettings
+from collective.easyslider.interfaces import ISliderSettings
 
-from interfaces import IPageSliderSettings, IViewSliderSettings, ISliderSettings
 
 class SliderSettings(object):
     """
     Pretty much copied how it is done in Slideshow Folder
     hopefully no one is foolish enough to want a custom slider
-    and a view slider.  If they are then the settings will 
-    overlap.  
+    and a view slider.  If they are then the settings will
+    overlap.
     """
     implements(IPageSliderSettings)
-    
+
     interfaces = []
 
     def __init__(self, context):
@@ -28,7 +25,7 @@ class SliderSettings(object):
         if self._metadata is None:
             self._metadata = PersistentDict()
             annotations['collective.easyslider'] = self._metadata
-    
+
     @property
     def __parent__(self):
         return self.context
@@ -52,6 +49,7 @@ class SliderSettings(object):
                     return v.default
         return value
 
+
 class PageSliderSettings(SliderSettings):
     interfaces = [ISliderSettings, IPageSliderSettings]
 
@@ -62,6 +60,6 @@ class PageSliderSettings(SliderSettings):
             return self._metadata.get(name, [])
         return super(PageSliderSettings, self).__getattr__(name)
 
+
 class ViewSliderSettings(SliderSettings):
     interfaces = [ISliderSettings, IViewSliderSettings]
-

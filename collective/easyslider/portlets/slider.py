@@ -23,7 +23,7 @@ class ISliderPortlet(IPortletDataProvider):
         title=_(u"Over"),
         description=_(u"The cover text. You might want an image here."),
         required=True)
-        
+
     under = schema.Text(
         title=_(u"Under"),
         description=_(u"The text you'll see when a user hovers."),
@@ -86,6 +86,7 @@ class Renderer(base.Renderer):
     @property
     def available(self):
         return not self.data.hide
+
 
 class AddForm(base.AddForm):
     """Portlet add form.

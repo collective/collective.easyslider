@@ -3,10 +3,12 @@ from zope.app.form.browser.textwidgets import IntWidget
 from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 from collective.easyslider.utils import slider_settings_css
 
+
 class HiddenWidget(IntWidget):
-    
+
     def __call__(self):
         return self.hidden()
+
 
 class SlidesWidget(SimpleInputWidget):
     """
@@ -15,16 +17,18 @@ class SlidesWidget(SimpleInputWidget):
     it does provide the correct urls to perform the editing action
     for each slide
     """
-    
+
     template = ViewPageTemplateFile('browser/slides.pt')
 
     def __init__(self, field, request):
-        
         SimpleInputWidget.__init__(self, field, request)
 
-        self.slider_url = self.context.context.context.absolute_url() # field/settings/context
-        self.settings = self.context.context # field/settings
-        self.css = slider_settings_css(self.settings) # since this uses the same .pt file
+        # field/settings/context
+        self.slider_url = self.context.context.context.absolute_url()
+        # field/settings
+        self.settings = self.context.context
+        # since this uses the same .pt file
+        self.css = slider_settings_css(self.settings)
 
     def __call__(self):
         return self.template(self)

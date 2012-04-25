@@ -15,8 +15,6 @@ def slider_settings_css(settings):
         height: %(height)ipx;
     }
     """ % {
-        'width' : settings.width,
-        'height' : settings.height
+        'width': settings.width,
+        'height': settings.height
     }
-
-
