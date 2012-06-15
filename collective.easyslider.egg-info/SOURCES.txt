@@ -21,10 +21,10 @@ collective/easyslider/interfaces.py
 collective/easyslider/rebuild_i18n.sh
 collective/easyslider/settings.py
 collective/easyslider/tags.py
+collective/easyslider/testing.py
 collective/easyslider/upgrades.py
 collective/easyslider/upgrades.zcml
 collective/easyslider/utils.py
-collective/easyslider/version.txt
 collective/easyslider/vocabularies.py
 collective/easyslider/widgets.py
 collective/easyslider/Extensions/Install.py
@@ -59,6 +59,7 @@ collective/easyslider/browser/files/prevII.gif
 collective/easyslider/browser/files/slider-settings.css
 collective/easyslider/browser/files/slider-settings.js
 collective/easyslider/locales/collective.easyslider.pot
+collective/easyslider/locales/fr/LC_MESSAGES/collective.easyslider.mo
 collective/easyslider/locales/fr/LC_MESSAGES/collective.easyslider.po
 collective/easyslider/portlets/__init__.py
 collective/easyslider/portlets/configure.zcml
@@ -82,7 +83,6 @@ collective/easyslider/profiles/uninstall/jsregistry.xml
 collective/easyslider/profiles/uninstall/portlets.xml
 collective/easyslider/profiles/uninstall/viewlets.xml
 collective/easyslider/tests/__init__.py
-collective/easyslider/tests/base.py
 collective/easyslider/tests/test_doctests.py
 collective/easyslider/tests/test_portlet.py
 collective/easyslider/tests/test_setup.py

@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: collective.easyslider
-Version: 0.8.1b1
+Version: 1.0
 Summary: The product will allow you to apply an easyslider to any page with the ability to create each slide using a WYSIWYG editor. It also provides a slider view for Folders and Collections.
 Home-page: http://plone.org/products/collective.easyslider/
 Author: Nathan Van Gheem
@@ -74,8 +74,8 @@ Description: Introduction
         Changelog
         =========
         
-        0.9b1 (unreleased)
-        ------------------
+        1.0 (2012-04-25)
+        ----------------
         
         - allow original scale for slider view
           [vangheem]

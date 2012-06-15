@@ -31,6 +31,12 @@ img.news-slide-image {
 	list-style: none;
 }
 
+ul.slides-list.slider-list {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
 .slider, .slider li.slide,
 #slider, #slider li.slide {
 	overflow: hidden;

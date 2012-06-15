@@ -187,6 +187,16 @@ class ISliderSettings(Interface):
             'No Buttons'
         ])
     )
+    
+    rotateamount = schema.Int(
+        title=_(u'label_width_title_rotateamount', 
+        	default=u"How many 'Navigation Buttons' "),
+        description=_(u"label_width_description_slider_setting",
+            default=u"This setting only works if you have chosen Navigation button"
+            		u"above."),
+        default=8,
+        required=True
+    )
 
     navigation_buttons_rendering_type = schema.Choice(
         title=_(u"label_navigation_buttons_rendering_type_title",
@@ -240,6 +250,16 @@ class ISliderSettings(Interface):
         default=False
     )
 
+    
+    horizontal_slides = schema.Int(
+		title=_(u'label_width_title_horizontal_slides', 
+				default=u"How many slides horizontal?' "),
+		description=_(u"label_width_description_slider_setting",
+				default=u"Experimental settings !! "
+						u"Only works properly with horizontal sliding."),
+		default=1,
+		required=True
+	)
 
 class IPageSliderSettings(ISliderSettings):
     """
