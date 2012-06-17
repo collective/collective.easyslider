@@ -250,6 +250,13 @@ class ISliderSettings(Interface):
         default=False
     )
 
+    hidetext = schema.Bool(
+        title=_(u"label_easyslider_hide_text_title",
+            default=u"Hide text"),
+        description=_(u"label_easyslider_hide_text_settings",
+            default=u"Hide Title and description on slides for folderview"),
+        default=False
+    )
     
     horizontal_slides = schema.Int(
 		title=_(u'label_width_title_horizontal_slides', 

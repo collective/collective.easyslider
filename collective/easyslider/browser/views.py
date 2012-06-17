@@ -62,6 +62,7 @@ class SlidesView(BrowserView):
         super(SlidesView, self).__init__(context, request)
 
         self.settings = PageSliderSettings(context.context)
+        self.hidetitle = self.settings.hidetitle
         self.call_context = self.context.context
         self.slider_url = self.context.context.absolute_url()
         # since this uses the same .pt file

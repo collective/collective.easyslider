@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Next version
+----------------
+
+- added setting to hide title and description [espen]
+- added option to show several slides at the same time [espen]
+
+
 1.0 (2012-04-25)
 ----------------
 
