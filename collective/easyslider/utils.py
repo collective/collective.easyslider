@@ -9,17 +9,12 @@ def slider_settings_css(settings):
     """
     return """
     .slider-container,
-    .slider {
+    .slider,
+    .slider li.slide {
         width: %(width)ipx;
         height: %(height)ipx;
     }
-    .slider li.slide {
-        width: %(slidewidth)ipx !important;
-        height: %(height)ipx;
-    }
-    
     """ % {
         'width': settings.width,
-        'height': settings.height,
-        'slidewidth' : (settings.width) / (settings.horizontal_slides),
+        'height': settings.height
     }
