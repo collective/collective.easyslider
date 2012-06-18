@@ -13,7 +13,6 @@ collective.easyslider.egg-info/namespace_packages.txt
 collective.easyslider.egg-info/not-zip-safe
 collective.easyslider.egg-info/requires.txt
 collective.easyslider.egg-info/top_level.txt
-collective/easyslider/.DS_Store
 collective/easyslider/__init__.py
 collective/easyslider/browser.txt
 collective/easyslider/configure.zcml
@@ -29,7 +28,6 @@ collective/easyslider/utils.py
 collective/easyslider/vocabularies.py
 collective/easyslider/widgets.py
 collective/easyslider/Extensions/Install.py
-collective/easyslider/browser/.DS_Store
 collective/easyslider/browser/__init__.py
 collective/easyslider/browser/base.py
 collective/easyslider/browser/configure.zcml

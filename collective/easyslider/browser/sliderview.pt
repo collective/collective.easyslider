@@ -36,15 +36,13 @@
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
       <metal:slider define-macro="slider">
-        <div id="slider-container" tal:attributes="class string:slider-${uid};" 
-        							tal:define="image_scale view/scale;
-        								         showtext not:python:view.settings.hidetext">
+        <div id="slider-container" tal:attributes="class string:slider-${uid};" tal:define="image_scale view/scale">
           <div id="slider" tal:attributes="class string:slider-${uid};">
             <ul class="slides-list slider-list">
               <tal:rep tal:repeat="slide view/get_items">
                 <li class="slide" tal:condition="python: slide.portal_type == 'News Item'">
                   <div class="news-slide">
-                    <h1 class="documentFirstHeading" tal:condition="showtext">  
+                    <h1 class="documentFirstHeading"> 
                       <span tal:content="slide/Title" />
                     </h1>
                     <a tal:attributes="href slide/getURL">
@@ -52,7 +50,7 @@
                            tal:attributes="alt slide/Title;
                                            src string:${slide/getURL}${image_scale}" />
                     </a>
-                    <div class="slide-news-content" tal:condition="showtext"> 
+                    <div class="slide-news-content">
                       <p class="documentDescription">
                         <span tal:content="slide/Description" />
                       </p>
@@ -62,7 +60,7 @@
                 </li>
 
                 <li class="slide" tal:condition="python: slide.portal_type == 'Image'">
-                  <div class="slider-text" tal:condition="showtext"> 
+                  <div class="slider-text">
                     <a tal:attributes="href slide/getURL"> 
                       <h1 tal:content="slide/Title" />
                     </a>

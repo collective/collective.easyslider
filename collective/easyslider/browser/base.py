@@ -21,8 +21,7 @@ class AbstractSliderView(object):
     height: %(height)ipx;
     margin: %(centered)s;
 }
-
-#slider.slider-%(uid)s {
+#slider.slider-%(uid)s, #slider.slider-%(uid)s li.slide{
     width:%(width)ipx;
     height:%(height)ipx;
 }
@@ -33,19 +32,13 @@ class AbstractSliderView(object):
 .slider-%(uid)s #prevBtn{
     top:-%(prev_top)ipx;
 }
-
-#slider.slider-%(uid)s li.slide{
-    width:%(slidewidth)ipx;
-    height:%(height)ipx;
-}
     """ % {
                 'width': self.settings.width,
                 'height': self.settings.height,
                 'next_top': ((self.settings.height / 2) + 75) + 50,
                 'prev_top': ((self.settings.height / 2) + 50),
                 'centered': self.settings.centered and 'auto' or '0',
-                'uid': self.uid,
-                'slidewidth' : self.settings.width / self.settings.horizontal_slides
+                'uid': self.uid
             }
 
     def js(self):
