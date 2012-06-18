@@ -210,9 +210,7 @@ class ISliderSettings(Interface):
             SimpleTerm(value='skip_even', token='skip_even',
                        title='Skip Even Slides'),
             SimpleTerm(value='skip_odd', token='skip_odd',
-                       title='Skip Odd Slides'),
-            SimpleTerm(value='horizontal_slides', token='horizontal_slides',
-                       title='Use horizontal slides setting')
+                       title='Skip Odd Slides')
         ])
     )
 

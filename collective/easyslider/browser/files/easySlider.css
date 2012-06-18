@@ -42,10 +42,6 @@ ul.slides-list.slider-list {
 	overflow: hidden;
 }
 
-li.slide {
-float: left; 
-}
-
 #prevBtn, #nextBtn{ 
 	display:block;
 	width:30px;
