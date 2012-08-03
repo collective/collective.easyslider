@@ -38,7 +38,7 @@ $.fn.randomize = function(childElem) {
       navigation_buttons_rendering_type : 'standard',
       resume_play : false,
       randomize: false,
-      hoverPause: true, 
+      hoverPause: true
     }; 
     
     var options = $.extend(defaults, options);  
