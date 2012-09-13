@@ -4,6 +4,7 @@ from plone.app.layout.viewlets.common import ViewletBase
 from plone.memoize.instance import memoize
 
 from collective.easyslider.settings import PageSliderSettings
+from collective.easyslider.settings import ViewSliderSettings
 from collective.easyslider.interfaces import ISliderPage
 from collective.easyslider.browser.base import AbstractSliderView
 
@@ -46,6 +47,10 @@ class BaseSliderViewlet(ViewletBase):
 
 
 class EasySlider(BaseSliderViewlet):
+
+    def navigation_type(self):
+        settings = ViewSliderSettings(self.context)
+        return settings.navigation_type.lower().replace(' ', '-')
 
     def transform(self, text, mt='text/x-html-safe'):
         """
