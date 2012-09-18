@@ -1,7 +1,5 @@
-from z3c.form import button
 from z3c.form import field
 from z3c.form import form
-import zope.i18n
 from plone.app.z3cform.layout import wrap_form
 from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider import easyslider_message_factory as _
