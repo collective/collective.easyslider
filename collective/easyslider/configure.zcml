@@ -1,5 +1,6 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
   xmlns:five="http://namespaces.zope.org/five"
   xmlns:zcml="http://namespaces.zope.org/zcml"
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
@@ -19,7 +20,7 @@
   <configure zcml:condition="installed zope.annotation">
     <include package="zope.annotation" />
   </configure>
-    
+
   <!-- permission for managing slideshow settings -->
   <permission
     id="collective.easyslider.ManageSliderSettings"
@@ -29,14 +30,14 @@
   <class class="Products.ATContentTypes.content.topic.ATTopic">
     <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
   </class>
-    
+
   <class class="Products.ATContentTypes.content.folder.ATFolder">
     <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
   </class>
 
   <include package=".browser" />
   <include package=".portlets" />
-    
+
   <genericsetup:registerProfile
     name="default"
     title="collective.easyslider"
@@ -54,10 +55,24 @@
     for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
 
   <include file="upgrades.zcml" />
-    
+
   <utility
     provides="zope.schema.interfaces.IVocabularyFactory"
     component=".vocabularies.ImageSizesVocabulary"
     name="collective.easyslider.imagesizes" />
-    
+
+
+  <adapter
+    for='Products.CMFPlone.interfaces.IPloneSiteRoot'
+    provides='collective.easyslider.interfaces.ISliderSettings'
+    factory='collective.easyslider.settings.SliderSettings'
+    />
+
+  <browser:page
+    name="easyslider_controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".configlet.EasySliderControlPanelView"
+    permission="cmf.ManagePortal"
+    />
+
 </configure>
