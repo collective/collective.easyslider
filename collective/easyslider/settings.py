@@ -1,9 +1,18 @@
-from zope.interface import implements
-from persistent.dict import PersistentDict
-from zope.annotation.interfaces import IAnnotations
 from collective.easyslider.interfaces import IPageSliderSettings
 from collective.easyslider.interfaces import IViewSliderSettings
 from collective.easyslider.interfaces import ISliderSettings
+from persistent.dict import PersistentDict
+from plone.app.z3cform.layout import wrap_form
+from plone.z3cform.fieldsets import group as plonegroup
+from z3c.form import button
+from z3c.form import field
+from z3c.form import form
+from z3c.form import group
+from zope.annotation.interfaces import IAnnotations
+from zope.interface import implements
+from zope.interface import Interface
+
+from collective.easyslider import easyslider_message_factory as _
 
 
 class SliderSettings(object):
@@ -43,10 +52,17 @@ class SliderSettings(object):
     def __getattr__(self, name):
         value = self._metadata.get(name)
         if value is None:
-            for interface in self.interfaces:
-                v = interface.get(name)
-                if v:
-                    return v.default
+            # first check to see if there are global settings
+            rootannotations = IAnnotations(self.context.aq_inner.aq_parent)
+            rootmetadata = rootannotations.get('collective.easyslider')
+            if name in rootmetadata:
+                return rootmetadata[name]
+            else:
+                # no global settings, check to see if there are defaults
+                for interface in self.interfaces:
+                    v = interface.get(name)
+                    if v:
+                        return v.default
         return value
 
 
@@ -63,3 +79,24 @@ class PageSliderSettings(SliderSettings):
 
 class ViewSliderSettings(SliderSettings):
     interfaces = [ISliderSettings, IViewSliderSettings]
+
+
+class INothing(Interface):
+    pass
+
+
+class MainSettingsGroup(plonegroup.Group):
+    fields = field.Fields(ISliderSettings)
+    label = _(u'Main')
+
+
+class EasySliderSettingsForm(group.GroupForm, form.EditForm):
+    """
+    The page that holds all the slider settings
+    """
+
+    fields = field.Fields(INothing)
+    groups = [MainSettingsGroup]
+
+
+EasySliderSettingsView = wrap_form(EasySliderSettingsForm)

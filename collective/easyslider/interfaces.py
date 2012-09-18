@@ -68,6 +68,10 @@ class ISliderUtil(Interface):
         """
 
 
+class ISlider(Interface):
+    """Marker interface"""
+
+
 class ISliderSettings(Interface):
     """
     The actual slider settings
