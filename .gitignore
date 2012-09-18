@@ -3,3 +3,6 @@
 .pyc
 *.pyc
 .egg-info
+PKG-INFO
+collective.easyslider.egg-info/*
+

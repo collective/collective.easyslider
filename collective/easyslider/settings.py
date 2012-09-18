@@ -3,17 +3,9 @@ from collective.easyslider.interfaces import IPageSliderSettings
 from collective.easyslider.interfaces import IViewSliderSettings
 from collective.easyslider.interfaces import ISliderSettings
 from persistent.dict import PersistentDict
-from plone.app.z3cform.layout import wrap_form
-from plone.z3cform.fieldsets import group as plonegroup
 from Products.CMFCore.utils import getToolByName
-from z3c.form import field
-from z3c.form import form
-from z3c.form import group
 from zope.annotation.interfaces import IAnnotations
 from zope.interface import implements
-from zope.interface import Interface
-
-from collective.easyslider import easyslider_message_factory as _
 
 
 class SliderSettings(object):
@@ -36,6 +28,14 @@ class SliderSettings(object):
             self._metadata = PersistentDict()
             annotations['collective.easyslider'] = self._metadata
 
+        ctx = aq_inner(context)
+        rootctx = getToolByName(ctx, 'portal_url').getPortalObject()
+        rootannotations = IAnnotations(rootctx)
+        self._rootmetadata = rootannotations.get('collective.easyslider', None)
+        if self._rootmetadata is None:
+            self._rootmetadata = PersistentDict()
+            rootannotations['collective.easyslider'] = self._rootmetadata
+
     @property
     def __parent__(self):
         return self.context
@@ -54,12 +54,8 @@ class SliderSettings(object):
         value = self._metadata.get(name)
         if value is None:
             # first check to see if there are global settings
-            ctx = aq_inner(self.context)
-            rootctx = getToolByName(ctx, 'portal_url').getPortalObject()
-            rootannotations = IAnnotations(rootctx)
-            rootmetadata = rootannotations.get('collective.easyslider')
-            if name in rootmetadata:
-                return rootmetadata[name]
+            if name in self._rootmetadata:
+                return self._rootmetadata[name]
             else:
                 # no global settings, check to see if there are defaults
                 for interface in self.interfaces:
@@ -82,24 +78,3 @@ class PageSliderSettings(SliderSettings):
 
 class ViewSliderSettings(SliderSettings):
     interfaces = [ISliderSettings, IViewSliderSettings]
-
-
-class INothing(Interface):
-    pass
-
-
-class MainSettingsGroup(plonegroup.Group):
-    fields = field.Fields(ISliderSettings)
-    label = _(u'Main')
-
-
-class EasySliderSettingsForm(group.GroupForm, form.EditForm):
-    """
-    The page that holds all the slider settings
-    """
-
-    fields = field.Fields(INothing)
-    groups = [MainSettingsGroup]
-
-
-EasySliderSettingsView = wrap_form(EasySliderSettingsForm)
