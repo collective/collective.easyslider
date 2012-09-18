@@ -1,10 +1,11 @@
+from Acquisition import aq_inner
 from collective.easyslider.interfaces import IPageSliderSettings
 from collective.easyslider.interfaces import IViewSliderSettings
 from collective.easyslider.interfaces import ISliderSettings
 from persistent.dict import PersistentDict
 from plone.app.z3cform.layout import wrap_form
 from plone.z3cform.fieldsets import group as plonegroup
-from z3c.form import button
+from Products.CMFCore.utils import getToolByName
 from z3c.form import field
 from z3c.form import form
 from z3c.form import group
@@ -53,7 +54,9 @@ class SliderSettings(object):
         value = self._metadata.get(name)
         if value is None:
             # first check to see if there are global settings
-            rootannotations = IAnnotations(self.context.aq_inner.aq_parent)
+            ctx = aq_inner(self.context)
+            rootctx = getToolByName(ctx, 'portal_url').getPortalObject()
+            rootannotations = IAnnotations(rootctx)
             rootmetadata = rootannotations.get('collective.easyslider')
             if name in rootmetadata:
                 return rootmetadata[name]
