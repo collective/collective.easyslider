@@ -26,7 +26,8 @@ setup(name='collective.easyslider',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'setuptools'
+          'setuptools',
+          'plone.app.z3cform'
       ],
       entry_points="""
       # -*- Entry points: -*-
