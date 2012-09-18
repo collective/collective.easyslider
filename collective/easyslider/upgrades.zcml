@@ -71,7 +71,7 @@
     title="Upgrade collective.easyslider global settings"
     description="Update collective.easyslider to have a global settings page"
     source="*"
-    destination="2"
+    destination="3"
     handler=".upgrades.upgrade_controlpanel"
     profile="collective.easyslider:default" />
 
