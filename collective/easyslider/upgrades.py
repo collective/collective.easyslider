@@ -48,3 +48,7 @@ def upgrade_to_0_5_4(context):
 
 def upgrade_rolemap(context):
     context.runImportStepFromProfile(default_profile, 'rolemap')
+
+
+def upgrade_controlpanel(context):
+    context.runImportStepFromProfile(default_profile, 'controlpanel')
