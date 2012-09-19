@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1 (unreleased)
+1.1 (2012-09-19)
 ----------------
 
 - Add global configuration
