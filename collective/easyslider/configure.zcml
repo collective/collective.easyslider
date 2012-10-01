@@ -11,6 +11,8 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <include package="Products.CMFCore" file="permissions.zcml" />
+
   <!-- Zope 2.9 / 3.2 support -->
   <configure zcml:condition="installed zope.app.annotation.tests">
     <include package="zope.app.annotation" />
