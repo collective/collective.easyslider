@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.1.1 (2012-10-20)
+------------------
+
+- add zcml include to fix startup issues in some
+  Plone 4.2 setups.
+  [zopyx]
+
 1.1 (2012-09-19)
 ----------------
 
