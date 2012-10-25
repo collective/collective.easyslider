@@ -180,7 +180,7 @@ margin: 0 3px;
 	width: 45px;
 }
 
-div#pauseplay{
+button#pauseplay{
     height:20px;
     position:absolute;
     right:5px;
@@ -188,13 +188,14 @@ div#pauseplay{
     width:20px;
     cursor: pointer;
     display:block;
+    border:0;
 }
 
-div#pauseplay.pause{
+button#pauseplay.pause{
     background: url(++resource++sliderpause.png) no-repeat;
 }
 
-div#pauseplay.play{
+button#pauseplay.play{
     background: url(++resource++sliderplay.png) no-repeat;
 }
 
