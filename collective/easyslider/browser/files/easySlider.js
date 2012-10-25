@@ -96,7 +96,7 @@ $.fn.randomize = function(childElem) {
             }
           }
           html += ' <span id="rightb"><a class="leftright" href=\"javascript:void(0);\">&nbsp</a></span>';
-          html += '<div id="pauseplay"></div>';
+          html += '<button type="button" id="pauseplay"></button>';
           html += "</div>";
         } else if(options.navigation_type.indexOf("Bullets") >= 0){
           html += "<div id='easySlider-goToButtons' class='easySlider-goToBullets'>";
@@ -462,14 +462,14 @@ $.fn.randomize = function(childElem) {
           }
         }, duration);
         timer_activated = true;
-        $('div#pauseplay', container).addClass('pause').removeClass('play');
+        $('button#pauseplay', container).addClass('pause').removeClass('play');
       }
       
       function clear_timer(){
         clearTimeout(timeout);
         clearTimeout(trytimeout);
         timer_activated = false;
-        $('div#pauseplay', container).addClass('play').removeClass('pause');
+        $('button#pauseplay', container).addClass('play').removeClass('pause');
       }
 
       if(options.fadeNavigation){
@@ -481,7 +481,7 @@ $.fn.randomize = function(childElem) {
         });
       }
 
-      $('div#pauseplay', container).click(function(){
+      $('button#pauseplay', container).click(function(){
         if(timer_activated){
           clear_timer();
         }else{
@@ -492,9 +492,9 @@ $.fn.randomize = function(childElem) {
       // init
       if(timer_activated){
         set_timer(getPause());
-        $('div#pauseplay', container).addClass('pause');
+        $('button#pauseplay', container).addClass('pause');
       }else{
-        $('div#pauseplay', container).addClass('play');
+        $('button#pauseplay', container).addClass('play');
       }
       
       if(!options.continuous){          
