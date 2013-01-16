@@ -3,7 +3,9 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.ATContentTypes.interface.topic import IATTopic
+from plone.app.collection.interfaces import ICollection
 from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
+from plone.app.querystring import queryparser
 
 from collective.easyslider.settings import PageSliderSettings
 from collective.easyslider.settings import ViewSliderSettings
@@ -43,6 +45,10 @@ class SliderView(BrowserView, AbstractSliderView):
                 portal_type=self.settings.allowed_types,
                 limit=self.settings.limit
             )
+        elif ICollection.providedBy(self.context):
+            query = queryparser.parseFormquery(
+                self.context, self.context.getRawQuery())
+            res = aq_inner(self.context).queryCatalog(query)
 
         if self.settings.limit == 0:
             return res
