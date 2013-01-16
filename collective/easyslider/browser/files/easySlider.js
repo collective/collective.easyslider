@@ -96,7 +96,7 @@ $.fn.randomize = function(childElem) {
             }
           }
           html += ' <span id="rightb"><a class="leftright" href=\"javascript:void(0);\">&nbsp</a></span>';
-          html += '<button type="button" id="pauseplay"></button>';
+          html += '<button type="button" id="pauseplay">Pause</button>';
           html += "</div>";
         } else if(options.navigation_type.indexOf("Bullets") >= 0){
           html += "<div id='easySlider-goToButtons' class='easySlider-goToBullets'>";
@@ -463,13 +463,17 @@ $.fn.randomize = function(childElem) {
         }, duration);
         timer_activated = true;
         $('button#pauseplay', container).addClass('pause').removeClass('play');
-      }
+        $('button#pauseplay').empty();
+        $('button#pauseplay').prepend('Pause');
+	}
       
       function clear_timer(){
         clearTimeout(timeout);
         clearTimeout(trytimeout);
         timer_activated = false;
         $('button#pauseplay', container).addClass('play').removeClass('pause');
+        $('button#pauseplay').empty();
+        $('button#pauseplay').prepend('Play');
       }
 
       if(options.fadeNavigation){

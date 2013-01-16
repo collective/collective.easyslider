@@ -189,6 +189,7 @@ button#pauseplay{
     cursor: pointer;
     display:block;
     border:0;
+    color:transparent;
 }
 
 button#pauseplay.pause{
