@@ -3,7 +3,6 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.ATContentTypes.interface.topic import IATTopic
-from plone.app.collection.interfaces import ICollection
 from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
 from plone.app.querystring import queryparser
 
@@ -13,6 +12,12 @@ from collective.easyslider.utils import slider_settings_css
 from collective.easyslider.utils import ORIGINAL_SCALE_NAME
 from collective.easyslider.browser.base import AbstractSliderView
 
+try:
+    from plone.app.collection.interfaces import ICollection
+except ImportError:
+    from zope.interface import Interface
+    class ICollection(Interface):
+        pass
 
 class SliderView(BrowserView, AbstractSliderView):
     sliderinline_template = ViewPageTemplateFile('sliderview-inline.pt')
