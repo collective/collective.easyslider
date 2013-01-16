@@ -1,10 +1,12 @@
 Changelog
 =========
 
-1.1.2 (unreleased)
+1.2.0 (2013-01-16)
 ------------------
 
 - be consistent with Anysurfer
+  XXX HTML markup has changed slightly so please
+      test any style customizations when upgrading.
   [smoussiaux]
 
 1.1.1 (2012-10-20)
