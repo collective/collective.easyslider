@@ -4,6 +4,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.ATContentTypes.interface.topic import IATTopic
 from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
+from plone.app.querystring import queryparser
 
 from collective.easyslider.settings import PageSliderSettings
 from collective.easyslider.settings import ViewSliderSettings
@@ -11,6 +12,12 @@ from collective.easyslider.utils import slider_settings_css
 from collective.easyslider.utils import ORIGINAL_SCALE_NAME
 from collective.easyslider.browser.base import AbstractSliderView
 
+try:
+    from plone.app.collection.interfaces import ICollection
+except ImportError:
+    from zope.interface import Interface
+    class ICollection(Interface):
+        pass
 
 class SliderView(BrowserView, AbstractSliderView):
     sliderinline_template = ViewPageTemplateFile('sliderview-inline.pt')
@@ -43,6 +50,10 @@ class SliderView(BrowserView, AbstractSliderView):
                 portal_type=self.settings.allowed_types,
                 limit=self.settings.limit
             )
+        elif ICollection.providedBy(self.context):
+            query = queryparser.parseFormquery(
+                self.context, self.context.getRawQuery())
+            res = aq_inner(self.context).queryCatalog(query)
 
         if self.settings.limit == 0:
             return res
