@@ -19,6 +19,7 @@ except ImportError:
     class ICollection(Interface):
         pass
 
+
 class SliderView(BrowserView, AbstractSliderView):
     sliderinline_template = ViewPageTemplateFile('sliderview-inline.pt')
 
@@ -36,8 +37,9 @@ class SliderView(BrowserView, AbstractSliderView):
         return '/' + scale
 
     def get_items(self):
-        if IATFolder.providedBy(self.context) or \
-                IATBTreeFolder.providedBy(self.context):
+        context = aq_inner(self.context)
+        if IATFolder.providedBy(context) or \
+                IATBTreeFolder.providedBy(context):
             res = self.context.getFolderContents(
                 contentFilter={
                     'sort_on': 'getObjPositionInParent',
@@ -45,15 +47,17 @@ class SliderView(BrowserView, AbstractSliderView):
                     'limit': self.settings.limit
                 }
             )
-        elif IATTopic.providedBy(self.context):
-            res = aq_inner(self.context).queryCatalog(
+        elif IATTopic.providedBy(context):
+            res = context.queryCatalog(
                 portal_type=self.settings.allowed_types,
                 limit=self.settings.limit
             )
-        elif ICollection.providedBy(self.context):
+        elif ICollection.providedBy(context):
             query = queryparser.parseFormquery(
-                self.context, self.context.getRawQuery())
-            res = aq_inner(self.context).queryCatalog(query)
+                context, context.getRawQuery())
+            query['portal_type'] = self.settings.allowed_types
+            query['limit'] = self.settings.limit
+            res = context.queryCatalog(query)
 
         if self.settings.limit == 0:
             return res

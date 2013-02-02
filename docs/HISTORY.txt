@@ -4,6 +4,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
+- support new style collections with sliderview
+  [ableeb]
 
 1.2.0 (2013-01-16)
 ------------------
