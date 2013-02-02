@@ -9,7 +9,7 @@ setup(name='collective.easyslider',
                   "page with the ability to create each slide using a WYSIWYG "
                   "editor. It also provides a slider view for Folders and "
                   "Collections.",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
         "Framework :: Plone",
