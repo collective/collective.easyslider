@@ -4,7 +4,6 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from Products.ATContentTypes.interface.topic import IATTopic
 from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
-from plone.app.querystring import queryparser
 
 from collective.easyslider.settings import PageSliderSettings
 from collective.easyslider.settings import ViewSliderSettings
@@ -14,6 +13,7 @@ from collective.easyslider.browser.base import AbstractSliderView
 
 try:
     from plone.app.collection.interfaces import ICollection
+    from plone.app.querystring import queryparser
 except ImportError:
     from zope.interface import Interface
     class ICollection(Interface):
