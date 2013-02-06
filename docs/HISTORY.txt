@@ -25,7 +25,7 @@ Changelog
 
 - be consistent with Anysurfer
   XXX HTML markup has changed slightly so please
-      test any style customizations when upgrading.
+  test any style customizations when upgrading.
   [smoussiaux]
 
 1.1.1 (2012-10-20)
