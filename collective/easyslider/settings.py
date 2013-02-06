@@ -1,4 +1,4 @@
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_parent
 from collective.easyslider.interfaces import IPageSliderSettings
 from collective.easyslider.interfaces import IViewSliderSettings
 from collective.easyslider.interfaces import ISliderSettings
@@ -21,7 +21,14 @@ class SliderSettings(object):
 
     def __init__(self, context):
         self.context = context
-        annotations = IAnnotations(self.context)
+
+        try:
+            annotations = IAnnotations(self.context)
+        except TypeError:
+            # XXX for things like plone.app.event, traversers
+            # are not adaptable so we need to look at the parent here
+            self.context = aq_parent(context)
+            annotations = IAnnotations(self.context)
 
         self._metadata = annotations.get('collective.easyslider', None)
         if self._metadata is None:
