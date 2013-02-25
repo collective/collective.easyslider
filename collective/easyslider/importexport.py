@@ -8,7 +8,6 @@ from zope.annotation.interfaces import IAnnotations
 
 
 def install(context):
-    import pdb; pdb.set_trace()
     types = getToolByName(context.getSite(), 'portal_types')
     if 'Collection' in types.objectIds():
         collection = types['Collection']
