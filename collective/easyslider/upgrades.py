@@ -52,3 +52,7 @@ def upgrade_rolemap(context):
 
 def upgrade_controlpanel(context):
     context.runImportStepFromProfile(default_profile, 'controlpanel')
+
+
+def upgrade_collection(context):
+    context.runImportStepFromProfile(default_profile, 'import_steps')

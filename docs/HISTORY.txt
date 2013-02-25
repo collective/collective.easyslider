@@ -1,6 +1,16 @@
 Changelog
 =========
 
+1.3.3 (unreleased)
+------------------
+
+- be able to upgrade to use with new collection type
+  [vangheem]
+
+- fix install if new collection type is not present
+  [vangheem]
+
+
 1.3.2 (2013-02-06)
 ------------------
 

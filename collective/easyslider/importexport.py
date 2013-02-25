@@ -8,7 +8,13 @@ from zope.annotation.interfaces import IAnnotations
 
 
 def install(context):
-    pass
+    import pdb; pdb.set_trace()
+    types = getToolByName(context.getSite(), 'portal_types')
+    if 'Collection' in types.objectIds():
+        collection = types['Collection']
+        view_methods = set(collection.view_methods)
+        view_methods.add('sliderview')
+        collection.view_methods = tuple(view_methods)
 
 
 def remove_annotations(items_to_check):

@@ -75,4 +75,12 @@
     handler=".upgrades.upgrade_controlpanel"
     profile="collective.easyslider:default" />
 
+  <gs:upgradeStep
+    title="Upgrade collective.easyslider to collection type"
+    description="Update collective.easyslider to be used with new collection type"
+    source="*"
+    destination="4"
+    handler=".upgrades.upgrade_collection"
+    profile="collective.easyslider:default" />
+
 </configure>
