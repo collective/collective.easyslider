@@ -1,8 +1,11 @@
 Changelog
 =========
 
-1.3.4 (unreleased)
+1.3.4 (2013-02-25)
 ------------------
+
+- fix borked previous release
+  [vangheem]
 
 
 1.3.3 (2013-02-25)

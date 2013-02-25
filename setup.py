@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3.4dev'
+version = '1.3.4'
 
 setup(name='collective.easyslider',
       version=version,

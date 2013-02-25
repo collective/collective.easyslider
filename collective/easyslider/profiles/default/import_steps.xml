@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<import-steps>
+
+  <import-step id="collective.easyslider.install"
+               version="1"
+               handler="collective.easyslider.importexport.install"
+               title="collective.easyslider: extra install steps">
+
+  </import-step>
+
+</import-steps>
