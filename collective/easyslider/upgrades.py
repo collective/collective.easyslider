@@ -1,4 +1,5 @@
 from Products.CMFCore.utils import getToolByName
+from collective.easyslider.importexport import install
 
 default_profile = 'profile-collective.easyslider:default'
 
@@ -55,4 +56,4 @@ def upgrade_controlpanel(context):
 
 
 def upgrade_collection(context):
-    context.runImportStepFromProfile(default_profile, 'import_steps')
+    install(context)

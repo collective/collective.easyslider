@@ -1,6 +1,10 @@
 from Products.CMFCore.utils import getToolByName
 from collective.easyslider.interfaces import ISliderPage
 from zope.interface import noLongerProvides
+try:
+    from zope.app.component.hooks import getSite
+except ImportError:
+    from zope.component.hooks import getSite
 import logging
 logger = logging.getLogger('collective.easyslider')
 
@@ -8,7 +12,7 @@ from zope.annotation.interfaces import IAnnotations
 
 
 def install(context):
-    types = getToolByName(context.getSite(), 'portal_types')
+    types = getToolByName(getSite(), 'portal_types')
     if 'Collection' in types.objectIds():
         collection = types['Collection']
         view_methods = set(collection.view_methods)
