@@ -1,6 +1,12 @@
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from Products.CMFCore.utils import getToolByName
-from zope.app.component.hooks import getSite
+
+#from zope.app.component.hooks import getSite
+try:
+    from zope.app.component.hooks import getSite
+except ImportError:
+    from zope.component.hooks import getSite
+
 from collective.easyslider.utils import ORIGINAL_SCALE_NAME
 
 
