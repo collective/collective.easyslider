@@ -1,6 +1,13 @@
 from zope.app.form.browser.widget import SimpleInputWidget
 from zope.app.form.browser.textwidgets import IntWidget
-from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+
+#from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+try:
+    from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+except ImportError:
+    from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
+
+
 from collective.easyslider.utils import slider_settings_css
 
 
