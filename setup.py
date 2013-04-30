@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3.5'
+version = '1.3.6'
 
 setup(name='collective.easyslider',
       version=version,
@@ -15,6 +15,11 @@ setup(name='collective.easyslider',
         "Framework :: Plone",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
+        "Framework :: Plone :: 3.3",
+        "Framework :: Plone :: 4.0",
+        "Framework :: Plone :: 4.1",
+        "Framework :: Plone :: 4.2",
+        "Framework :: Plone :: 4.3"
         ],
       keywords='plone easyslider',
       author='Nathan Van Gheem',
