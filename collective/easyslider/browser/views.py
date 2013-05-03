@@ -57,12 +57,13 @@ class SliderView(BrowserView, AbstractSliderView):
                 context, context.getRawQuery())
             query['portal_type'] = self.settings.allowed_types
             query['limit'] = self.settings.limit
-            res = context.queryCatalog(query)
+            if self.settings.limit and self.settings.limit > 0:
+                res = context.queryCatalog(batch=True,
+                                           b_size=self.settings.limit)
+            else:
+                res = context.queryCatalog(query)
 
-        if self.settings.limit == 0:
             return res
-        else:
-            return res[:self.settings.limit]
 
 
 class SlidesView(BrowserView):
