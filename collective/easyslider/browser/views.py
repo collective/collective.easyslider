@@ -48,21 +48,29 @@ class SliderView(BrowserView, AbstractSliderView):
                 }
             )
         elif IATTopic.providedBy(context):
-            res = context.queryCatalog(
-                portal_type=self.settings.allowed_types,
-                limit=self.settings.limit
-            )
+            if self.settings.limit and self.settings.limit > 0:
+                res = context.queryCatalog(batch=True,
+                                           b_size=self.settings.limit,
+                                           portal_type=
+                                           self.settings.allowed_types,
+                                           )
+            else:
+                res = context.queryCatalog(
+                    portal_type=self.settings.allowed_types,
+                    limit=self.settings.limit
+                )
         elif ICollection.providedBy(context):
             query = queryparser.parseFormquery(
                 context, context.getRawQuery())
             query['portal_type'] = self.settings.allowed_types
             query['limit'] = self.settings.limit
-            res = context.queryCatalog(query)
+            if self.settings.limit and self.settings.limit > 0:
+                res = context.queryCatalog(batch=True,
+                                           b_size=self.settings.limit)
+            else:
+                res = context.queryCatalog(query)
 
-        if self.settings.limit == 0:
-            return res
-        else:
-            return res[:self.settings.limit]
+        return res
 
 
 class SlidesView(BrowserView):
