@@ -15,7 +15,7 @@
 
 <div metal:fill-slot="main">
   <metal:main_macro define-macro="main">
-    <metal:body define-macro="body_macro" tal:define="uid context/UID|string:nouid">
+    <metal:body define-macro="body_macro">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -35,7 +35,7 @@
 
       <div tal:replace="structure provider:plone.abovecontentbody" />
 
-      <metal:slider define-macro="slider">
+      <metal:slider define-macro="slider"  tal:define="uid context/UID|string:nouid">
         <div id="slider-container" tal:attributes="class string:slider-${uid};" tal:define="image_scale view/scale">
           <div id="slider" tal:attributes="class string:slider-${uid};">
             <ul class="slides-list slider-list">
