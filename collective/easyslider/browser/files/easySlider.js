@@ -113,9 +113,11 @@ $.fn.randomize = function(childElem) {
               count++;
             }
           }
-          html += "</div>";
-          html += '<span class=\"easybutton\" id="'+ options.prevId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
-          html += '<span class=\"easybutton\" id="'+ options.nextId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
+        if(options.navigation_type != "Bullets Only")  {
+            html += "</div>";
+            html += '<span class=\"easybutton\" id="'+ options.prevId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
+            html += '<span class=\"easybutton\" id="'+ options.nextId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
+          }
         } else if(options.navigation_type.indexOf("Big") >= 0){
           html += ' <span id="'+ options.prevId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';
           html += ' <span id="'+ options.nextId +'"><a href=\"javascript:void(0);\">&nbsp</a></span>';

@@ -188,6 +188,7 @@ class ISliderSettings(Interface):
             'Small Arrows',
             'Navigation Buttons',
             'Navigation Bullets',
+            'Bullets Only',
             'No Buttons'
         ])
     )
