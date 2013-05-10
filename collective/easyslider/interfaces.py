@@ -304,6 +304,14 @@ class IViewSliderSettings(ISliderSettings):
         default="image_preview",
         vocabulary='collective.easyslider.imagesizes'
     )
+    
+    hidetext = schema.Bool(
+        title=_(u"label_easyslider_hide_text_title",
+            default=u"Hide text"),
+        description=_(u"label_easyslider_hide_text_settings",
+            default=u"Hide Title and description text on the slides"),
+        default=False
+    )
 
 
 class ISlide(Interface):
