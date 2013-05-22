@@ -157,5 +157,6 @@
   <browser:resource name="sliderplay.png" file="files/play.png" />
   <browser:resource name="arrow-left.png" file="files/arrow-left.png" />
   <browser:resource name="arrow-right.png" file="files/arrow-right.png" />
+  <browser:resource name="tile.png" file="files/tile.png" />
 
 </configure>
