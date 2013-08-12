@@ -16,11 +16,11 @@ msgstr ""
 
 #: ./configlet.py:24
 msgid "Default settings to use for all Easy Sliders on site."
-msgstr ""
+msgstr "Standardeinstellungen für alle EasySliders im Site."
 
 #: ./configlet.py:23
 msgid "EasySlider Default Settings"
-msgstr ""
+msgstr "EasySlider Standardeinstellungen"
 
 #: ./portlets/slider.py:33
 msgid "Height"
@@ -132,12 +132,12 @@ msgstr "Kontinuierlich?"
 #. Default: "Hide Title and description text on the slides"
 #: ./interfaces.py:312
 msgid "label_easyslider_hide_text_settings"
-msgstr ""
+msgstr "Titel und Beschreibung verstecken."
 
 #. Default: "Hide text"
 #: ./interfaces.py:310
 msgid "label_easyslider_hide_text_title"
-msgstr ""
+msgstr "Text verstecken"
 
 #. Default: "If collective.easytemplate is installed, this will put it through the rendering engine"
 #: ./interfaces.py:256
@@ -187,7 +187,7 @@ msgstr ""
 #. Default: "Pause on mouseover"
 #: ./interfaces.py:222
 msgid "label_hover_pause_title_slider_setting"
-msgstr ""
+msgstr "Pause beim Mouseover"
 
 #. Default: "Choose the scale used for this image."
 #: ./interfaces.py:303
@@ -262,12 +262,12 @@ msgstr "Pause"
 #. Default: "Randomize slide order when playing"
 #: ./interfaces.py:243
 msgid "label_randomize_desc_slider_settings"
-msgstr ""
+msgstr "Reihenfolge des Slides randomizieren"
 
 #. Default: "Randomize"
 #: ./interfaces.py:241
 msgid "label_randomize_title_slider_settings"
-msgstr ""
+msgstr "Randomizieren"
 
 #. Default: "Resume playing the slider after the user has manually clicked on slides(normally this behavior will disabling playing the slider)"
 #: ./interfaces.py:233
