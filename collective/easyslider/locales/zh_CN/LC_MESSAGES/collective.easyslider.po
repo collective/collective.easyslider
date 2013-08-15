@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.easyslider\n"
-"POT-Creation-Date: 2013-08-12 11:39+0000\n"
+"POT-Creation-Date: 2013-08-15 06:51+0000\n"
 "PO-Revision-Date: 2012-10-25 21:02+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sf.net>\n"
@@ -92,8 +92,9 @@ msgstr ""
 msgid "heading_slider_settings_form"
 msgstr "Slider 设置"
 
-#. Default: "Select the types that will be show in this slider."
+#. Default: "Select the types that will be shown in this slider."
 #: ./interfaces.py:279
+#, fuzzy
 msgid "label_allowed_types_description_slider_setting"
 msgstr "选择此 slider 的显示类型。"
 
@@ -182,7 +183,7 @@ msgstr "slider 的固定高度。"
 msgid "label_height_title_slider_setting"
 msgstr "高度"
 
-#. Default: "If this is enabled images will not change when mouse is over theslide"
+#. Default: "If this is enabled images will not change when mouse is over the slide"
 #: ./interfaces.py:224
 msgid "label_hover_pause_description_slider_setting"
 msgstr ""
@@ -232,8 +233,9 @@ msgstr "选择使用的导航类型。"
 msgid "label_navigation_type_title_slider_setting"
 msgstr "导航类型"
 
-#. Default: "How long the slide should pause before it is automatically transitioned for odd numbered slides(0 to use normal pause setting)."
+#. Default: "How long the slide should pause before it is automatically transitioned for odd numbered slides (0 to use normal pause setting)."
 #: ./interfaces.py:158
+#, fuzzy
 msgid "label_odd_pause_description_slider_setting"
 msgstr "奇数编号 slides 自动切换之前的暂停时长。（0，则使用正常暂停设置）。"
 
@@ -242,8 +244,9 @@ msgstr "奇数编号 slides 自动切换之前的暂停时长。（0，则使用
 msgid "label_odd_pause_title_slider_setting"
 msgstr "奇数 slides 暂停"
 
-#. Default: "Speed at which the slide will transition for odd numbered slides(0 to use normal speed setting)."
+#. Default: "Speed at which the slide will transition for odd numbered slides (0 to use normal speed setting)."
 #: ./interfaces.py:134
+#, fuzzy
 msgid "label_odd_speed_description_slider_setting"
 msgstr "奇数编号 slides 的切换速度（0，则使用正常速度设置）。"
 
@@ -272,8 +275,9 @@ msgstr ""
 msgid "label_randomize_title_slider_settings"
 msgstr ""
 
-#. Default: "Resume playing the slider after the user has manually clicked on slides(normally this behavior will disabling playing the slider)"
+#. Default: "Resume playing the slider after the user has manually clicked on slides (normally this behavior will disabling playing the slider)"
 #: ./interfaces.py:233
+#, fuzzy
 msgid "label_replay_description_slider_settings"
 msgstr "用户手动点击 slides 后恢复播放（通常点击后会停止 slider 播放）"
 

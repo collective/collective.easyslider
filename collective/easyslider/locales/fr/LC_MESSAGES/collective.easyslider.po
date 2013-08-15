@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-12 11:39+0000\n"
+"POT-Creation-Date: 2013-08-15 06:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,8 +90,9 @@ msgstr ""
 msgid "heading_slider_settings_form"
 msgstr "Paramètres du slider"
 
-#. Default: "Select the types that will be show in this slider."
+#. Default: "Select the types that will be shown in this slider."
 #: ./interfaces.py:279
+#, fuzzy
 msgid "label_allowed_types_description_slider_setting"
 msgstr "Sélectionner les types qui seront affichés dans ce slider."
 
@@ -181,7 +182,7 @@ msgstr "Indiquer la hauteur du slider."
 msgid "label_height_title_slider_setting"
 msgstr "Hauteur"
 
-#. Default: "If this is enabled images will not change when mouse is over theslide"
+#. Default: "If this is enabled images will not change when mouse is over the slide"
 #: ./interfaces.py:224
 msgid "label_hover_pause_description_slider_setting"
 msgstr ""
@@ -231,7 +232,7 @@ msgstr "Choisir ici le type de navigation entre les slides à utiliser."
 msgid "label_navigation_type_title_slider_setting"
 msgstr "Type de navigation"
 
-#. Default: "How long the slide should pause before it is automatically transitioned for odd numbered slides(0 to use normal pause setting)."
+#. Default: "How long the slide should pause before it is automatically transitioned for odd numbered slides (0 to use normal pause setting)."
 #: ./interfaces.py:158
 msgid "label_odd_pause_description_slider_setting"
 msgstr ""
@@ -241,7 +242,7 @@ msgstr ""
 msgid "label_odd_pause_title_slider_setting"
 msgstr ""
 
-#. Default: "Speed at which the slide will transition for odd numbered slides(0 to use normal speed setting)."
+#. Default: "Speed at which the slide will transition for odd numbered slides (0 to use normal speed setting)."
 #: ./interfaces.py:134
 msgid "label_odd_speed_description_slider_setting"
 msgstr ""
@@ -272,7 +273,7 @@ msgstr ""
 msgid "label_randomize_title_slider_settings"
 msgstr ""
 
-#. Default: "Resume playing the slider after the user has manually clicked on slides(normally this behavior will disabling playing the slider)"
+#. Default: "Resume playing the slider after the user has manually clicked on slides (normally this behavior will disabling playing the slider)"
 #: ./interfaces.py:233
 msgid "label_replay_description_slider_settings"
 msgstr ""

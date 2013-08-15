@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-12 11:39+0000\n"
+"POT-Creation-Date: 2013-08-15 06:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: CMS HU Berlin <plone@cms.hu-berlin.de>\n"
 "Language-Team: CMS HU Berlin <plone@cms.hu-berlin.de>\n"
@@ -36,7 +36,7 @@ msgstr "Element über"
 
 #: ./portlets/slider.py:34
 msgid "Required since it is difficult to know the height when using two different over and under elements."
-msgstr "Erforderlich, weil die Höhe schwer zu schätzen ist, wenn zwei unterschiedliche über/unten Elemente benutzt werden"
+msgstr "Erforderlich, weil die Höhe schwer zu schätzen ist, wenn zwei unterschiedliche über/unten Elemente benutzt werden."
 
 #: ./portlets/slider.py:24
 msgid "The cover text. You might want an image here."
@@ -74,11 +74,11 @@ msgstr "Parameter für dieses Slider konfigurieren."
 
 #: ./browser/slides.pt:46
 msgid "down"
-msgstr ""
+msgstr "Unten"
 
 #: ./browser/slides.pt:38
 msgid "edit"
-msgstr ""
+msgstr "Editieren"
 
 #: ./browser/forms.py:65
 msgid "heading_add_slide_form"
@@ -89,8 +89,9 @@ msgstr ""
 msgid "heading_slider_settings_form"
 msgstr "Slider Einstellungen"
 
-#. Default: "Select the types that will be show in this slider."
+#. Default: "Select the types that will be shown in this slider."
 #: ./interfaces.py:279
+#, fuzzy
 msgid "label_allowed_types_description_slider_setting"
 msgstr "Objekt-Typen auswählen, die im Slider angezeigt werden."
 
@@ -179,10 +180,10 @@ msgstr "Feste Höhe des Sliders."
 msgid "label_height_title_slider_setting"
 msgstr "Höhe"
 
-#. Default: "If this is enabled images will not change when mouse is over theslide"
+#. Default: "If this is enabled images will not change when mouse is over the slide"
 #: ./interfaces.py:224
 msgid "label_hover_pause_description_slider_setting"
-msgstr ""
+msgstr "Kein Übergang beim Mouseover"
 
 #. Default: "Pause on mouseover"
 #: ./interfaces.py:222
@@ -229,8 +230,9 @@ msgstr "Typ der Navigation auswählen."
 msgid "label_navigation_type_title_slider_setting"
 msgstr "Typ der Navigation."
 
-#. Default: "How long the slide should pause before it is automatically transitioned for odd numbered slides(0 to use normal pause setting)."
+#. Default: "How long the slide should pause before it is automatically transitioned for odd numbered slides (0 to use normal pause setting)."
 #: ./interfaces.py:158
+#, fuzzy
 msgid "label_odd_pause_description_slider_setting"
 msgstr "Länge der Pause beim automatischen Übergang für ungeraden Slides (0 für voreingestellte Länge)."
 
@@ -239,8 +241,9 @@ msgstr "Länge der Pause beim automatischen Übergang für ungeraden Slides (0 f
 msgid "label_odd_pause_title_slider_setting"
 msgstr "Pause beim ungeraden Slide"
 
-#. Default: "Speed at which the slide will transition for odd numbered slides(0 to use normal speed setting)."
+#. Default: "Speed at which the slide will transition for odd numbered slides (0 to use normal speed setting)."
 #: ./interfaces.py:134
+#, fuzzy
 msgid "label_odd_speed_description_slider_setting"
 msgstr "Geschwindigkeit des Übergangs für ungeraden Slides (0 für voreingestellte Geschwindigkeit)."
 
@@ -269,8 +272,9 @@ msgstr "Reihenfolge des Slides randomizieren"
 msgid "label_randomize_title_slider_settings"
 msgstr "Randomizieren"
 
-#. Default: "Resume playing the slider after the user has manually clicked on slides(normally this behavior will disabling playing the slider)"
+#. Default: "Resume playing the slider after the user has manually clicked on slides (normally this behavior will disabling playing the slider)"
 #: ./interfaces.py:233
+#, fuzzy
 msgid "label_replay_description_slider_settings"
 msgstr "Fortsetzen nachdem der Benutzer auf einem Slide geklickt hat"
 
@@ -341,7 +345,7 @@ msgstr "Breite"
 
 #: ./browser/slides.pt:50
 msgid "remove"
-msgstr ""
+msgstr "Entfernen"
 
 #. Default: "Add/Update Slide"
 #: ./browser/forms.py:67
@@ -370,5 +374,5 @@ msgstr "Slider Einstellungen"
 
 #: ./browser/slides.pt:42
 msgid "up"
-msgstr ""
+msgstr "Oben"
 

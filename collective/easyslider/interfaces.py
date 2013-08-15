@@ -133,7 +133,7 @@ class ISliderSettings(Interface):
             default=u"Odd Slide Speed"),
         description=_(u"label_odd_speed_description_slider_setting",
             default=u"Speed at which the slide will transition for odd "
-                    u"numbered slides(0 to use normal speed setting)."),
+                    u"numbered slides (0 to use normal speed setting)."),
         default=0
     )
 
@@ -158,7 +158,7 @@ class ISliderSettings(Interface):
         description=_(u"label_odd_pause_description_slider_setting",
             default=u"How long the slide should pause before it is "
                     u"automatically transitioned for odd numbered "
-                    u"slides(0 to use normal pause setting)."),
+                    u"slides (0 to use normal pause setting)."),
         default=0
     )
 
@@ -223,7 +223,7 @@ class ISliderSettings(Interface):
             default=u"Pause on mouseover"),
         description=_(u"label_hover_pause_description_slider_setting",
             default=u"If this is enabled images will not change when mouse "
-                    u"is over theslide"),
+                    u"is over the slide"),
         default=False
     )
 
@@ -232,7 +232,7 @@ class ISliderSettings(Interface):
             default=u"Resume Play"),
         description=_(u"label_replay_description_slider_settings",
             default=u"Resume playing the slider after the user has "
-                    u"manually clicked on slides(normally this "
+                    u"manually clicked on slides (normally this "
                     u"behavior will disabling playing the slider)"),
         default=False
     )
@@ -277,7 +277,7 @@ class IViewSliderSettings(ISliderSettings):
         title=_(u"label_allowed_types_title_slider_setting",
             default=u'Available Slide Types'),
         description=_(u"label_allowed_types_description_slider_setting",
-            default=u"Select the types that will be show in this slider."),
+            default=u"Select the types that will be shown in this slider."),
         required=True,
         missing_value=None,
         default=("News Item", "Image"),
