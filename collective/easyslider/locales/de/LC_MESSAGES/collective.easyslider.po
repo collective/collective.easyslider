@@ -16,11 +16,11 @@ msgstr ""
 
 #: ./configlet.py:24
 msgid "Default settings to use for all Easy Sliders on site."
-msgstr "Standardeinstellungen für alle EasySliders im Site."
+msgstr "Standardeinstellungen für alle EasySliders."
 
 #: ./configlet.py:23
 msgid "EasySlider Default Settings"
-msgstr "EasySlider Standardeinstellungen"
+msgstr "Standardeinstellungen von EasySlider"
 
 #: ./portlets/slider.py:33
 msgid "Height"
@@ -113,7 +113,7 @@ msgstr "Automatisch?"
 #. Default: "Should the easyslider be centered?"
 #: ./interfaces.py:175
 msgid "label_centered_description_slider_setting"
-msgstr "Sollte EasySlider zentriert werden?"
+msgstr "Soll EasySlider zentriert werden?"
 
 #. Default: "Centered?"
 #: ./interfaces.py:174
@@ -123,7 +123,7 @@ msgstr "Zentriert?"
 #. Default: "Should the slider continuously loop?"
 #: ./interfaces.py:168
 msgid "label_continuous_description_slider_setting"
-msgstr "Sollte das Slider in eine Endlosschleife liegen?"
+msgstr "Soll das Slider in eine Endlosschleife liegen?"
 
 #. Default: "Continuous?"
 #: ./interfaces.py:166
@@ -163,7 +163,7 @@ msgstr "Effekt"
 #. Default: "Should the navigation fade in and out when a user hovers of the slider?"
 #: ./interfaces.py:215
 msgid "label_fade_navigation_description_slider_settings"
-msgstr "Sollte die Navigation beim Mouseover ein- und ausgeblendet werden?"
+msgstr "Soll die Navigation beim Mouseover ein- und ausgeblendet werden?"
 
 #. Default: "Fade Navigation?"
 #: ./interfaces.py:213
@@ -255,7 +255,7 @@ msgstr "Geschwindigkeit beim ungeraden Slide"
 #. Default: "How long the slide should pause before it is automatically transitioned."
 #: ./interfaces.py:149
 msgid "label_pause_description_slider_setting"
-msgstr "Wie lange sollte die Pause beim automatischen Übergang sein?"
+msgstr "Wie lange soll die Pause beim automatischen Übergang sein?"
 
 #. Default: "Pause"
 #: ./interfaces.py:148
@@ -291,7 +291,7 @@ msgstr "Speichern"
 #. Default: "Do you want the easy slider to show on this page?"
 #: ./interfaces.py:98
 msgid "label_show_description_slider_setting"
-msgstr "Soll das EasySlider auf diese Seite angezeigt werden?"
+msgstr "Soll das EasySlider auf dieser Seite angezeigt werden?"
 
 #. Default: "Show it?"
 #: ./interfaces.py:97
