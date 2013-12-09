@@ -376,3 +376,9 @@ msgstr "Paramètres des Sliders"
 msgid "up"
 msgstr "haut"
 
+msgid "next_picture_alt"
+msgstr "Image suivante"
+
+msgid "previous_picture_alt"
+msgstr "Image précédente"
+

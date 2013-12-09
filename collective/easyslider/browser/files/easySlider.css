@@ -120,12 +120,17 @@ margin: 0 3px;
 }
 
 #easySlider-goToButtons #leftb a {
-	background: url(++resource++prevII.gif) no-repeat center center;
+	/*background: url(++resource++prevII.gif) no-repeat center center;*/
 	border: 0 none;
+
+}
+#easySlider-goToButtons #leftb a img,
+#easySlider-goToButtons #rightb a img{
+	margin-bottom: -4px;
 }
 
 #easySlider-goToButtons #rightb a {
-	background: url(++resource++nextII.gif) no-repeat center center;
+	/*background: url(++resource++nextII.gif) no-repeat center center;*/
 	border: 0 none;
 }
 

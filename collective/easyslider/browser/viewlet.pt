@@ -1,8 +1,11 @@
 <tal:show tal:condition="view/show"
           tal:define="uid context/UID|string:nouid;
                       navtype view/navigation_type;">
-  <div id="slider-container" tal:attributes="class string:slider-${uid} slider-navtype-${navtype};" tal:define="slides view/slides">
-    <div id="slider" tal:attributes="class string:slider-${uid}">
+  <div id="slider-container" tal:attributes="class string:slider-${uid} slider-navtype-${navtype};" tal:define="slides view/slides" i18n:domain="collective.easyslider">
+    <div id="slider" 
+         tal:attributes="class string:slider-${uid}" 
+         i18n:attributes="data-next_picture_alt next_picture_alt;
+                          data-previous_picture_alt previous_picture_alt">
       <ul class="slider-list">
         <tal:rep tal:repeat="slide slides">
           <li class="slide" tal:content="structure python: view.render_slide(slide)" />

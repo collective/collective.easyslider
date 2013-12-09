@@ -7,6 +7,7 @@ Next version (1.3.8)
 
 - added setting to hide title and description [espenmn]
 - added setting (Bullets Only) [espenmn]
+- Improve Accessibility use image with alt instead of css background image [smoussiaux]
 
 
 1.3.7 (2013-05-06)

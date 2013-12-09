@@ -41,7 +41,9 @@ $.fn.randomize = function(childElem) {
       hoverPause: true
     }; 
     
-    var options = $.extend(defaults, options);  
+    var options = $.extend(defaults, options);
+    var next_picture_alt = $(this).data('next_picture_alt'); 
+    var previous_picture_alt = $(this).data('previous_picture_alt'); 
         
     this.each(function() {
       var obj = $(this);
@@ -81,7 +83,8 @@ $.fn.randomize = function(childElem) {
         var html = '';
         if(options.navigation_type == "Navigation Buttons"){
           html += "<div id='easySlider-goToButtons'>";
-          html += ' <span id="leftb"><a class="leftright" href=\"javascript:void(0);\">&nbsp</a></span>';
+          html += ' <span id="leftb"><a class="leftright" href=\"javascript:void(0);\">';
+          html +='<img id="prev-bt" src="++resource++prevII.gif" title="" alt="' + previous_picture_alt + '" /></a></span>';
           var count = 1;
           for(var i=0; i < total_slides+1; i++){ 
             var add = true;
@@ -95,7 +98,8 @@ $.fn.randomize = function(childElem) {
               count++;
             }
           }
-          html += ' <span id="rightb"><a class="leftright" href=\"javascript:void(0);\">&nbsp</a></span>';
+          html += ' <span id="rightb"><a class="leftright" href=\"javascript:void(0);\">'
+          html += '<img id="next-bt" src="++resource++nextII.gif" alt="' + next_picture_alt + '"  /></a></span>';
           html += '<button type="button" id="pauseplay">Pause</button>';
           html += "</div>";
         } else if(options.navigation_type.indexOf("Bullets") >= 0){
