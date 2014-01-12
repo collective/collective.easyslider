@@ -32,9 +32,14 @@ class AddSlideAdapter(SchemaAdapterBase):
 
     def get_slide(self):
         if self.index == -1:  # creating new
-            return ""
+            return u""
         else:
-            return self.settings.slides[self.index]
+            val = self.settings.slides[self.index]
+            if isinstance(val, basestring):
+                return val
+            elif isinstance(val, dict) and 'html' in val:
+                return val['html']
+        return u""
 
     def set_slide(self, value):
         """
@@ -44,6 +49,24 @@ class AddSlideAdapter(SchemaAdapterBase):
         pass
 
     slide = property(get_slide, set_slide)
+
+    def get_overlay(self):
+        if self.index == -1:  # creating new
+            return u""
+        else:
+            val = self.settings.slides[self.index]
+            if isinstance(val, dict) and 'overlay' in dict:
+                return val['overlay']
+        return u""
+
+    def set_overlay(self, value):
+        """
+        saved in the form handler since there is no real store
+        for the index
+        """
+        pass
+
+    overlay = property(get_overlay, set_overlay)
 
     def get_index(self):
         return int(self.request.get('index', '-1'))
@@ -60,6 +83,7 @@ class AddSlideForm(ploneformbase.EditForm):
     """
     form_fields = form.FormFields(ISlide)
     form_fields['slide'].custom_widget = WYSIWYGWidget
+    form_fields['overlay'].custom_widget = WYSIWYGWidget
     form_fields['index'].custom_widget = HiddenWidget
 
     label = _(u'heading_add_slide_form', default=u"")
@@ -83,7 +107,10 @@ class AddSlideForm(ploneformbase.EditForm):
         settings = PageSliderSettings(self.context)
         slides = settings.slides
         index = data.get('index', -1)
-        value = data['slide']
+        value = {
+            'html': data['slide'],
+            'overlay': data['overlay']
+        }
 
         if index == -1:
             slides.append(value)

@@ -328,6 +328,15 @@ class ISlide(Interface):
         title=_(u"label_slide_title_slider_setting", default=u"Slide")
     )
 
+    overlay = schema.Text(
+        title=_(u'label_slide_overlay_slider_settings',
+                default=u'Slide Overlay'),
+        description=_(u'desc_slide_overlay_slider_setting',
+                      default=u'Will be overlayed onto the bottom of slide'),
+        required=False,
+        default=u''
+    )
+
     index = schema.Int(
         title=u'',
         required=False

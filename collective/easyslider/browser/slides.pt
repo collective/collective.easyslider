@@ -28,7 +28,7 @@
       <div class="slider-container">
           <div class="slider">
                <ul class="slides-list slider-list">
-                   <li class="slide" tal:content="structure slide" />
+                   <li class="slide" tal:content="structure slide/html|slide" />
                </ul>
           </div>
       </div>

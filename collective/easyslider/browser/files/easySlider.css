@@ -34,6 +34,7 @@ img.news-slide-image {
 .slider, .slider li.slide,
 #slider, #slider li.slide {
 	overflow: hidden;
+    position: relative;
 }
 
 #prevBtn, #nextBtn{ 
@@ -138,7 +139,7 @@ margin: 0 3px;
 	color: #494949;
 	text-decoration: none;
 	padding: 4px 8px;
-	background: white url(++resource++greynote.jpg) repeat-x;
+	background: transparent url(++resource++greynote.jpg) repeat-x;
 	border: 1px solid #b8b8b8;
 	font: bold 12px "Lucida Grande", Lucida, Verdana, sans-serif;
 }
@@ -226,4 +227,14 @@ button#pauseplay.play{
 .slider li.slide.crossfade-next,
 #slider li.slide.crossfade-next {
         z-index: 1;
+}
+
+.slideroverlay{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(221,221,221,0.3);
+    padding: 5px;
+    border-top: 1px solid #ddd;
 }
