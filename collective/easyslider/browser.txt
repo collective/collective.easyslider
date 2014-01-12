@@ -23,7 +23,7 @@ Check Page type first,
    >>> browser.getLink(id="document").click()
    >>> browser.getControl(name="title").value = "test-page"
    >>> browser.getControl("Save").click()
-   >>> browser.getLink(id="enable_slider").click()
+   >>> browser.getLink("Add Slider").click()
    >>> browser.url == self.portal['test-page'].absolute_url() + "/@@slider-settings"
    True
 
@@ -32,10 +32,10 @@ Check Page type first,
 Now a collection...
 
    >>> browser.open(self.portal.absolute_url())
-   >>> browser.getLink(id="topic").click()
+   >>> browser.getLink(id="collection").click()
    >>> browser.getControl(name="title").value = "test-collection"
    >>> browser.getControl("Save").click()
-   >>> browser.getLink(id="enable_slider").click()
+   >>> browser.getLink("Add Slider").click()
    >>> browser.url == self.portal['test-collection'].absolute_url() + "/@@slider-settings"
    True
     
@@ -45,7 +45,7 @@ A Folder
    >>> browser.getLink(id="folder").click()
    >>> browser.getControl(name="title").value = "test-folder"
    >>> browser.getControl('Save').click()
-   >>> browser.getLink(id="enable_slider").click()
+   >>> browser.getLink("Add Slider").click()
    >>> browser.url == self.portal['test-folder'].absolute_url() + "/@@slider-settings"
    True
     
@@ -55,7 +55,7 @@ A News Item
    >>> browser.getLink(id="news-item").click()
    >>> browser.getControl(name="title").value = "test-news-item"
    >>> browser.getControl('Save').click()
-   >>> browser.getLink(id="enable_slider").click()
+   >>> browser.getLink("Add Slider").click()
    >>> browser.url == self.portal['test-news-item'].absolute_url() + "/@@slider-settings"
    True
     
