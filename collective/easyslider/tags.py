@@ -31,7 +31,7 @@ class SliderViewTag(object):
         return 'sliderview'
 
     def render(self, context, sliderpath,
-            placeholder='sliderview-placeholder'):
+               placeholder='sliderview-placeholder'):
         context = context.getTraversingContext()
         request = context.REQUEST
         object = context.restrictedTraverse(sliderpath, None)

@@ -115,6 +115,6 @@ class SliderUtil(BrowserView):
         if context is None:
             context = self.context
         sliderview = getMultiAdapter((context, self.request),
-            name=u'sliderview')
+                                     name=u'sliderview')
         sliderview = sliderview.__of__(context)
         return sliderview.sliderinline_template(sliderview=sliderview)

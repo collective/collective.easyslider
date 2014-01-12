@@ -71,7 +71,7 @@ class AddSlideForm(ploneformbase.EditForm):
                  name=u'save')
     def handle_save_action(self, action, data):
         if form.applyChanges(self.context, self.form_fields, data,
-                self.adapters):
+                             self.adapters):
             zope.event.notify(
                 zope.lifecycleevent.ObjectModifiedEvent(self.context))
             zope.event.notify(ploneformbase.EditSavedEvent(self.context))
@@ -94,7 +94,7 @@ class AddSlideForm(ploneformbase.EditForm):
         settings.slides = slides
 
         url = getMultiAdapter((self.context, self.request),
-            name='absolute_url')() + "/@@slider-settings"
+                              name='absolute_url')() + "/@@slider-settings"
         self.request.response.redirect(url)
 
 
@@ -108,7 +108,7 @@ class SliderPageSettingsForm(ploneformbase.EditForm):
 
     label = _(u'heading_slider_settings_form', default=u"Slider Settings")
     description = _(u'description_slider_settings_form',
-        default=u"Configure the parameters for this slider.")
+                    default=u"Configure the parameters for this slider.")
     form_name = _(u'title_slider_settings_form', default=u"Slider settings")
 
 
@@ -122,5 +122,5 @@ class SliderViewSettingsForm(ploneformbase.EditForm):
 
     label = _(u'heading_slider_settings_form', default=u"Slider Settings")
     description = _(u'description_slider_settings_form',
-        default=u"Configure the parameters for this slider.")
+                    default=u"Configure the parameters for this slider.")
     form_name = _(u'title_slider_settings_form', default=u"Slider settings")

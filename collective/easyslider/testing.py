@@ -19,7 +19,7 @@ class EasySlider(PloneSandboxLayer):
         # load ZCML
         import collective.easyslider
         xmlconfig.file('configure.zcml', collective.easyslider,
-            context=configurationContext)
+                       context=configurationContext)
         z2.installProduct(app, 'collective.easyslider')
 
     def setUpPloneSite(self, portal):

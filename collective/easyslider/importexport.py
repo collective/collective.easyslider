@@ -41,8 +41,8 @@ def remove_layout(portal, items):
         layout = utils.browserDefault(obj)
 
         if layout[1][0] == "sliderview":
-            logger.info("removing sliderview layout on %s" %
-                ('/'.join(obj.getPhysicalPath())))
+            logger.info("removing sliderview layout on %s" % (
+                '/'.join(obj.getPhysicalPath())))
             layout[0].setLayout(layout[0].getDefaultLayout())
 
 

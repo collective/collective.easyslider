@@ -5,14 +5,15 @@ import logging
 logger = logging.getLogger('collective.easyslider')
 
 try:
-    from collective.easytemplate.engine import getEngine 
+    from collective.easytemplate.engine import getEngine
     from tags import SliderTag, SliderViewTag
     engine = getEngine()
     engine.addTag(SliderTag())
     engine.addTag(SliderViewTag())
     logger.info("Installed slider easytemplate tag")
 except:
-    logger.info("easytemplate not installed. Can not install slider tag") 
+    logger.info("easytemplate not installed. Can not install slider tag")
+
 
 def initialize(context):
     pass

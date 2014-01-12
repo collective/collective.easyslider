@@ -33,13 +33,13 @@ class AbstractSliderView(object):
     top:-%(prev_top)ipx;
 }
     """ % {
-                'width': self.settings.width,
-                'height': self.settings.height,
-                'next_top': ((self.settings.height / 2) + 75) + 50,
-                'prev_top': ((self.settings.height / 2) + 50),
-                'centered': self.settings.centered and 'auto' or '0',
-                'uid': self.uid
-            }
+            'width': self.settings.width,
+            'height': self.settings.height,
+            'next_top': ((self.settings.height / 2) + 75) + 50,
+            'prev_top': ((self.settings.height / 2) + 50),
+            'centered': self.settings.centered and 'auto' or '0',
+            'uid': self.uid
+        }
 
     def js(self):
         return """
@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
             'fade_navigation': str(self.settings.fade_navigation).lower(),
             'uid': self.uid,
             'navigation_buttons_rendering_type':
-                self.settings.navigation_buttons_rendering_type.lower(),
+            self.settings.navigation_buttons_rendering_type.lower(),
             'resume_play': str(self.settings.resume_play).lower(),
             'randomize': str(self.settings.randomize).lower(),
             'hover_pause': str(self.settings.hover_pause).lower()

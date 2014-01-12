@@ -15,9 +15,9 @@ class TestPortlet(BaseTest):
 
     def testPortletTypeRegistered(self):
         portlet = getUtility(IPortletType,
-            name='collective.easyslider.portlet.slider')
+                             name='collective.easyslider.portlet.slider')
         self.assertEquals(portlet.addview,
-            'collective.easyslider.portlet.slider')
+                          'collective.easyslider.portlet.slider')
 
     def testInterfaces(self):
         portlet = sliderportlet.Assignment(over=u"blah", under=u"blah")
@@ -26,7 +26,7 @@ class TestPortlet(BaseTest):
 
     def testInvokeAddview(self):
         portlet = getUtility(IPortletType,
-            name='collective.easyslider.portlet.slider')
+                             name='collective.easyslider.portlet.slider')
         mapping = self.portal.restrictedTraverse(
             '++contextportlets++plone.leftcolumn')
         for m in mapping.keys():
@@ -65,7 +65,8 @@ class TestRenderer(BaseTest):
                  manager=None, assignment=None):
         context = self.portal
         view = view or self.portal.restrictedTraverse('@@plone')
-        manager = manager or getUtility(IPortletManager,
+        manager = manager or getUtility(
+            IPortletManager,
             name='plone.leftcolumn', context=self.portal)
         assignment = assignment or sliderportlet.Assignment(
             template='portlet_recent', macro='portlet')

@@ -47,7 +47,7 @@ class SlidesContext(SimpleItem):
         """ Look up the index whose name matches the next URL and wrap it.
         """
         return SlideContext(self.context, self.request,
-            int(index)).__of__(self)
+                            int(index)).__of__(self)
 
     def browserDefault(self, request):
         """ if nothing specified, just go to the regular slides view

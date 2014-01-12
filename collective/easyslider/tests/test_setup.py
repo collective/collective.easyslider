@@ -22,40 +22,40 @@ class TestSetup(BaseTest):
     def test_css_registry(self):
         pcss = self.portal.portal_css
         self.failUnless('++resource++easySlider.css' in
-            [css.getId() for css in pcss.getResources()])
+                        [css.getId() for css in pcss.getResources()])
         self.failUnless('++resource++slider-settings.css' in
-            [css.getId() for css in pcss.getResources()])
+                        [css.getId() for css in pcss.getResources()])
         self.failUnless('++resource++easyslider-portlet.css' in
-            [css.getId() for css in pcss.getResources()])
+                        [css.getId() for css in pcss.getResources()])
 
     def test_css_registry_uninstalls(self):
         self.uninstall()
         pcss = self.portal.portal_css
         self.failUnless('++resource++easySlider.css' not in
-            [css.getId() for css in pcss.getResources()])
+                        [css.getId() for css in pcss.getResources()])
         self.failUnless('++resource++slider-settings.css' not in
-            [css.getId() for css in pcss.getResources()])
+                        [css.getId() for css in pcss.getResources()])
         self.failUnless('++resource++easyslider-portlet.css' not in
-            [css.getId() for css in pcss.getResources()])
+                        [css.getId() for css in pcss.getResources()])
 
     def test_js_added(self):
         pjavascripts = getToolByName(self.portal, 'portal_javascripts')
         self.failUnless('++resource++easySlider.js' in
-            [js.getId() for js in pjavascripts.getResources()])
+                        [js.getId() for js in pjavascripts.getResources()])
         self.failUnless('++resource++slider-settings.js' in
-            [js.getId() for js in pjavascripts.getResources()])
+                        [js.getId() for js in pjavascripts.getResources()])
         self.failUnless('++resource++easyslider-portlet.js' in
-            [js.getId() for js in pjavascripts.getResources()])
+                        [js.getId() for js in pjavascripts.getResources()])
 
     def test_js_uninstalls(self):
         self.uninstall()
         pjavascripts = getToolByName(self.portal, 'portal_javascripts')
         self.failUnless('++resource++easySlider.js' not in
-            [js.getId() for js in pjavascripts.getResources()])
+                        [js.getId() for js in pjavascripts.getResources()])
         self.failUnless('++resource++slider-settings.js' not in
-            [js.getId() for js in pjavascripts.getResources()])
+                        [js.getId() for js in pjavascripts.getResources()])
         self.failUnless('++resource++easyslider-portlet.js' not in
-            [js.getId() for js in pjavascripts.getResources()])
+                        [js.getId() for js in pjavascripts.getResources()])
 
     def test_actions_install(self):
         actionTool = self.portal.portal_actions
@@ -81,17 +81,17 @@ class TestSetup(BaseTest):
     def test_viewlet_installs(self):
         storage = queryUtility(IViewletSettingsStorage)
         self.failUnless('collective.easyslider' in
-            storage.getOrder('plone.belowcontenttitle', None))
+                        storage.getOrder('plone.belowcontenttitle', None))
         self.failUnless('collective.easyslider.head' in
-            storage.getOrder('plone.htmlhead.links', None))
+                        storage.getOrder('plone.htmlhead.links', None))
 
     def test_viewlet_uninstalls(self):
         self.uninstall()
         storage = queryUtility(IViewletSettingsStorage)
         self.failUnless('collective.easyslider' not in
-            storage.getOrder('plone.belowcontenttitle', None))
+                        storage.getOrder('plone.belowcontenttitle', None))
         self.failUnless('collective.easyslider.head' not in
-            storage.getOrder('plone.htmlhead.links', None))
+                        storage.getOrder('plone.htmlhead.links', None))
 
     def test_permissions(self):
         """Ensure Site Administrators can manage sliders on Plone 4.1+."""
