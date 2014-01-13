@@ -1,3 +1,5 @@
+.. image:: https://travis-ci.org/collective/collective.easyslider.png?branch=master   :target: https://travis-ci.org/collective/collective.easyslider
+
 Introduction
 ============
 This product allows you to easily add an easySlider content rotator to any page on a plone site using a WYSIWYG editor to design each slide.
