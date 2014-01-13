@@ -12,7 +12,8 @@
                                         overlay slide/overlay|nothing;">
             <tal:context tal:replace="structure python: view.render_slide(html)" />
             <div class="slideroverlay" style="display:none" tal:condition="overlay"
-                 tal:content="structure python: view.render_slide(overlay)" />
+                 tal:content="structure python: view.render_slide(overlay)"
+                 tal:attributes="style python: repeat['slide'].index != 0 and 'display: none' or ''"/>
           </li>
         </tal:rep>
       </ul>
