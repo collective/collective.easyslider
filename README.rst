@@ -1,4 +1,6 @@
-.. image:: https://travis-ci.org/collective/collective.easyslider.png?branch=master   :target: https://travis-ci.org/collective/collective.easyslider
+.. image:: https://travis-ci.org/collective/collective.easyslider.png?branch=master
+    :target: https://travis-ci.org/collective/collective.easyslider
+
 
 Introduction
 ============
