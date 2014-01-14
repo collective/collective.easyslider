@@ -1,9 +1,14 @@
 Changelog
 =========
 
+1.4.1 (unreleased)
+------------------
 
-Next version (1.4.0)
----------------------
+- add on hover option for slide overlay [vangheem]
+
+
+1.4.0 (2014-01-12)
+------------------
 
 - be able to show overlay html on the slide for free form slide creation [vangheem]
 - added setting to hide title and description [espenmn]

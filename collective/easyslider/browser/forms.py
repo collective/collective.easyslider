@@ -55,7 +55,7 @@ class AddSlideAdapter(SchemaAdapterBase):
             return u""
         else:
             val = self.settings.slides[self.index]
-            if isinstance(val, dict) and 'overlay' in dict:
+            if isinstance(val, dict) and 'overlay' in val:
                 return val['overlay']
         return u""
 
@@ -67,6 +67,24 @@ class AddSlideAdapter(SchemaAdapterBase):
         pass
 
     overlay = property(get_overlay, set_overlay)
+
+    def get_on_hover(self):
+        if self.index == -1:  # creating new
+            return False
+        else:
+            val = self.settings.slides[self.index]
+            if isinstance(val, dict) and 'on_hover' in val:
+                return val['on_hover']
+        return False
+
+    def set_on_hover(self, value):
+        """
+        saved in the form handler since there is no real store
+        for the index
+        """
+        pass
+
+    on_hover = property(get_on_hover, set_on_hover)
 
     def get_index(self):
         return int(self.request.get('index', '-1'))
@@ -109,7 +127,8 @@ class AddSlideForm(ploneformbase.EditForm):
         index = data.get('index', -1)
         value = {
             'html': data['slide'],
-            'overlay': data['overlay']
+            'overlay': data['overlay'],
+            'on_hover': data['on_hover']
         }
 
         if index == -1:

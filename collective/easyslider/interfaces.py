@@ -337,6 +337,13 @@ class ISlide(Interface):
         default=u''
     )
 
+    on_hover = schema.Bool(
+        title=_(u'label_slide_onhover_slider_settings',
+                default=u'Only show overlay on hover'),
+        required=False,
+        default=False
+    )
+
     index = schema.Int(
         title=u'',
         required=False

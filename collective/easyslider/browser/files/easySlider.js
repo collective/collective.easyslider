@@ -185,18 +185,50 @@
         }
       }
 
+      var hovered = false;
+      function getSlide(){
+        return obj.find(' > ul > li').eq(current_slide);
+      }
+      function getOverlay(){
+        var $slide = getSlide();
+        return $slide.find('.slideroverlay');
+      }
+      container.hover(function(){
+        var $overlay = getOverlay();
+        if($overlay.length > 0 && $overlay.hasClass('onHover')){
+          $overlay.fadeIn();
+        }
+        hovered = true;
+      }, function(){
+        var $overlay = getOverlay();
+        if($overlay.length > 0 && $overlay.hasClass('onHover')){
+          $overlay.fadeOut();
+        }
+        hovered = false;
+      });
+
+      function apply_overlay(){
+        obj.find('.slideroverlay').hide();
+        var $slide = obj.find(' > ul > li').eq(current_slide);
+        var $overlay = $slide.find('.slideroverlay');
+        if($overlay.length > 0){
+          if($overlay.hasClass('onHover')){
+            if(hovered){
+              $overlay.fadeIn();
+            }
+          }else{
+            $overlay.fadeIn();
+          }
+        }
+      }
+
       function animate_callback(dir, clicked){
         if($.inArray(current_slide, skipped_navigation) != -1){
           schedule(function(){ animate(dir, clicked, container); });
         }
         locked = false;
         $(document).trigger('endSlideTo', [obj, current_slide]);
-        obj.find('.slideroverlay').hide();
-        var $slide = obj.find(' > ul > li').eq(current_slide);
-        var $overlay = $slide.find('.slideroverlay');
-        if($overlay.length > 0){
-          $overlay.fadeIn();
-        }
+        apply_overlay();
       }
 
       $("a","#"+options.nextId, container).click(function(){    
@@ -516,6 +548,7 @@
         $("a","#"+options.prevId, container).hide();
         $("a","#"+options.firstId, container).hide();       
       }
+      apply_overlay();
     });
   };
 })(jQuery);
