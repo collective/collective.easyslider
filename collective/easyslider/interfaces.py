@@ -263,6 +263,12 @@ class IPageSliderSettings(ISliderSettings):
                               u"engine"),
         default=False
     )
+    
+    sliderposition = schema.Bool(
+        title=_(u"label_sliderposition", default=u"Below Content?"),
+        description=_(u"label_sliderposition",
+        default=u"Show the slider below the content instead of above?"),
+        required=False)
 
     slides = schema.List(
         title=_(u"label_slides_title_slider_setting", default=u"Slides"),

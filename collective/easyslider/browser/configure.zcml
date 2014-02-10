@@ -78,6 +78,14 @@
     layer="collective.easyslider.interfaces.ISliderLayer"
     permission="zope2.View"
     template="viewlet.pt" />
+    
+   <browser:viewlet
+    name="collective.easyslider_below"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+    class=".viewlet.EasySlider"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    permission="zope2.View"
+    template="viewlet_below.pt" />
         
   <browser:viewlet
     name="collective.easyslider.head"

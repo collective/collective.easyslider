@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.4.2 
+------------------
+
+- add option for showing slider beneath content [espenmn]
+
+
 1.4.1 (2014-01-13)
 ------------------
 

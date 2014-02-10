@@ -38,7 +38,10 @@ class BaseSliderViewlet(ViewletBase):
                 return False
             else:
                 return self.override_hidden or self.settings.show
-
+    @memoize
+    def sliderposition(self):
+        return self.settings.sliderposition
+                
     @property
     def slides(self):
         return self.settings.slides
