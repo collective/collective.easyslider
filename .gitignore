@@ -6,3 +6,5 @@
 PKG-INFO
 collective.easyslider.egg-info/*
 
+
+*.gz
