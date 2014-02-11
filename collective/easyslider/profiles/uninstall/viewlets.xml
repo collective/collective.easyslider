@@ -7,7 +7,7 @@
     <order manager="plone.htmlhead.links">
         <viewlet name="collective.easyslider.head" insert-after="*" />
     </order>
-    <order manager="plone.belowcontent" skinname="*" >
+    <order manager="plone.belowcontent" insert-after="*"  >
      <viewlet name="collective.easyslider_below" />
     </order>
 </object>
