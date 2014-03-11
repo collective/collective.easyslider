@@ -84,6 +84,8 @@ class TestSetup(BaseTest):
                         storage.getOrder('plone.belowcontenttitle', None))
         self.failUnless('collective.easyslider.head' in
                         storage.getOrder('plone.htmlhead.links', None))
+        self.failUnless('collective.easyslider' in
+                        storage.getOrder('plone.belowcontent', None))
 
     def test_viewlet_uninstalls(self):
         self.uninstall()
@@ -92,6 +94,8 @@ class TestSetup(BaseTest):
                         storage.getOrder('plone.belowcontenttitle', None))
         self.failUnless('collective.easyslider.head' not in
                         storage.getOrder('plone.htmlhead.links', None))
+        self.failUnless('collective.easyslider' not in
+                        storage.getOrder('plone.belowcontent', None))
 
     def test_permissions(self):
         """Ensure Site Administrators can manage sliders on Plone 4.1+."""
