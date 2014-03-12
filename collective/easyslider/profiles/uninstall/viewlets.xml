@@ -2,12 +2,12 @@
 
 <object>
     <order manager="plone.belowcontenttitle">
-        <viewlet name="collective.easyslider" insert-after="*" />
+        <viewlet name="collective.easyslider" insert-after="*" remove="True" />
     </order>
     <order manager="plone.htmlhead.links">
-        <viewlet name="collective.easyslider.head" insert-after="*" />
+        <viewlet name="collective.easyslider.head" insert-after="*" remove="True" />
     </order>
     <order manager="plone.belowcontent">
-     <viewlet name="collective.easyslider_below" insert-after="*" />
+     <viewlet name="collective.easyslider_below" insert-after="*" remove="True" />
     </order>
 </object>
