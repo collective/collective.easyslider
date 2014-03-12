@@ -2,7 +2,8 @@
 		  sliderposition python: view.sliderposition;
 		  uid context/UID|string:nouid;
 		  navtype python: view.navigation_type;"
-		  tal:condition="python: show and sliderposition">
+		  tal:condition="show">
+ <tal:below tal:condition="sliderposition">
   <div id="slider-container" tal:attributes="class string:slider-${uid} slider-navtype-${navtype};" 
   	    tal:define="slides view/slides" i18n:domain="collective.easyslider">
     <div id="slider" 
@@ -23,5 +24,6 @@
       </ul>
     </div>
   </div>
+ </tal:below >
 </tal:show>
 
