@@ -53,9 +53,10 @@ class BaseSliderViewlet(ViewletBase):
 class EasySlider(BaseSliderViewlet):
 
     def navigation_type(self):
-        settings = ViewSliderSettings(self.context)
-        return settings.navigation_type.lower().replace(' ', '-')
-
+    	settings = ViewSliderSettings(self.context)
+    	return settings.navigation_type.lower().replace(' ', '-')
+ 		
+		
     def transform(self, text, mt='text/x-html-safe'):
         """
         Code from plone.portlet.static with adaptions
