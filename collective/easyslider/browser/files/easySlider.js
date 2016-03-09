@@ -68,8 +68,9 @@
         $("ul.slider-list", container).randomize("li.slide");
       }
 
-      $("ul.slider-list", container).css('width',slides*width);
-      if(!options.vertical){ $("li.slide", container).css('float','left'); }
+      
+      if(!options.vertical){ $("li.slide", container).css('float','left'); $("ul.slider-list", container).css('width',slides*width);}
+      else {$("ul.slider-list", container).css('width',width);}
       if(options.effect === "Crossfade") {
         //Prepare crossfader - stack slides on top of one another
         $("li.slide", container).addClass('crossfade');
