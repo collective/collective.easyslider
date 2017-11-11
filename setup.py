@@ -9,7 +9,7 @@ try:
     # Plone < 4.3
     import plone.app.z3cform
     install_requires.append('plone.app.z3cform')
-except:
+except ImportError:
     # Plone >= 4.3
     install_requires.append('plone.z3cform')
 
