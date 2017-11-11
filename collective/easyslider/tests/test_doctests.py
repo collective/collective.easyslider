@@ -1,4 +1,8 @@
-import unittest2 as unittest
+try:
+    import unittest2 as unittest
+except ImportError:
+    import unittest
+
 from Testing import ZopeTestCase as ztc
 from collective.easyslider.tests import BaseFunctionalTest
 
