@@ -1,5 +1,17 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 import os
+
+install_requires = [
+    'setuptools',
+]
+
+try:
+    # Plone < 4.3
+    import plone.app.z3cform
+    install_requires.append('plone.app.z3cform')
+except:
+    # Plone >= 4.3
+    install_requires.append('plone.z3cform')
 
 version = '1.4.2'
 
@@ -37,10 +49,7 @@ setup(name='collective.easyslider',
               'plone.app.testing',
           ]
       },
-      install_requires=[
-          'setuptools',
-          'plone.app.z3cform'
-      ],
+      install_requires=install_requires,
       entry_points="""
       # -*- Entry points: -*-
 
