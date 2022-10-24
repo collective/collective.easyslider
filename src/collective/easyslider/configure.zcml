@@ -84,6 +84,8 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
+  <include package=".forms" />
+
    <include package=".controlpanels" />
 
 </configure>

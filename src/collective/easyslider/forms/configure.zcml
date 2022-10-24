@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.easyslider">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+    name="slider-settings"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".slider_page_settings_form.SliderPageSettingsForm"
+    permission="zope2.View"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    />
+
+</configure>
