@@ -16,3 +16,4 @@ collective.easyslider.egg-info/*
 /.mr.developer.cfg
 /develop-eggs
 /var
+/src/collective/easyslider/profiles/default/controlpanel.xml_bak
