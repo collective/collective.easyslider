@@ -2,8 +2,9 @@ from Acquisition import aq_inner
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from Products.ATContentTypes.interface.topic import IATTopic
-from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
+from plone.app.contenttypes.interfaces import ICollection
+from plone.app.contenttypes.interfaces import IFolder
+from plone.app.querystring import queryparser
 
 from collective.easyslider.settings import PageSliderSettings
 from collective.easyslider.settings import ViewSliderSettings
@@ -11,13 +12,6 @@ from collective.easyslider.utils import slider_settings_css
 from collective.easyslider.utils import ORIGINAL_SCALE_NAME
 from collective.easyslider.browser.base import AbstractSliderView
 
-try:
-    from plone.app.collection.interfaces import ICollection
-    from plone.app.querystring import queryparser
-except ImportError:
-    from zope.interface import Interface
-    class ICollection(Interface):
-        pass
 
 
 class SliderView(BrowserView, AbstractSliderView):
@@ -38,8 +32,7 @@ class SliderView(BrowserView, AbstractSliderView):
 
     def get_items(self):
         context = aq_inner(self.context)
-        if IATFolder.providedBy(context) or \
-                IATBTreeFolder.providedBy(context):
+        if IFolder.providedBy(context):
             res = self.context.getFolderContents(
                 contentFilter={
                     'sort_on': 'getObjPositionInParent',
@@ -47,18 +40,6 @@ class SliderView(BrowserView, AbstractSliderView):
                     'limit': self.settings.limit
                 }
             )
-        elif IATTopic.providedBy(context):
-            if self.settings.limit and self.settings.limit > 0:
-                res = context.queryCatalog(batch=True,
-                                           b_size=self.settings.limit,
-                                           portal_type=
-                                           self.settings.allowed_types,
-                                           )
-            else:
-                res = context.queryCatalog(
-                    portal_type=self.settings.allowed_types,
-                    limit=self.settings.limit
-                )
         elif ICollection.providedBy(context):
             query = queryparser.parseFormquery(
                 context, context.getRawQuery())

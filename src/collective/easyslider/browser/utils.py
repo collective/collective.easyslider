@@ -9,14 +9,15 @@ from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.viewlet.interfaces import IViewlet
 from zope.component import getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
+from zope.interface import implementer
 
 
+@implementer(ISliderUtilProtected)
 class SliderUtilProtected(BrowserView):
     """
     a protected traverable utility for
     enabling and disabling sliders
     """
-    implements(ISliderUtilProtected)
 
     def enable(self):
         utils = getToolByName(self.context, 'plone_utils')
@@ -54,13 +55,12 @@ class SliderUtilProtected(BrowserView):
 
         self.request.response.redirect(self.context.absolute_url())
 
-
+@implementer(ISliderUtil)
 class SliderUtil(BrowserView):
     """
     a public traverable utility that checks if a
     slide is enabled
     """
-    implements(ISliderUtil)
 
     def enabled(self):
         return ISliderPage.providedBy(self.context)

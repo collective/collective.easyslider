@@ -5,9 +5,9 @@ from collective.easyslider.interfaces import ISliderSettings
 from persistent.dict import PersistentDict
 from Products.CMFCore.utils import getToolByName
 from zope.annotation.interfaces import IAnnotations
-from zope.interface import implements
+from zope.interface import implementer
 
-
+@implementer(IPageSliderSettings)
 class SliderSettings(object):
     """
     Pretty much copied how it is done in Slideshow Folder
@@ -15,7 +15,6 @@ class SliderSettings(object):
     and a view slider.  If they are then the settings will
     overlap.
     """
-    implements(IPageSliderSettings)
 
     interfaces = []
 

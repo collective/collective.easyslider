@@ -1,15 +1,14 @@
 from OFS.SimpleItem import SimpleItem
 from zope.publisher.interfaces.browser import IBrowserPublisher
 from collective.easyslider.interfaces import ISlideContext, ISlidesContext
-from zope.interface import implements
+from zope.interface import implementer
 
-
+@implementer(ISlideContext, IBrowserPublisher)
 class SlideContext(SimpleItem):
     """
     This is a transient item that allows us to traverse through (a wrapper of)
     a slide from a wrapper of a slides list on an object
     """
-    implements(ISlideContext, IBrowserPublisher)
 
     def __init__(self, context, request, index=-1):
         super(SlideContext, self).__init__(context, request)
@@ -31,12 +30,12 @@ class SlideContext(SimpleItem):
         return self.context.absolute_url() + "/--slides--/" + str(self.index)
 
 
+@implementer(ISlidesContext, IBrowserPublisher)
 class SlidesContext(SimpleItem):
     """
     This is a transient item that allows us to traverse through (a wrapper of)
     a slides list on an object
     """
-    implements(ISlidesContext, IBrowserPublisher)
 
     def __init__(self, context, request):
         super(SlidesContext, self).__init__(context, request)
