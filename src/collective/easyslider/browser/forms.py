@@ -11,7 +11,7 @@ from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 
 from collective.easyslider.interfaces import ISliderPage, ISlide, \
     IPageSliderSettings, IViewSliderSettings
-from collective.easyslider import easyslider_message_factory as _
+from collective.easyslider import _ as _
 from collective.easyslider.widgets import SlidesWidget, HiddenWidget
 from collective.easyslider.settings import PageSliderSettings
 
@@ -144,18 +144,18 @@ class AddSlideForm(ploneformbase.EditForm):
         self.request.response.redirect(url)
 
 
-class SliderPageSettingsForm(ploneformbase.EditForm):
-    """
-    The page that holds all the slider settings
-    """
-    form_fields = form.FormFields(IPageSliderSettings)
-    #our revised SlidesWidget that only displays slides really
-    form_fields['slides'].custom_widget = SlidesWidget
+# class SliderPageSettingsForm(ploneformbase.EditForm):
+#     """
+#     The page that holds all the slider settings
+#     """
+#     form_fields = form.FormFields(IPageSliderSettings)
+#     #our revised SlidesWidget that only displays slides really
+#     form_fields['slides'].custom_widget = SlidesWidget
 
-    label = _(u'heading_slider_settings_form', default=u"Slider Settings")
-    description = _(u'description_slider_settings_form',
-                    default=u"Configure the parameters for this slider.")
-    form_name = _(u'title_slider_settings_form', default=u"Slider settings")
+#     label = _(u'heading_slider_settings_form', default=u"Slider Settings")
+#     description = _(u'description_slider_settings_form',
+#                     default=u"Configure the parameters for this slider.")
+#     form_name = _(u'title_slider_settings_form', default=u"Slider settings")
 
 
 class SliderViewSettingsForm(ploneformbase.EditForm):

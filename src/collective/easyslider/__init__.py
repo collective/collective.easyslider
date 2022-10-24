@@ -1,5 +1,5 @@
 from zope.i18nmessageid import MessageFactory
-easyslider_message_factory = MessageFactory('collective.easyslider')
+_ = MessageFactory('collective.easyslider')
 
 import logging
 logger = logging.getLogger('collective.easyslider')

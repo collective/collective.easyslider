@@ -8,7 +8,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
 
-from collective.easyslider import easyslider_message_factory as _
+from collective.easyslider import _ as _
 
 
 class ISliderPortlet(IPortletDataProvider):

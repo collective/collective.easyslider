@@ -9,7 +9,7 @@
     name="easy_slider_settings-controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     class=".controlpanel.EasySliderSettingsView"
-    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    layer="collective.easyslider.interfaces.ISliderLayer"
     permission="cmf.ManagePortal"
     />
 

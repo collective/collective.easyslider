@@ -1,6 +1,6 @@
 from zope.interface import Interface, Attribute
 from zope import schema
-from collective.easyslider import easyslider_message_factory as _
+from collective.easyslider import _ as _
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from OFS.interfaces import IItem
 
@@ -263,7 +263,7 @@ class IPageSliderSettings(ISliderSettings):
                               u"engine"),
         default=False
     )
-    
+
     sliderposition = schema.Bool(
         title=_(u"label_sliderposition", default=u"Below Content?"),
         description=_(u"label_sliderposition",

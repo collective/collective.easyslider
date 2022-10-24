@@ -75,11 +75,15 @@
     factory='collective.easyslider.settings.SliderSettings'
     />
 
-  <browser:page
+  <!-- <browser:page
     name="easyslider_controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     class=".configlet.EasySliderControlPanelView"
     permission="cmf.ManagePortal"
-    />
+    /> -->
+
+ <!-- -*- extra stuff goes here -*- -->
+
+   <include package=".controlpanels" />
 
 </configure>

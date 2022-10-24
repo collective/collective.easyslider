@@ -1,10 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from collective.easyslider.interfaces import ISliderPage
 from zope.interface import noLongerProvides
-try:
-    from zope.app.component.hooks import getSite
-except ImportError:
-    from zope.component.hooks import getSite
+from zope.component.hooks import getSite
 import logging
 logger = logging.getLogger('collective.easyslider')
 

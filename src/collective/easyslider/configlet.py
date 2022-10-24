@@ -2,7 +2,7 @@ from z3c.form import field
 from z3c.form import form
 from plone.app.z3cform.layout import wrap_form
 from collective.easyslider.interfaces import ISliderSettings
-from collective.easyslider import easyslider_message_factory as _
+from collective.easyslider import _ as _
 
 
 class EasySliderSettingsForm(form.EditForm):
