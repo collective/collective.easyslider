@@ -1,4 +1,4 @@
-from zope.formlib import form
+# from zope.formlib import form
 from zope.interface import implements
 from zope.component import adapts
 import zope.lifecycleevent
@@ -35,7 +35,7 @@ class AddSlideAdapter(SchemaAdapterBase):
             return u""
         else:
             val = self.settings.slides[self.index]
-            if isinstance(val, basestring):
+            if isinstance(val, str):
                 return val
             elif isinstance(val, dict) and 'html' in val:
                 return val['html']
@@ -144,18 +144,18 @@ class AddSlideForm(ploneformbase.EditForm):
         self.request.response.redirect(url)
 
 
-# class SliderPageSettingsForm(ploneformbase.EditForm):
-#     """
-#     The page that holds all the slider settings
-#     """
-#     form_fields = form.FormFields(IPageSliderSettings)
-#     #our revised SlidesWidget that only displays slides really
-#     form_fields['slides'].custom_widget = SlidesWidget
+class SliderPageSettingsForm(ploneformbase.EditForm):
+    """
+    The page that holds all the slider settings
+    """
+    form_fields = form.FormFields(IPageSliderSettings)
+    #our revised SlidesWidget that only displays slides really
+    form_fields['slides'].custom_widget = SlidesWidget
 
-#     label = _(u'heading_slider_settings_form', default=u"Slider Settings")
-#     description = _(u'description_slider_settings_form',
-#                     default=u"Configure the parameters for this slider.")
-#     form_name = _(u'title_slider_settings_form', default=u"Slider settings")
+    label = _(u'heading_slider_settings_form', default=u"Slider Settings")
+    description = _(u'description_slider_settings_form',
+                    default=u"Configure the parameters for this slider.")
+    form_name = _(u'title_slider_settings_form', default=u"Slider settings")
 
 
 class SliderViewSettingsForm(ploneformbase.EditForm):
