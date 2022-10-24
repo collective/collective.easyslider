@@ -1,4 +1,1 @@
--c constraints.txt
-setuptools
-zc.buildout
-pip
+-r requirements_plone60.txt
