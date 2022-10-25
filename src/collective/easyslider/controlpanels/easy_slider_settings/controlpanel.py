@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 from collective.easyslider import _
-from collective.easyslider.interfaces import ISliderLayer, ISliderSettings
+from collective.easyslider.interfaces import ISliderLayer
+from collective.easyslider.interfaces import ISliderSettings
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
-from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+from zope import schema
 from zope.component import adapter
 from zope.interface import Interface
-from zope import schema
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
+
 
 class IEasySliderSettings(ISliderSettings):
-    """
-    """
+    """ """
 
 
 class EasySliderSettings(RegistryEditForm):
@@ -21,10 +23,7 @@ class EasySliderSettings(RegistryEditForm):
     label = _("Easy Slider Settings")
 
 
-EasySliderSettingsView = layout.wrap_form(
-    EasySliderSettings, ControlPanelFormWrapper
-)
-
+EasySliderSettingsView = layout.wrap_form(EasySliderSettings, ControlPanelFormWrapper)
 
 
 @adapter(Interface, ISliderLayer)

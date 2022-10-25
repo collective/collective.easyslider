@@ -1,18 +1,17 @@
-from zope.app.form.browser.widget import SimpleInputWidget
 from zope.app.form.browser.textwidgets import IntWidget
+from zope.app.form.browser.widget import SimpleInputWidget
 
-#from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+
+# from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 try:
     from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 except ImportError:
     from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 
-
 from collective.easyslider.utils import slider_settings_css
 
 
 class HiddenWidget(IntWidget):
-
     def __call__(self):
         return self.hidden()
 
@@ -25,7 +24,7 @@ class SlidesWidget(SimpleInputWidget):
     for each slide
     """
 
-    template = ViewPageTemplateFile('browser/slides.pt')
+    template = ViewPageTemplateFile("browser/slides.pt")
 
     def __init__(self, field, request):
         SimpleInputWidget.__init__(self, field, request)

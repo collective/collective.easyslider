@@ -1,37 +1,41 @@
-from Acquisition import aq_inner, aq_parent
-from persistent.mapping import PersistentMapping
-from persistent.dict import PersistentDict
+from Acquisition import aq_inner
+from Acquisition import aq_parent
 from collective.easyslider import _
+from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import (
+    IEasySliderSettings,
+)
+from collective.easyslider.interfaces import IPageSliderSettings
+from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider.widgets.slides import SlidesFieldWidget
-from collective.easyslider.interfaces import ISliderSettings, IPageSliderSettings
-
-from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import IEasySliderSettings
+from persistent.dict import PersistentDict
+from persistent.mapping import PersistentMapping
 from plone import schema
-from plone.autoform.form import AutoExtensibleForm
 from plone.autoform import directives
-from z3c.form.interfaces import IMultiWidget
+from plone.autoform.form import AutoExtensibleForm
+from plone.registry.interfaces import IRegistry
 from z3c.form import button
 from z3c.form import form
+from z3c.form.interfaces import IMultiWidget
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
+
 import transaction
 
 
 class ISliderPageSettingsForm(IPageSliderSettings):
-    """ Schema Interface for ISliderPageSettingsForm
-    """
-    directives.widget('slides', SlidesFieldWidget)
+    """Schema Interface for ISliderPageSettingsForm"""
+
+    directives.widget("slides", SlidesFieldWidget)
 
 
 class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
     schema = ISliderPageSettingsForm
     ignoreContext = False
 
-    label = _(u"heading_slider_settings_form", default=u"Slider Settings")
+    label = _("heading_slider_settings_form", default="Slider Settings")
     description = _(
-        u"description_slider_settings_form",
-        default=u"Configure the parameters for this slider.",
+        "description_slider_settings_form",
+        default="Configure the parameters for this slider.",
     )
     # form_name = _(u"title_slider_settings_form", default=u"Slider settings")
 
@@ -61,7 +65,7 @@ class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
     #         #     import pdb; pdb.set_trace()  # NOQA: E702
     #         widget.field.default = value
 
-    @button.buttonAndHandler(u'Ok')
+    @button.buttonAndHandler("Ok")
     def handleApply(self, action):
         data, errors = self.extractData()
         if errors:
@@ -73,6 +77,6 @@ class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
         if changes:
             self.status = "Settings saved"
 
-    @button.buttonAndHandler(u"Cancel")
+    @button.buttonAndHandler("Cancel")
     def handleCancel(self, action):
         """User canceled. Redirect back to the front page."""

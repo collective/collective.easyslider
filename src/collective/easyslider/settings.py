@@ -9,10 +9,11 @@ from collective.easyslider.interfaces import IViewSliderSettings
 from persistent.mapping import PersistentMapping
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
-from zope.annotation.interfaces import IAnnotations
-from zope.component import getUtility, getMultiAdapter
-from zope.interface import implementer
 from z3c.form import interfaces
+from zope.annotation.interfaces import IAnnotations
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.interface import implementer
 
 
 @implementer(IPageSliderSettings)
@@ -83,7 +84,7 @@ class PageSliderSettings(SliderSettings):
     interfaces = [ISliderSettings, IPageSliderSettings]
 
     def __getattr__(self, name):
-        if name == 'slides':
+        if name == "slides":
             # somehow this default value gets manually set. This prevents this
             # form happening on the slides...
             return self._metadata.get(name, [])

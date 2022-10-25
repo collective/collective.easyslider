@@ -1,12 +1,18 @@
 from zope.i18nmessageid import MessageFactory
-_ = MessageFactory('collective.easyslider')
+
+
+_ = MessageFactory("collective.easyslider")
 
 import logging
-logger = logging.getLogger('collective.easyslider')
+
+
+logger = logging.getLogger("collective.easyslider")
 
 try:
     from collective.easytemplate.engine import getEngine
-    from tags import SliderTag, SliderViewTag
+    from tags import SliderTag
+    from tags import SliderViewTag
+
     engine = getEngine()
     engine.addTag(SliderTag())
     engine.addTag(SliderViewTag())

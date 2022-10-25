@@ -1,10 +1,12 @@
-import z3c.form.widget
-from z3c.form.interfaces import IMultiWidget
-from zope.interface import Interface, implementer_only
-from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from collective.easyslider.utils import slider_settings_css
-from zope.interface import implementer
 from persistent.mapping import PersistentMapping
+from z3c.form.interfaces import IMultiWidget
+from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
+from zope.interface import implementer
+from zope.interface import implementer_only
+from zope.interface import Interface
+
+import z3c.form.widget
 
 
 class PM2Obj(PersistentMapping):
@@ -16,13 +18,12 @@ class PM2Obj(PersistentMapping):
 
 
 class ISlidesWidget(IMultiWidget):
-    """
-    """
+    """ """
 
 
 @implementer_only(ISlidesWidget)
 class SlidesWidget(z3c.form.widget.Widget):
-    template = ViewPageTemplateFile('../browser/slides.pt')
+    template = ViewPageTemplateFile("../browser/slides.pt")
     slider_url = ""
     settings = {}
     css = ""
@@ -39,7 +40,7 @@ class SlidesWidget(z3c.form.widget.Widget):
     #     """
     #     return False
 
+
 @implementer(z3c.form.interfaces.IFieldWidget)
 def SlidesFieldWidget(field, request):
-    return z3c.form.widget.FieldWidget(field,
-        SlidesWidget(request))
+    return z3c.form.widget.FieldWidget(field, SlidesWidget(request))

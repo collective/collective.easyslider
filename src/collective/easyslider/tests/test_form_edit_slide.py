@@ -20,16 +20,16 @@ class ViewsIntegrationTest(unittest.TestCase):
         api.content.create(self.portal, "Folder", "other-folder")
         api.content.create(self.portal, "Document", "front-page")
 
-    def test_slider_settings_is_registered(self):
+    def test_edit_slide_is_registered(self):
         view = getMultiAdapter(
-            (self.portal["other-folder"], self.portal.REQUEST), name="slider-settings"
+            (self.portal["other-folder"], self.portal.REQUEST), name="edit-slide"
         )
-        self.assertTrue(view.__name__ == "slider-settings")
+        self.assertTrue(view.__name__ == "edit-slide")
 
-    def test_slider_settings_not_matching_interface(self):
+    def test_edit_slide_not_matching_interface(self):
         with self.assertRaises(ComponentLookupError):
             getMultiAdapter(
-                (self.portal["front-page"], self.portal.REQUEST), name="slider-settings"
+                (self.portal["front-page"], self.portal.REQUEST), name="edit-slide"
             )
 
 

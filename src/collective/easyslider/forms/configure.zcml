@@ -7,6 +7,14 @@
  <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
+    name="edit-slide"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".add_slide_form.AddSlideForm"
+    permission="zope2.View"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    />
+
+  <browser:page
     name="slider-settings"
     for="collective.easyslider.interfaces.ISliderPage"
     class=".slider_page_settings_form.SliderPageSettingsForm"

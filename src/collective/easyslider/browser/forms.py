@@ -1,19 +1,21 @@
 # from zope.formlib import form
-from zope.interface import implements
-from zope.component import adapts
-import zope.lifecycleevent
-from zope.component import getMultiAdapter
-
-from Products.CMFDefault.formlib.schema import SchemaAdapterBase
+from collective.easyslider import _ as _
+from collective.easyslider.interfaces import IPageSliderSettings
+from collective.easyslider.interfaces import ISlide
+from collective.easyslider.interfaces import ISliderPage
+from collective.easyslider.interfaces import IViewSliderSettings
+from collective.easyslider.settings import PageSliderSettings
+from collective.easyslider.widgets import HiddenWidget
+from collective.easyslider.widgets import SlidesWidget
 from plone.app.controlpanel.widgets import MultiCheckBoxVocabularyWidget
 from plone.app.form import base as ploneformbase
 from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
+from Products.CMFDefault.formlib.schema import SchemaAdapterBase
+from zope.component import adapts
+from zope.component import getMultiAdapter
+from zope.interface import implements
 
-from collective.easyslider.interfaces import ISliderPage, ISlide, \
-    IPageSliderSettings, IViewSliderSettings
-from collective.easyslider import _ as _
-from collective.easyslider.widgets import SlidesWidget, HiddenWidget
-from collective.easyslider.settings import PageSliderSettings
+import zope.lifecycleevent
 
 
 class AddSlideAdapter(SchemaAdapterBase):
@@ -21,6 +23,7 @@ class AddSlideAdapter(SchemaAdapterBase):
     This is getting a little ugly....  Store index
     in the request.
     """
+
     adapts(ISliderPage)
     implements(ISlide)
 
@@ -32,14 +35,14 @@ class AddSlideAdapter(SchemaAdapterBase):
 
     def get_slide(self):
         if self.index == -1:  # creating new
-            return u""
+            return ""
         else:
             val = self.settings.slides[self.index]
             if isinstance(val, str):
                 return val
-            elif isinstance(val, dict) and 'html' in val:
-                return val['html']
-        return u""
+            elif isinstance(val, dict) and "html" in val:
+                return val["html"]
+        return ""
 
     def set_slide(self, value):
         """
@@ -52,12 +55,12 @@ class AddSlideAdapter(SchemaAdapterBase):
 
     def get_overlay(self):
         if self.index == -1:  # creating new
-            return u""
+            return ""
         else:
             val = self.settings.slides[self.index]
-            if isinstance(val, dict) and 'overlay' in val:
-                return val['overlay']
-        return u""
+            if isinstance(val, dict) and "overlay" in val:
+                return val["overlay"]
+        return ""
 
     def set_overlay(self, value):
         """
@@ -73,8 +76,8 @@ class AddSlideAdapter(SchemaAdapterBase):
             return False
         else:
             val = self.settings.slides[self.index]
-            if isinstance(val, dict) and 'on_hover' in val:
-                return val['on_hover']
+            if isinstance(val, dict) and "on_hover" in val:
+                return val["on_hover"]
         return False
 
     def set_on_hover(self, value):
@@ -87,7 +90,7 @@ class AddSlideAdapter(SchemaAdapterBase):
     on_hover = property(get_on_hover, set_on_hover)
 
     def get_index(self):
-        return int(self.request.get('index', '-1'))
+        return int(self.request.get("index", "-1"))
 
     def set_index(self, value):
         pass
@@ -99,23 +102,22 @@ class AddSlideForm(ploneformbase.EditForm):
     """
     The add/edit form for a slide
     """
+
     form_fields = form.FormFields(ISlide)
-    form_fields['slide'].custom_widget = WYSIWYGWidget
-    form_fields['overlay'].custom_widget = WYSIWYGWidget
-    form_fields['index'].custom_widget = HiddenWidget
+    form_fields["slide"].custom_widget = WYSIWYGWidget
+    form_fields["overlay"].custom_widget = WYSIWYGWidget
+    form_fields["index"].custom_widget = HiddenWidget
 
-    label = _(u'heading_add_slide_form', default=u"")
-    description = _(u'description_add_slide_form', default=u"")
-    form_name = _(u'title_add_slide_form', default=u"Add/Update Slide")
+    label = _("heading_add_slide_form", default="")
+    description = _("description_add_slide_form", default="")
+    form_name = _("title_add_slide_form", default="Add/Update Slide")
 
-    @form.action(_(u"label_save", default="Save"),
-                 condition=form.haveInputWidgets,
-                 name=u'save')
+    @form.action(
+        _("label_save", default="Save"), condition=form.haveInputWidgets, name="save"
+    )
     def handle_save_action(self, action, data):
-        if form.applyChanges(self.context, self.form_fields, data,
-                             self.adapters):
-            zope.event.notify(
-                zope.lifecycleevent.ObjectModifiedEvent(self.context))
+        if form.applyChanges(self.context, self.form_fields, data, self.adapters):
+            zope.event.notify(zope.lifecycleevent.ObjectModifiedEvent(self.context))
             zope.event.notify(ploneformbase.EditSavedEvent(self.context))
             self.status = "Changes saved"
         else:
@@ -124,11 +126,11 @@ class AddSlideForm(ploneformbase.EditForm):
 
         settings = PageSliderSettings(self.context)
         slides = settings.slides
-        index = data.get('index', -1)
+        index = data.get("index", -1)
         value = {
-            'html': data['slide'],
-            'overlay': data['overlay'],
-            'on_hover': data['on_hover']
+            "html": data["slide"],
+            "overlay": data["overlay"],
+            "on_hover": data["on_hover"],
         }
 
         if index == -1:
@@ -139,8 +141,10 @@ class AddSlideForm(ploneformbase.EditForm):
 
         settings.slides = slides
 
-        url = getMultiAdapter((self.context, self.request),
-                              name='absolute_url')() + "/@@slider-settings"
+        url = (
+            getMultiAdapter((self.context, self.request), name="absolute_url")()
+            + "/@@slider-settings"
+        )
         self.request.response.redirect(url)
 
 
@@ -148,25 +152,31 @@ class SliderPageSettingsForm(ploneformbase.EditForm):
     """
     The page that holds all the slider settings
     """
-    form_fields = form.FormFields(IPageSliderSettings)
-    #our revised SlidesWidget that only displays slides really
-    form_fields['slides'].custom_widget = SlidesWidget
 
-    label = _(u'heading_slider_settings_form', default=u"Slider Settings")
-    description = _(u'description_slider_settings_form',
-                    default=u"Configure the parameters for this slider.")
-    form_name = _(u'title_slider_settings_form', default=u"Slider settings")
+    form_fields = form.FormFields(IPageSliderSettings)
+    # our revised SlidesWidget that only displays slides really
+    form_fields["slides"].custom_widget = SlidesWidget
+
+    label = _("heading_slider_settings_form", default="Slider Settings")
+    description = _(
+        "description_slider_settings_form",
+        default="Configure the parameters for this slider.",
+    )
+    form_name = _("title_slider_settings_form", default="Slider settings")
 
 
 class SliderViewSettingsForm(ploneformbase.EditForm):
     """
     The page that holds all the slider settings
     """
-    form_fields = form.FormFields(IViewSliderSettings)
-    #our revised SlidesWidget that only displays slides really
-    form_fields['allowed_types'].custom_widget = MultiCheckBoxVocabularyWidget
 
-    label = _(u'heading_slider_settings_form', default=u"Slider Settings")
-    description = _(u'description_slider_settings_form',
-                    default=u"Configure the parameters for this slider.")
-    form_name = _(u'title_slider_settings_form', default=u"Slider settings")
+    form_fields = form.FormFields(IViewSliderSettings)
+    # our revised SlidesWidget that only displays slides really
+    form_fields["allowed_types"].custom_widget = MultiCheckBoxVocabularyWidget
+
+    label = _("heading_slider_settings_form", default="Slider Settings")
+    description = _(
+        "description_slider_settings_form",
+        default="Configure the parameters for this slider.",
+    )
+    form_name = _("title_slider_settings_form", default="Slider settings")

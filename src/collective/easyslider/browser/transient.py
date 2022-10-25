@@ -1,7 +1,9 @@
+from collective.easyslider.interfaces import ISlideContext
+from collective.easyslider.interfaces import ISlidesContext
 from OFS.SimpleItem import SimpleItem
-from zope.publisher.interfaces.browser import IBrowserPublisher
-from collective.easyslider.interfaces import ISlideContext, ISlidesContext
 from zope.interface import implementer
+from zope.publisher.interfaces.browser import IBrowserPublisher
+
 
 @implementer(ISlideContext, IBrowserPublisher)
 class SlideContext(SimpleItem):
@@ -17,14 +19,12 @@ class SlideContext(SimpleItem):
         self.index = index
 
     def publishTraverse(self, traverse, name):
-        """ shouldn't go beyond this so just call the parent
-        """
+        """shouldn't go beyond this so just call the parent"""
         return super(SlideContext, self).publishTraverse(traverse, name)
 
     def browserDefault(self, request):
-        """ Can't really traverse to anything else
-        """
-        return self, ('@@edit',)
+        """Can't really traverse to anything else"""
+        return self, ("@@edit",)
 
     def absolute_url(self):
         return self.context.absolute_url() + "/--slides--/" + str(self.index)
@@ -43,15 +43,12 @@ class SlidesContext(SimpleItem):
         self.request = request
 
     def publishTraverse(self, traverse, index):
-        """ Look up the index whose name matches the next URL and wrap it.
-        """
-        return SlideContext(self.context, self.request,
-                            int(index)).__of__(self)
+        """Look up the index whose name matches the next URL and wrap it."""
+        return SlideContext(self.context, self.request, int(index)).__of__(self)
 
     def browserDefault(self, request):
-        """ if nothing specified, just go to the regular slides view
-        """
-        return self, ('@@view',)
+        """if nothing specified, just go to the regular slides view"""
+        return self, ("@@view",)
 
     def absolute_url(self):
         return self.context.absolute_url() + "/--slides--"

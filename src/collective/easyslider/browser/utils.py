@@ -1,15 +1,17 @@
-from zope.interface import implements, alsoProvides, noLongerProvides
-from Products.Five.browser import BrowserView
-from collective.easyslider.interfaces import ISliderUtilProtected, \
-    ISliderPage, ISliderUtil
-from Products.CMFCore.utils import getToolByName
-
+from collective.easyslider.interfaces import ISliderPage
+from collective.easyslider.interfaces import ISliderUtil
+from collective.easyslider.interfaces import ISliderUtilProtected
 from plone.app.customerize import registration
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser import BrowserView
+from zope.annotation.interfaces import IAnnotations
+from zope.component import getMultiAdapter
+from zope.interface import alsoProvides
+from zope.interface import implementer
+from zope.interface import implements
+from zope.interface import noLongerProvides
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.viewlet.interfaces import IViewlet
-from zope.component import getMultiAdapter
-from zope.annotation.interfaces import IAnnotations
-from zope.interface import implementer
 
 
 @implementer(ISliderUtilProtected)
@@ -20,40 +22,45 @@ class SliderUtilProtected(BrowserView):
     """
 
     def enable(self):
-        utils = getToolByName(self.context, 'plone_utils')
+        utils = getToolByName(self.context, "plone_utils")
 
         if utils.browserDefault(self.context)[1][0] == "sliderview":
-            utils.addPortalMessage("You can not add a slider to a page with a"
-                                   "Slider view already!")
+            utils.addPortalMessage(
+                "You can not add a slider to a page with a" "Slider view already!"
+            )
             self.request.response.redirect(self.context.absolute_url())
 
         elif not ISliderPage.providedBy(self.context):
             alsoProvides(self.context, ISliderPage)
-            self.context.reindexObject(idxs=['object_provides'])
-            utils.addPortalMessage("You have added a slider to this page. "
-                                   " To customize, click the 'Slider "
-                                   "Settings' button.")
-            self.request.response.redirect('%s/@@slider-settings' % (
-                self.context.absolute_url()))
+            self.context.reindexObject(idxs=["object_provides"])
+            utils.addPortalMessage(
+                "You have added a slider to this page. "
+                " To customize, click the 'Slider "
+                "Settings' button."
+            )
+            self.request.response.redirect(
+                "%s/@@slider-settings" % (self.context.absolute_url())
+            )
         else:
             self.request.response.redirect(self.context.absolute_url())
 
     def disable(self):
-        utils = getToolByName(self.context, 'plone_utils')
+        utils = getToolByName(self.context, "plone_utils")
 
         if ISliderPage.providedBy(self.context):
             noLongerProvides(self.context, ISliderPage)
-            self.context.reindexObject(idxs=['object_provides'])
+            self.context.reindexObject(idxs=["object_provides"])
 
-            #now delete the annotation
+            # now delete the annotation
             annotations = IAnnotations(self.context)
-            metadata = annotations.get('collective.easyslider', None)
+            metadata = annotations.get("collective.easyslider", None)
             if metadata is not None:
-                del annotations['collective.easyslider']
+                del annotations["collective.easyslider"]
 
             utils.addPortalMessage("Slider removed.")
 
         self.request.response.redirect(self.context.absolute_url())
+
 
 @implementer(ISliderUtil)
 class SliderUtil(BrowserView):
@@ -66,7 +73,7 @@ class SliderUtil(BrowserView):
         return ISliderPage.providedBy(self.context)
 
     def view_enabled(self):
-        utils = getToolByName(self.context, 'plone_utils')
+        utils = getToolByName(self.context, "plone_utils")
         try:
             return utils.browserDefault(self.context)[1][0] == "sliderview"
         except:
@@ -97,24 +104,26 @@ class SliderUtil(BrowserView):
 @import url(%(url)s/++resource++easySlider.css);</style>
 <script type="text/javascript" src="%(url)s/++resource++easySlider.js">
 </script>
-        """ % {'url': self.context.absolute_url()}
+        """ % {
+            "url": self.context.absolute_url()
+        }
 
     def render_inline(self, context=None):
         if context is None:
             context = self.context
-        slider = self.get_viewlet('collective.easyslider', context)
+        slider = self.get_viewlet("collective.easyslider", context)
         slider.override_hidden = True
-        head = self.get_viewlet('collective.easyslider.head', context)
+        head = self.get_viewlet("collective.easyslider.head", context)
         head.override_hidden = True
-        return '%s\n%s\n%s' % (
+        return "%s\n%s\n%s" % (
             self.render_slider_resources(),
             head.render(),
-            slider.render())
+            slider.render(),
+        )
 
     def render_sliderview_inline(self, context=None):
         if context is None:
             context = self.context
-        sliderview = getMultiAdapter((context, self.request),
-                                     name=u'sliderview')
+        sliderview = getMultiAdapter((context, self.request), name="sliderview")
         sliderview = sliderview.__of__(context)
         return sliderview.sliderinline_template(sliderview=sliderview)

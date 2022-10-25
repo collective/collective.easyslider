@@ -1,5 +1,4 @@
-
-ORIGINAL_SCALE_NAME = '--ORIGINAL--'
+ORIGINAL_SCALE_NAME = "--ORIGINAL--"
 
 
 def slider_settings_css(settings):
@@ -15,6 +14,6 @@ def slider_settings_css(settings):
         height: %(height)ipx;
     }
     """ % {
-        'width': settings.width,
-        'height': settings.height
+        "width": settings.width,
+        "height": settings.height,
     }
