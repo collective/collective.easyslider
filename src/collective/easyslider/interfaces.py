@@ -262,16 +262,16 @@ class IPageSliderSettings(ISliderSettings):
     """
     difference here is the user creates all his slides
     """
-    easytemplate_enabled = schema.Bool(
-        title=_(u"label_easytemplate_enabled_title_slider_setting",
-                default=u"Easy Template Enabled?"),
-        description=_(u"label_easytemplate_enabled_description_slider_setting",
-                      default=u"If collective.easytemplate is installed, "
-                              u"this will put it through the rendering "
-                              u"engine"),
-        required=False,
-        default=False
-    )
+    # easytemplate_enabled = schema.Bool(
+    #     title=_(u"label_easytemplate_enabled_title_slider_setting",
+    #             default=u"Easy Template Enabled?"),
+    #     description=_(u"label_easytemplate_enabled_description_slider_setting",
+    #                   default=u"If collective.easytemplate is installed, "
+    #                           u"this will put it through the rendering "
+    #                           u"engine"),
+    #     required=False,
+    #     default=False
+    # )
 
     sliderposition = schema.Bool(
         title=_(u"label_sliderposition", default=u"Below Content?"),

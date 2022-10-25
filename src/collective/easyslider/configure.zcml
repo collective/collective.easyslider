@@ -86,6 +86,7 @@
 <!-- -*- extra stuff goes here -*- -->
 
   <include package=".forms" />
+  <include package=".widgets" />
 
   <include package=".controlpanels" />
 

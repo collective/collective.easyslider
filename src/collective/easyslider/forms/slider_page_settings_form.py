@@ -2,14 +2,16 @@ from Acquisition import aq_inner, aq_parent
 from persistent.mapping import PersistentMapping
 from persistent.dict import PersistentDict
 from collective.easyslider import _
+from collective.easyslider.widgets.slides import SlidesFieldWidget
 from collective.easyslider.interfaces import ISliderSettings, IPageSliderSettings
 
 from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import IEasySliderSettings
 from plone import schema
 from plone.autoform.form import AutoExtensibleForm
+from plone.autoform import directives
+from z3c.form.interfaces import IMultiWidget
 from z3c.form import button
 from z3c.form import form
-from zope.interface import Interface
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
@@ -19,6 +21,7 @@ import transaction
 class ISliderPageSettingsForm(IPageSliderSettings):
     """ Schema Interface for ISliderPageSettingsForm
     """
+    directives.widget('slides', SlidesFieldWidget)
 
 
 class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
