@@ -34,6 +34,8 @@ class BaseSliderViewlet(ViewletBase):
         if not ISliderPage.providedBy(self.context):
             return False
         else:
+            if self.settings.slides is None:
+                self.settings.slides = []
             if len(self.settings.slides) == 0:
                 return False
             else:
@@ -42,7 +44,7 @@ class BaseSliderViewlet(ViewletBase):
     @memoize
     def sliderposition(self):
         return self.settings.sliderposition
-                
+
     @property
     def slides(self):
         return self.settings.slides
@@ -55,8 +57,8 @@ class EasySlider(BaseSliderViewlet):
     def navigation_type(self):
     	settings = ViewSliderSettings(self.context)
     	return settings.navigation_type.lower().replace(' ', '-')
- 		
-		
+
+
     def transform(self, text, mt='text/x-html-safe'):
         """
         Code from plone.portlet.static with adaptions

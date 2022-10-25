@@ -11,7 +11,13 @@
     for="collective.easyslider.interfaces.ISliderPage"
     class=".slider_page_settings_form.SliderPageSettingsForm"
     permission="zope2.View"
-    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    layer="collective.easyslider.interfaces.ISliderLayer"
     />
+
+  <adapter
+    for="persistent.mapping.PersistentMapping zope.schema.interfaces.IField"
+    provides="z3c.form.interfaces.IDataManager"
+    factory="z3c.form.datamanager.DictionaryField"
+  />
 
 </configure>

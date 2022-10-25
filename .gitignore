@@ -14,6 +14,7 @@ collective.easyslider.egg-info/*
 /.python-version
 /.installed.cfg
 /.mr.developer.cfg
+**/*.egg-info
 /develop-eggs
 /var
 /src/collective/easyslider/profiles/default/controlpanel.xml_bak

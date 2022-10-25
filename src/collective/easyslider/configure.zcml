@@ -68,13 +68,14 @@
     component=".vocabularies.ImageSizesVocabulary"
     name="collective.easyslider.imagesizes" />
 
-
-  <adapter
+<!-- we use settings from plone.registry now!  -->
+  <!-- <adapter
     for='Products.CMFPlone.interfaces.IPloneSiteRoot'
     provides='collective.easyslider.interfaces.ISliderSettings'
     factory='collective.easyslider.settings.SliderSettings'
-    />
+    /> -->
 
+<!-- we use a new controlpal see controlpanels folder -->
   <!-- <browser:page
     name="easyslider_controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -82,10 +83,10 @@
     permission="cmf.ManagePortal"
     /> -->
 
- <!-- -*- extra stuff goes here -*- -->
+<!-- -*- extra stuff goes here -*- -->
 
   <include package=".forms" />
 
-   <include package=".controlpanels" />
+  <include package=".controlpanels" />
 
 </configure>

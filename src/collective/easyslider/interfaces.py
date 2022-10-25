@@ -120,6 +120,7 @@ class ISliderSettings(Interface):
         title=_(u"label_vertical_title_slider_setting", default=u"Vertical?"),
         description=_(u"label_vertical_description_slider_setting",
                       default=u"Should the slide transition vertically?"),
+        required=False,
         default=False
     )
 
@@ -144,6 +145,7 @@ class ISliderSettings(Interface):
         title=_(u"label_auto_title_slider_setting", default=u"Auto?"),
         description=_(u"label_auto_description_slider_setting",
                       default=u"Should the slider automatically transition?"),
+        required=False,
         default=True
     )
 
@@ -170,6 +172,7 @@ class ISliderSettings(Interface):
                 default=u"Continuous?"),
         description=_(u"label_continuous_description_slider_setting",
                       default=u"Should the slider continuously loop?"),
+        required=False,
         default=True
     )
 
@@ -177,6 +180,7 @@ class ISliderSettings(Interface):
         title=_(u"label_centered_title_slider_setting", default=u"Centered?"),
         description=_(u"label_centered_description_slider_setting",
                       default=u"Should the easyslider be centered?"),
+        required=False,
         default=True
     )
 
@@ -219,6 +223,7 @@ class ISliderSettings(Interface):
         description=_(u"label_fade_navigation_description_slider_settings",
                       default=u"Should the navigation fade in and out when a "
                               u"user hovers of the slider?"),
+        required=False,
         default=False
     )
 
@@ -228,6 +233,7 @@ class ISliderSettings(Interface):
         description=_(u"label_hover_pause_description_slider_setting",
                       default=u"If this is enabled images will not change "
                               u"when mouse is over the slide"),
+        required=False,
         default=False
     )
 
@@ -238,6 +244,7 @@ class ISliderSettings(Interface):
                       default=u"Resume playing the slider after the user has "
                               u"manually clicked on slides (normally this "
                               u"behavior will disabling playing the slider)"),
+        required=False,
         default=False
     )
 
@@ -246,6 +253,7 @@ class ISliderSettings(Interface):
                 default=u"Randomize"),
         description=_(u"label_randomize_desc_slider_settings",
                       default=u"Randomize slide order when playing"),
+        required=False,
         default=False
     )
 
@@ -261,6 +269,7 @@ class IPageSliderSettings(ISliderSettings):
                       default=u"If collective.easytemplate is installed, "
                               u"this will put it through the rendering "
                               u"engine"),
+        required=False,
         default=False
     )
 
@@ -275,6 +284,10 @@ class IPageSliderSettings(ISliderSettings):
         description=_(u"label_slides_description_slider_settings",
                       default=u"These are the slides that will show up in the "
                               u"easySlider for this page."),
+        value_type=schema.TextLine(
+            title=u"",
+        ),
+        required=False,
         default=[]
     )
 
@@ -324,6 +337,7 @@ class IViewSliderSettings(ISliderSettings):
         description=_(u"label_easyslider_hide_text_settings",
                       default=u"Hide Title and description text on the "
                               u"slides"),
+        required=False,
         default=False
     )
 
