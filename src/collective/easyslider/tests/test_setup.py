@@ -13,23 +13,23 @@ class TestSetup(BaseTest):
 
     def test_portlet_installed_correctly(self):
         portlets = [u[0] for u in getUtilitiesFor(IPortletType)]
-        self.failUnless("collective.easyslider.portlet.slider" in portlets)
+        self.assertTrue("collective.easyslider.portlet.slider" in portlets)
 
     def test_portlet_uninstalls_correctly(self):
         self.uninstall()
         portlets = [u[0] for u in getUtilitiesFor(IPortletType)]
-        self.failUnless("collective.easyslider.portlet.slider" not in portlets)
+        self.assertTrue("collective.easyslider.portlet.slider" not in portlets)
 
     def test_css_registry(self):
         pcss = self.portal.portal_css
-        self.failUnless(
+        self.assertTrue(
             "++resource++easySlider.css" in [css.getId() for css in pcss.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++slider-settings.css"
             in [css.getId() for css in pcss.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++easyslider-portlet.css"
             in [css.getId() for css in pcss.getResources()]
         )
@@ -37,30 +37,30 @@ class TestSetup(BaseTest):
     def test_css_registry_uninstalls(self):
         self.uninstall()
         pcss = self.portal.portal_css
-        self.failUnless(
+        self.assertTrue(
             "++resource++easySlider.css"
             not in [css.getId() for css in pcss.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++slider-settings.css"
             not in [css.getId() for css in pcss.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++easyslider-portlet.css"
             not in [css.getId() for css in pcss.getResources()]
         )
 
     def test_js_added(self):
         pjavascripts = getToolByName(self.portal, "portal_javascripts")
-        self.failUnless(
+        self.assertTrue(
             "++resource++easySlider.js"
             in [js.getId() for js in pjavascripts.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++slider-settings.js"
             in [js.getId() for js in pjavascripts.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++easyslider-portlet.js"
             in [js.getId() for js in pjavascripts.getResources()]
         )
@@ -68,15 +68,15 @@ class TestSetup(BaseTest):
     def test_js_uninstalls(self):
         self.uninstall()
         pjavascripts = getToolByName(self.portal, "portal_javascripts")
-        self.failUnless(
+        self.assertTrue(
             "++resource++easySlider.js"
             not in [js.getId() for js in pjavascripts.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++slider-settings.js"
             not in [js.getId() for js in pjavascripts.getResources()]
         )
-        self.failUnless(
+        self.assertTrue(
             "++resource++easyslider-portlet.js"
             not in [js.getId() for js in pjavascripts.getResources()]
         )
@@ -97,36 +97,36 @@ class TestSetup(BaseTest):
         ob = actionTool["object_buttons"]
         os = actionTool["object"]
         # these would throw an exception if they weren't there..
-        self.failUnless("enable_slider" not in ob.objectIds())
-        self.failUnless("disable_slider" not in ob.objectIds())
-        self.failUnless("slider_settings" not in os.objectIds())
-        self.failUnless("view_slider_settings" not in os.objectIds())
+        self.assertTrue("enable_slider" not in ob.objectIds())
+        self.assertTrue("disable_slider" not in ob.objectIds())
+        self.assertTrue("slider_settings" not in os.objectIds())
+        self.assertTrue("view_slider_settings" not in os.objectIds())
 
     def test_viewlet_installs(self):
         storage = queryUtility(IViewletSettingsStorage)
-        self.failUnless(
+        self.assertTrue(
             "collective.easyslider" in storage.getOrder("plone.belowcontenttitle", None)
         )
-        self.failUnless(
+        self.assertTrue(
             "collective.easyslider.head"
             in storage.getOrder("plone.htmlhead.links", None)
         )
-        self.failUnless(
+        self.assertTrue(
             "collective.easyslider" in storage.getOrder("plone.belowcontent", None)
         )
 
     def test_viewlet_uninstalls(self):
         self.uninstall()
         storage = queryUtility(IViewletSettingsStorage)
-        self.failUnless(
+        self.assertTrue(
             "collective.easyslider"
             not in storage.getOrder("plone.belowcontenttitle", None)
         )
-        self.failUnless(
+        self.assertTrue(
             "collective.easyslider.head"
             not in storage.getOrder("plone.htmlhead.links", None)
         )
-        self.failUnless(
+        self.assertTrue(
             "collective.easyslider" not in storage.getOrder("plone.belowcontent", None)
         )
 

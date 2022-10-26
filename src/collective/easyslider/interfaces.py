@@ -392,7 +392,7 @@ class ISlide(Interface):
         title=_(
             "label_slide_title_slider_setting", default="Slide"
         ),
-        default=u'',
+        default='',
         required=False,
         readonly=False,
     )
@@ -405,7 +405,7 @@ class ISlide(Interface):
             "desc_slide_overlay_slider_setting",
             default="Will be overlayed onto the bottom of slide",
         ),
-        default=u'',
+        default='',
         required=False,
         readonly=False,
     )

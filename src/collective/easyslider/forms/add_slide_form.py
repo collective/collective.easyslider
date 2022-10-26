@@ -18,8 +18,8 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
     schema = IAddSlideForm
     ignoreContext = True
 
-    label = _(u'heading_add_slide_form', default=u"")
-    description = _(u'description_add_slide_form', default=u"")
+    label = _('heading_add_slide_form', default="")
+    description = _('description_add_slide_form', default="")
 
     #def handle_save_action(self, action, data):
     #    if form.applyChanges(self.context, self.form_fields, data, self.adapters):

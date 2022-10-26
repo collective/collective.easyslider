@@ -13,31 +13,31 @@ from zope.component import getUtility
 class TestPortlet(BaseTest):
     def testPortletTypeRegistered(self):
         portlet = getUtility(IPortletType, name="collective.easyslider.portlet.slider")
-        self.assertEquals(portlet.addview, "collective.easyslider.portlet.slider")
+        self.assertEqual(portlet.addview, "collective.easyslider.portlet.slider")
 
     def testInterfaces(self):
         portlet = sliderportlet.Assignment(over="blah", under="blah")
-        self.failUnless(IPortletAssignment.providedBy(portlet))
-        self.failUnless(IPortletDataProvider.providedBy(portlet.data))
+        self.assertTrue(IPortletAssignment.providedBy(portlet))
+        self.assertTrue(IPortletDataProvider.providedBy(portlet.data))
 
     def testInvokeAddview(self):
         portlet = getUtility(IPortletType, name="collective.easyslider.portlet.slider")
         mapping = self.portal.restrictedTraverse("++contextportlets++plone.leftcolumn")
-        for m in mapping.keys():
+        for m in list(mapping.keys()):
             del mapping[m]
         addview = mapping.restrictedTraverse("+/" + portlet.addview)
 
         addview.createAndAdd(data={})
 
-        self.assertEquals(len(mapping), 1)
-        self.failUnless(isinstance(mapping.values()[0], sliderportlet.Assignment))
+        self.assertEqual(len(mapping), 1)
+        self.assertTrue(isinstance(list(mapping.values())[0], sliderportlet.Assignment))
 
     def testInvokeEditView(self):
         mapping = PortletAssignmentMapping()
 
         mapping["foo"] = sliderportlet.Assignment(over="blah", under="blah")
         editview = getMultiAdapter((mapping["foo"], self.request), name="edit")
-        self.failUnless(isinstance(editview, sliderportlet.EditForm))
+        self.assertTrue(isinstance(editview, sliderportlet.EditForm))
 
     def testRenderer(self):
         context = self.portal
@@ -50,7 +50,7 @@ class TestPortlet(BaseTest):
         renderer = getMultiAdapter(
             (context, self.request, view, manager, assignment), IPortletRenderer
         )
-        self.failUnless(isinstance(renderer, sliderportlet.Renderer))
+        self.assertTrue(isinstance(renderer, sliderportlet.Renderer))
 
 
 class TestRenderer(BaseTest):

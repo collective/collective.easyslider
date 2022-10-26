@@ -73,9 +73,9 @@ class EasySlider(BaseSliderViewlet):
             return text
 
         orig = text
-        if not isinstance(orig, unicode):
+        if not isinstance(orig, str):
             # Don't really know if this code is needed here
-            orig = unicode(orig, "utf-8", "ignore")
+            orig = str(orig, "utf-8", "ignore")
             logger.warn(
                 "Slider at %s has stored non-unicode text. "
                 "Assuming utf-8 encoding." % context.absolute_url()
@@ -87,7 +87,7 @@ class EasySlider(BaseSliderViewlet):
         result = data.getData()
 
         if result:
-            return unicode(result, "utf-8")
+            return str(result, "utf-8")
         return ""
 
     def render_slide(self, slide):

@@ -45,7 +45,7 @@ class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
         if "collective.easyslider" not in annotations:
             registry = getUtility(IRegistry)
             defaults = PersistentMapping()
-            field_names = self.fields.keys()
+            field_names = list(self.fields.keys())
             for k in field_names:
                 defaults[k] = registry.get(
                     "collective.easyslider.easy_slider_settings.{}".format(k)
