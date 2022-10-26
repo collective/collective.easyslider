@@ -13,7 +13,7 @@ class SlideContext(SimpleItem):
     """
 
     def __init__(self, context, request, index=-1):
-        super(SlideContext, self).__init__(context, request)
+        # super().__init__(context, request)
         self.context = context
         self.request = request
         self.index = index
@@ -38,7 +38,7 @@ class SlidesContext(SimpleItem):
     """
 
     def __init__(self, context, request):
-        super(SlidesContext, self).__init__(context, request)
+        super().__init__(context, request)
         self.context = context
         self.request = request
 

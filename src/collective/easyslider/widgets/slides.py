@@ -5,7 +5,7 @@ from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from zope.interface import implementer
 from zope.interface import implementer_only
 from zope.interface import Interface
-
+from plone.protect.utils import addTokenToUrl
 import z3c.form.widget
 
 
@@ -28,17 +28,14 @@ class SlidesWidget(z3c.form.widget.Widget):
     settings = {}
     css = ""
 
+    def add_token(self, url):
+        return addTokenToUrl(url)
+
     def render(self):
         self.slider_url = self.form.context.absolute_url()
         self.settings = PM2Obj(self.context)
         self.css = slider_settings_css(self.settings)
         return self.template(self)
-
-    # def hasInput(self):
-    #     """
-    #     data should never change here....
-    #     """
-    #     return False
 
 
 @implementer(z3c.form.interfaces.IFieldWidget)
