@@ -61,8 +61,6 @@
     provides="Products.GenericSetup.interfaces.EXTENSION"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
 
-  <include file="upgrades.zcml" />
-
   <utility
     provides="zope.schema.interfaces.IVocabularyFactory"
     component=".vocabularies.ImageSizesVocabulary"
