@@ -7,6 +7,7 @@ from collective.easyslider.interfaces import ISliderSettings, IPageSliderSetting
 
 from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import IEasySliderSettings
 from plone import schema
+from plone.supermodel import model
 from plone.autoform.form import AutoExtensibleForm
 from plone.autoform import directives
 from z3c.form import button
@@ -21,6 +22,41 @@ class ISliderPageSettingsForm(IPageSliderSettings):
     """ Schema Interface for ISliderPageSettingsForm
     """
     directives.widget('slides', SlidesFieldWidget)
+
+    model.fieldset(
+        'default',
+        label=u'Default',
+        fields=[
+            'slides',
+        ],
+    )
+
+    model.fieldset(
+        'settings',
+        label=u'Settings',
+        fields=[
+            'width',
+            'height',
+            'show',
+            'effect',
+            'vertical',
+            'speed',
+            'odd_speed',
+            'auto',
+            'pause',
+            'odd_pause',
+            'continuous',
+            'centered',
+            'navigation_type',
+            'navigation_buttons_rendering_type',
+            'fade_navigation',
+            'hover_pause',
+            'resume_play',
+            'randomize',
+            'sliderposition',
+        ],
+    )
+
 
 
 class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):

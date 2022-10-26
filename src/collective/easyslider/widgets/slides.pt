@@ -9,9 +9,12 @@
      i18n:domain="plone">
 
   <style tal:content="structure view/css" type="text/css" />
-  <input type="hidden"
+  <input type="input"
+        class="invisible"
          id="slides-view-url"
-         tal:attributes="value string:${view/slider_url}/--slides--" />
+         name="slides-view-url"
+         value="${python: f'{view.slider_url}/--slides--'}"
+         />
     <p class='discreet'><tal:empty tal:replace="python: len(slides)" /> total slides</p>
     <div class="add-new-buttons" i18n:domain="collective.easyslider">
     <a class='add-new'
@@ -35,19 +38,33 @@
       <div class="slide-buttons">
         <b class="slide-number">#<tal:replace tal:replace="repeat/slide/number" /></b>
         &raquo;
-        <a class="edit" tal:attributes="href python:view.add_token(f'{view.slider_url}/@@edit-slide?index={repeat.slide.index}')" i18n:translate="">
+        <a class="edit" tal:attributes="href python:view.add_token(f'{view.slider_url}/@@edit-slide?eindex={repeat.slide.index}')" i18n:translate="">
           edit
         </a>
         &minus;
-        <a class="move-up" tal:attributes="href python:view.add_token(f'{view.slider_url}/--slides--/{repeat.slide.index}/@@move-slide-up')" i18n:translate="">
+        <a class="move-up"
+          tal:attributes="href python:view.add_token(f'{view.slider_url}/--slides--/{repeat.slide.index}/@@move-slide-up')"
+          tal:condition="python: not repeat.slide.start"
+          i18n:translate="">
           up
         </a>
+        <span class="inactive"
+          i18n:translate=""
+          tal:condition="python: repeat.slide.start">up</span>
         &minus;
-        <a class="move-down" tal:attributes="href python:view.add_token(f'{view.slider_url}/--slides--/{repeat.slide.index}/@@move-slide-down')" i18n:translate="">
+        <a class="move-down"
+          tal:attributes="href python:view.add_token(f'{view.slider_url}/--slides--/{repeat.slide.index}/@@move-slide-down')"
+          tal:condition="python: not repeat.slide.end"
+          i18n:translate="">
           down
         </a>
+        <span class="inactive"
+          i18n:translate=""
+          tal:condition="python: repeat.slide.end">down</span>
         &minus;
-        <a class="remove" tal:attributes="href python:view.add_token(f'{view.slider_url}/--slides--/{repeat.slide.index}/@@remove-slide')" i18n:translate="">
+        <a class="remove"
+          tal:attributes="href python:view.add_token(f'{view.slider_url}/--slides--/{repeat.slide.index}/@@remove-slide')"
+          i18n:translate="">
           remove
         </a>
       </div>
@@ -58,7 +75,7 @@
   <div class="add-new-buttons" i18n:domain="collective.easyslider">
     <a class='add-new'
        i18n:translate=""
-       tal:attributes="href string:${view/slider_url}/@@edit-slide?index=-1">
+       tal:attributes="href string:${view/slider_url}/@@edit-slide?eindex=-1">
       add new slide
     </a>
   </div>

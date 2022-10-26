@@ -23,7 +23,7 @@ class ISlidesWidget(IMultiWidget):
 
 @implementer_only(ISlidesWidget)
 class SlidesWidget(z3c.form.widget.Widget):
-    template = ViewPageTemplateFile("../browser/slides.pt")
+    template = ViewPageTemplateFile("./slides.pt")
     slider_url = ""
     settings = {}
     css = ""

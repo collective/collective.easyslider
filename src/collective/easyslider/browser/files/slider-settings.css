@@ -52,11 +52,22 @@ div#formfield-form-slides{
     padding:6px;
 }
 
-a.edit, a.move-up, a.move-down, a.remove, a.add-new{
+a.edit, a.move-up, a.move-down, a.remove, a.add-new, .slide-buttons > .inactive{
     border:1px solid black;
     padding: 3px;
     background-color:white;
     text-decoration:none;
+    cursor: pointer;
+}
+}
+.slide-buttons > .inactive{
+    border:1px solid gray;
+    padding: 3px;
+    background-color:white;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 a.edit:hover, a.move-up:hover, a.move-down:hover, a.remove:hover, a.add-new:hover {

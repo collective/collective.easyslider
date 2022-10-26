@@ -9,6 +9,7 @@ from plone.app.contenttypes.interfaces import IFolder
 from plone.app.querystring import queryparser
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.protect.utils import addTokenToUrl
 
 
 class SliderView(BrowserView, AbstractSliderView):
@@ -56,7 +57,7 @@ class SlidesView(BrowserView):
     __init__ method to setup the call_context and css members
     """
 
-    template = ViewPageTemplateFile("slides.pt")
+    template = ViewPageTemplateFile("../widgets/slides.pt")
 
     def __init__(self, context, request):
         super(SlidesView, self).__init__(context, request)
@@ -70,13 +71,16 @@ class SlidesView(BrowserView):
     def __call__(self):
         return self.template()
 
+    def add_token(self, url):
+        return addTokenToUrl(url)
+
 
 class SlideView(BrowserView):
     """
     For doing operations on a slide
     """
 
-    slides_template = ViewPageTemplateFile("slides.pt")
+    slides_template = ViewPageTemplateFile("../widgets/slides.pt")
 
     def __init__(self, context, request):
         super(SlideView, self).__init__(context, request)
@@ -101,9 +105,10 @@ class SlideView(BrowserView):
                 return "done"
         else:
             self.request.response.setStatus(status=403, reason="Cannot move up")
-            self.request.response.redirect(
-                self.context.context.absolute_url() + "/@@slider-settings"
-            )
+            if ajax is None:
+                self.request.response.redirect(
+                    self.context.context.absolute_url() + "/@@slider-settings"
+                )
 
     def move_down(self, ajax=None):
         index = self.context.index
@@ -125,6 +130,10 @@ class SlideView(BrowserView):
                 return "done"
         else:
             self.request.response.setStatus(status=403, reason="Cannot move down")
+            if ajax is None:
+                self.request.response.redirect(
+                    self.context.context.absolute_url() + "/@@slider-settings"
+                )
 
     def remove(self, ajax=None):
         index = self.context.index
