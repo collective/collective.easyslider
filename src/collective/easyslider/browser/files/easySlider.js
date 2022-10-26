@@ -50,10 +50,10 @@
       var container = obj.parent();
       var slide = $("li.slide", container);
       var slides = slide.length;
-      var width = slide.width(); 
-      var height = slide.height(); 
+      var width = slide.width();
+      var height = slide.height();
       var timeout;
-      var timer_activated = options.auto; 
+      var timer_activated = options.auto;
       obj.css("overflow","hidden");
       var total_slides = slides-1;
       var current_slide = 0;
@@ -86,7 +86,7 @@
           html += ' <span id="leftb"><a class="leftright" href=\"javascript:void(0);\">';
           html +='<img id="prev-bt" src="++resource++prevII.gif" title="" alt="' + previous_picture_alt + '" /></a></span>';
           count = 1;
-          for(i=0; i < total_slides+1; i++){ 
+          for(i=0; i < total_slides+1; i++){
             add = true;
             if((options.navigation_buttons_rendering_type == 'skip_even' && i % 2 == 1) ||
                   options.navigation_buttons_rendering_type == 'skip_odd' && i % 2 === 0){
@@ -134,7 +134,7 @@
         $(obj).after(html);
 
         //Put buttons on top of stack for crossfader
-        if(options.effect == "Crossfade") { 
+        if(options.effect == "Crossfade") {
           $("#slider-container #easySlider-goToButtons, " +
             "#slider-container #smallButtons").addClass('crossfade-navigation');
         }
@@ -231,24 +231,24 @@
         apply_overlay();
       }
 
-      $("a","#"+options.nextId, container).click(function(){    
+      $("a","#"+options.nextId, container).click(function(){
         schedule(function(){ animate("next",true, container); }, true);
       });
-      $("a","#"+options.prevId, container).click(function(){    
-        schedule(function(){ animate("prev",true, container); }, true);
-      }); 
-      $("span#leftb a", container).click(function(){    
+      $("a","#"+options.prevId, container).click(function(){
         schedule(function(){ animate("prev",true, container); }, true);
       });
-      $("span#rightb a", container).click(function(){   
+      $("span#leftb a", container).click(function(){
+        schedule(function(){ animate("prev",true, container); }, true);
+      });
+      $("span#rightb a", container).click(function(){
         schedule(function(){ animate("next",true, container); }, true);
       });
-      $("a","#"+options.firstId, container).click(function(){   
+      $("a","#"+options.firstId, container).click(function(){
         schedule(function(){ animate("first",true, container); }, true);
-      });       
-      $("a","#"+options.lastId, container).click(function(){    
+      });
+      $("a","#"+options.lastId, container).click(function(){
         schedule(function(){ animate("last",true, container); }, true);
-      }); 
+      });
       $("div#easySlider-goToButtons a:not(.leftright)", container).click(function(){
         var number = parseInt($(this).attr('id').substring(options.goToButtonId.length));
         schedule(function(){ animate(number, true, container); }, true);
@@ -259,17 +259,17 @@
       }
 
       function update_goToButtons(btns){
-        if(btns.size() > options.goToRotateAmount){
+        if(btns.length > options.goToRotateAmount){
           /* swap out buttons so it only shows the amount of buttons in the configuration */
           var min = Math.max(current_slide - Math.floor(options.goToRotateAmount/2), 0);
-          var max = Math.min(current_slide + Math.floor(options.goToRotateAmount/2), btns.size());
+          var max = Math.min(current_slide + Math.floor(options.goToRotateAmount/2), btns.length);
           var diff = max - min;
           if(diff != options.goToRotateAmount){
             min = Math.max(min - (options.goToRotateAmount - diff), 0);
           }
           diff = max - min;
           if(diff != options.goToRotateAmount){
-            max = Math.min(max + (options.goToRotateAmount - diff), btns.size());
+            max = Math.min(max + (options.goToRotateAmount - diff), btns.length);
           }
 
           var i;
@@ -279,7 +279,7 @@
           for(i = min; i < max; i++){
             $("#" + options.goToButtonId + i, container).show();
           }
-          for(i = max; i < btns.size(); i++){
+          for(i = max; i < btns.length; i++){
             $("#" + options.goToButtonId + i, container).hide();
           }
         }
@@ -296,7 +296,7 @@
       }
 
       if(options.hoverPause){
-          $('#slider').mouseenter(function(){ 
+          $('#slider').mouseenter(function(){
             animate("stop", true);
           });
           $('#slider').mouseleave(function(){
@@ -310,7 +310,7 @@
 
       function animate(dir, clicked, container){
         locked = true;
-        var previous_slide = current_slide;       
+        var previous_slide = current_slide;
         /* This can all get tricky depending on what nav
            are hidden now */
         switch(dir){
@@ -332,7 +332,7 @@
                 current_slide++;
               }
             }
-            break; 
+            break;
           case "prev":
             if(current_slide<=0){
               if(options.continuous){ current_slide = total_slides; }
@@ -341,7 +341,7 @@
               current_slide--;
             }
             if($.inArray(current_slide, skipped_navigation) != -1){
-              if(current_slide === 0){ 
+              if(current_slide === 0){
                 if($.inArray(total_slides, skipped_navigation) != -1){
                   current_slide = total_slides-1;
                 }else{
@@ -351,20 +351,20 @@
                 current_slide--;
               }
             }
-            break; 
+            break;
           case "first":
             current_slide = 0;
-            break; 
+            break;
           case "last":
             current_slide = total_slides;
-            break; 
+            break;
           case "stop":
             break;
           default:
             if(typeof(dir) == "number"){
               current_slide = dir;
             }
-            break; 
+            break;
         }
 
         if((options.navigation_type == "Navigation Buttons" || options.navigation_type == "Navigation Bullets") && $.inArray(current_slide, skipped_navigation) == -1){
@@ -402,7 +402,7 @@
                 margin = "marginTop";
                 variance = height;
               }
-              variance = variance * last.size();
+              variance = variance * last.length;
               last.insertBefore("ul.slider-list li.slide:first", container);
               $("ul.slider-list").css(margin, 0);
               callback = function(){
@@ -421,9 +421,9 @@
                 margin = "marginTop";
                 variance = height;
               }
-              variance = variance*first.size();
+              variance = variance*first.length;
               first.insertAfter("ul.slider-list li.slide:last", container);
-              $("ul.slider-list").css(margin, (slider_size*-1)+(variance/first.size()));
+              $("ul.slider-list").css(margin, (slider_size*-1)+(variance/first.length));
               callback = function(){
                 first.insertBefore("ul.slider-list li.slide:first", container);
                 $("ul.slider-list").css(margin, position-variance);
@@ -435,19 +435,19 @@
             }
 
             if(!options.vertical) {
-              $("ul.slider-list",container).animate({ 
+              $("ul.slider-list",container).animate({
                   marginLeft: position
               }, speed, callback);
             } else {
               p = (current_slide*height*-1);
-              $("ul.slider-list",container).animate({ 
-                marginTop: position 
+              $("ul.slider-list",container).animate({
+                marginTop: position
               }, speed, callback);
             }
           }else if(options.effect == "Fade"){
             margin = "marginLeft";
-            if(options.vertical){ 
-              margin = "marginTop"; 
+            if(options.vertical){
+              margin = "marginTop";
             }
 
             $("ul.slider-list", container).fadeOut(Math.ceil(speed/2), function(){
@@ -471,13 +471,13 @@
           }
         }
 
-        if(!options.continuous){          
+        if(!options.continuous){
           if(current_slide==total_slides){
             $("a","#"+options.nextId, container).hide();
             $("a","#"+options.lastId, container).hide();
           } else {
             $("a","#"+options.nextId, container).show();
-            $("a","#"+options.lastId, container).show();          
+            $("a","#"+options.lastId, container).show();
           }
           if(current_slide === 0){
             $("a","#"+options.prevId, container).hide();
@@ -488,8 +488,8 @@
           }
         }
 
-        if(clicked){ 
-          clear_timer(); 
+        if(clicked){
+          clear_timer();
         }
         if((timer_activated && dir=="next" && !clicked) || options.resume_play){
           set_timer(speed+getPause());
@@ -544,9 +544,9 @@
         $('button#pauseplay', container).addClass('play');
       }
 
-      if(!options.continuous){          
+      if(!options.continuous){
         $("a","#"+options.prevId, container).hide();
-        $("a","#"+options.firstId, container).hide();       
+        $("a","#"+options.firstId, container).hide();
       }
       apply_overlay();
     });
