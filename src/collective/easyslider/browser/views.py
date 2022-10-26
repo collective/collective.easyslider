@@ -101,6 +101,9 @@ class SlideView(BrowserView):
                 return "done"
         else:
             self.request.response.setStatus(status=403, reason="Cannot move up")
+            self.request.response.redirect(
+                self.context.context.absolute_url() + "/@@slider-settings"
+            )
 
     def move_down(self, ajax=None):
         index = self.context.index

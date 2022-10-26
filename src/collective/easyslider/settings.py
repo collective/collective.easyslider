@@ -74,9 +74,9 @@ class SliderSettings(object):
         if name[0] == "_" or name in ["context", "interfaces"]:
             return self.__dict__[name]
         value = self._metadata.get(name)
-        if value is None:
-            # print(f"using global setting: {name}")
-            return self._get_global_setting(name)
+        # if value is None:
+        #     # print(f"using global setting: {name}")
+        #     return self._get_global_setting(name)
         return value
 
 

@@ -1,31 +1,26 @@
-from Acquisition import aq_inner
-from Acquisition import aq_parent
-from collective.easyslider import _
-from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import (
-    IEasySliderSettings,
-)
-from collective.easyslider.interfaces import IPageSliderSettings
-from collective.easyslider.interfaces import ISliderSettings
-from collective.easyslider.widgets.slides import SlidesFieldWidget
-from persistent.dict import PersistentDict
+from Acquisition import aq_inner, aq_parent
 from persistent.mapping import PersistentMapping
+from persistent.dict import PersistentDict
+from collective.easyslider import _
+from collective.easyslider.widgets.slides import SlidesFieldWidget
+from collective.easyslider.interfaces import ISliderSettings, IPageSliderSettings
+
+from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import IEasySliderSettings
 from plone import schema
-from plone.autoform import directives
 from plone.autoform.form import AutoExtensibleForm
-from plone.registry.interfaces import IRegistry
+from plone.autoform import directives
 from z3c.form import button
 from z3c.form import form
-from z3c.form.interfaces import IMultiWidget
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getUtility
-
+from plone.registry.interfaces import IRegistry
 import transaction
 
 
 class ISliderPageSettingsForm(IPageSliderSettings):
-    """Schema Interface for ISliderPageSettingsForm"""
-
-    directives.widget("slides", SlidesFieldWidget)
+    """ Schema Interface for ISliderPageSettingsForm
+    """
+    directives.widget('slides', SlidesFieldWidget)
 
 
 class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
@@ -65,12 +60,13 @@ class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
     #         #     import pdb; pdb.set_trace()  # NOQA: E702
     #         widget.field.default = value
 
-    @button.buttonAndHandler("Ok")
+    @button.buttonAndHandler('Ok')
     def handleApply(self, action):
         data, errors = self.extractData()
         if errors:
             self.status = self.formErrorsMessage
             return
+        del data["slides"]
         changes = self.applyChanges(data)
         # Set status on this form page
         # (this status message is not bind to the session and does not go thru redirects)

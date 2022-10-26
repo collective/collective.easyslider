@@ -7,12 +7,12 @@
   <configlet
       i18n:attributes="title"
       title="Easy Slider Settings"
-      action_id="easy_slider_settings-controlpanel"
-      appId="easy_slider_settings-controlpanel"
+      action_id="easyslieder"
+      appId="easyslider"
       category="Products"
       condition_expr=""
       icon_expr=""
-      url_expr="string:${portal_url}/@@easy_slider_settings-controlpanel"
+      url_expr="string:${portal_url}/@@easyslider_controlpanel"
       visible="True">
     <permission>Manage Portal</permission>
   </configlet>

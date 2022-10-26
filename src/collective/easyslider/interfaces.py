@@ -316,6 +316,7 @@ class IPageSliderSettings(ISliderSettings):
             "label_sliderposition",
             default="Show the slider below the content instead of above?",
         ),
+        default=False,
         required=False,
     )
 

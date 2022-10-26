@@ -38,12 +38,13 @@ class BaseSliderViewlet(ViewletBase):
             return False
         else:
             if self.settings.slides is None:
-                self.settings.slides = []
+                return False
             if len(self.settings.slides) == 0:
                 return False
             else:
                 return self.override_hidden or self.settings.show
 
+    @property
     @memoize
     def sliderposition(self):
         return self.settings.sliderposition
@@ -60,46 +61,45 @@ class EasySlider(BaseSliderViewlet):
         settings = ViewSliderSettings(self.context)
         return settings.navigation_type.lower().replace(" ", "-")
 
-    def transform(self, text, mt="text/x-html-safe"):
-        """
-        Code from plone.portlet.static with adaptions
-        Use the safe_html transform to protect text output. This also
-        ensures that resolve UID links are transformed into real links.
-        """
-        # see if we have portal_transforms
-        context = aq_inner(self.context)
-        transformer = getToolByName(context, "portal_transforms", None)
-        if not transformer:
-            return text
+    # def transform(self, text, mt="text/x-html-safe"):
+    #     """
+    #     Code from plone.portlet.static with adaptions
+    #     Use the safe_html transform to protect text output. This also
+    #     ensures that resolve UID links are transformed into real links.
+    #     """
+    #     # see if we have portal_transforms
+    #     context = aq_inner(self.context)
+    #     transformer = getToolByName(context, "portal_transforms", None)
+    #     if not transformer:
+    #         return text
 
-        orig = text
-        if not isinstance(orig, str):
-            # Don't really know if this code is needed here
-            orig = str(orig, "utf-8", "ignore")
-            logger.warn(
-                "Slider at %s has stored non-unicode text. "
-                "Assuming utf-8 encoding." % context.absolute_url()
-            )
+    #     orig = text
+    #     if not isinstance(orig, str):
+    #         # Don't really know if this code is needed here
+    #         orig = str(orig, "utf-8", "ignore")
+    #         logger.warn(
+    #             "Slider at %s has stored non-unicode text. "
+    #             "Assuming utf-8 encoding." % context.absolute_url()
+    #         )
 
-        # Portal transforms needs encoded strings
-        orig = orig.encode("utf-8")
-        data = transformer.convertTo(mt, orig, context=context, mimetype="text/html")
-        result = data.getData()
+    #     # Portal transforms needs encoded strings
+    #     orig = orig.encode("utf-8")
+    #     data = transformer.convertTo(mt, orig, context=context, mimetype="text/html")
+    #     result = data.getData()
 
-        if result:
-            return str(result, "utf-8")
-        return ""
+    #     if result:
+    #         return str(result, "utf-8")
+    #     return ""
 
     def render_slide(self, slide):
-        if easytemplate_installed and self.settings.easytemplate_enabled:
+        # if easytemplate_installed and self.settings.easytemplate_enabled:
 
-            context = getTemplateContext(self.context, expose_schema=False)
-            text, errors = applyTemplate(context, slide, logger)
+        #     context = getTemplateContext(self.context, expose_schema=False)
+        #     text, errors = applyTemplate(context, slide, logger)
 
-            if not errors:
-                slide = text
-
-        return self.transform(slide)
+        #     if not errors:
+        #         slide = text
+        return slide
 
 
 class EasySliderHead(BaseSliderViewlet, AbstractSliderView):

@@ -6,7 +6,7 @@
     i18n_domain="collective.easyslider">
 
   <browser:page
-    name="easy_slider_settings-controlpanel"
+    name="easyslider_controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     class=".controlpanel.EasySliderSettingsView"
     layer="collective.easyslider.interfaces.ISliderLayer"
