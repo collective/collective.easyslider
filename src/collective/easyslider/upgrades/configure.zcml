@@ -1,0 +1,9 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.easyslider">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <include file="5.zcml" />
+
+</configure>

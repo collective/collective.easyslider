@@ -85,6 +85,8 @@
 
 <!-- -*- extra stuff goes here -*- -->
 
+  <include package=".upgrades" />
+
   <include package=".forms" />
   <include package=".widgets" />
 

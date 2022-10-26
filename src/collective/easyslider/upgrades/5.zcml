@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:registerProfile name="5"
+    title="Reload new Plone 6 settings"
+    directory="5"
+    description='Configuration for version 5'
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <gs:upgradeSteps source="4"
+    destination="5"
+    profile="collective.easyslider:default">
+
+    <gs:upgradeStep title="Reload new Plone 6 settings"
+      description=""
+      handler=".v5.upgrade" />
+
+    <gs:upgradeDepends title="Reload new Plone 6 settings (GS profile)"
+      description=""
+      import_profile="collective.easyslider.upgrades:5" />
+
+  </gs:upgradeSteps>
+
+</configure>
