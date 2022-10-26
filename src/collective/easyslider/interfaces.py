@@ -5,6 +5,7 @@ from zope.interface import Attribute
 from zope.interface import Interface
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
+from plone.app.textfield import RichText
 
 
 class ISliderLayer(Interface):
@@ -386,17 +387,27 @@ class IViewSliderSettings(ISliderSettings):
 
 
 class ISlide(Interface):
+    # Make sure to import: from plone.app.textfield import RichText
+    slide = RichText(
+        title=_(
+            "label_slide_title_slider_setting", default="Slide"
+        ),
+        default=u'',
+        required=False,
+        readonly=False,
+    )
 
-    slide = schema.Text(title=_("label_slide_title_slider_setting", default="Slide"))
-
-    overlay = schema.Text(
-        title=_("label_slide_overlay_slider_settings", default="Slide Overlay"),
+    overlay = RichText(
+        title=_(
+            "label_slide_overlay_slider_settings", default="Slide Overlay"
+        ),
         description=_(
             "desc_slide_overlay_slider_setting",
             default="Will be overlayed onto the bottom of slide",
         ),
+        default=u'',
         required=False,
-        default="",
+        readonly=False,
     )
 
     on_hover = schema.Bool(

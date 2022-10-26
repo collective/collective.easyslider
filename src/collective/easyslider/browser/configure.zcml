@@ -6,13 +6,6 @@
 
   <include package="plone.app.contentmenu" />
 
-  <!-- <browser:page
-    name="slider-settings"
-    for="collective.easyslider.interfaces.ISliderPage"
-    class=".forms.SliderPageSettingsForm"
-    layer="collective.easyslider.interfaces.ISliderLayer"
-    permission="collective.easyslider.ManageSliderSettings" />
-     -->
   <adapter
     for="collective.easyslider.interfaces.ISliderPage"
     provides="collective.easyslider.interfaces.IPageSliderSettings"
@@ -32,13 +25,6 @@
     title="EasySlider View"
     action="sliderview"
     description="Shows an easyslider for the contents." />
-
-  <!-- <browser:page
-    name="view-slider-settings"
-    for="collective.easyslider.interfaces.IViewEasySlider"
-    class=".forms.SliderViewSettingsForm"
-    layer="collective.easyslider.interfaces.ISliderLayer"
-    permission="collective.easyslider.ManageSliderSettings" /> -->
 
   <adapter
     for="collective.easyslider.interfaces.IViewEasySlider"
@@ -95,7 +81,12 @@
     permission="zope2.View"
     template="headviewlet.pt" />
 
-  <!-- <adapter factory=".forms.AddSlideAdapter" /> -->
+  <adapter
+    for="collective.easyslider.interfaces.ISliderPage"
+    provides="collective.easyslider.interfaces.ISlide"
+    factory=".forms.AddSlideAdapter"
+    />
+
   <!-- <browser:page
     name="edit-slide"
     for="collective.easyslider.interfaces.ISliderPage"

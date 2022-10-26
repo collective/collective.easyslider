@@ -10,15 +10,15 @@
     name="edit-slide"
     for="collective.easyslider.interfaces.ISliderPage"
     class=".add_slide_form.AddSlideForm"
-    permission="zope2.View"
-    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    permission="collective.easyslider.ManageSliderSettings"
+    layer="collective.easyslider.interfaces.ISliderLayer"
     />
 
   <browser:page
     name="slider-settings"
     for="collective.easyslider.interfaces.ISliderPage"
     class=".slider_page_settings_form.SliderPageSettingsForm"
-    permission="zope2.View"
+    permission="collective.easyslider.ManageSliderSettings"
     layer="collective.easyslider.interfaces.ISliderLayer"
     />
 
