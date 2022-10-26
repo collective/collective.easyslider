@@ -59,6 +59,7 @@
 
   <browser:viewlet
     name="collective.easyslider"
+    for="collective.easyslider.interfaces.ISliderPage"
     manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
     class=".viewlet.EasySlider"
     layer="collective.easyslider.interfaces.ISliderLayer"
@@ -67,6 +68,7 @@
 
    <browser:viewlet
     name="collective.easyslider_below"
+    for="collective.easyslider.interfaces.ISliderPage"
     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
     class=".viewlet.EasySlider"
     layer="collective.easyslider.interfaces.ISliderLayer"
@@ -74,6 +76,7 @@
     template="viewlet_below.pt" />
 
   <browser:viewlet
+    for="collective.easyslider.interfaces.ISliderPage"
     name="collective.easyslider.head"
     manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
     class=".viewlet.EasySliderHead"
@@ -84,7 +87,7 @@
   <adapter
     for="collective.easyslider.interfaces.ISliderPage"
     provides="collective.easyslider.interfaces.ISlide"
-    factory=".forms.AddSlideAdapter"
+    factory="collective.easyslider.forms.add_slide_form.AddSlideAdapter"
     />
 
   <!-- <browser:page
