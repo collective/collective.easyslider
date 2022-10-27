@@ -1,19 +1,16 @@
 from collective.easyslider import _
+from collective.easyslider.interfaces import ISlide
 from collective.easyslider.settings import PageSliderSettings
-from persistent.mapping import PersistentMapping
-# from plone import schema
+from plone.app.textfield.value import RichTextValue
 from plone.autoform.form import AutoExtensibleForm
 from z3c.form import button
 from z3c.form import form
-# from zope.interface import Interface
-from collective.easyslider.interfaces import ISlide
-from zope.component import getMultiAdapter
 from zope.annotation.interfaces import IAnnotations
-from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
+from zope.component import getMultiAdapter
+import operator
 
 
-class AddSlideAdapter():
+class AddSlideAdapter:
     """
     This is getting a little ugly....  Store index
     in the request.
@@ -89,43 +86,35 @@ class AddSlideAdapter():
 
 
 class IAddSlideForm(ISlide):
-    """Schema Interface for IAddSlideForm
-    """
+    """Schema Interface for IAddSlideForm"""
 
 
 class AddSlideForm(AutoExtensibleForm, form.EditForm):
     schema = IAddSlideForm
     ignoreContext = False
 
-    label = _('heading_add_slide_form', default="")
-    description = _('description_add_slide_form', default="")
-
-    # def handle_save_action(self, action, data):
-    #    if form.applyChanges(self.context, self.form_fields, data, self.adapters):
-    #        zope.event.notify(zope.lifecycleevent.ObjectModifiedEvent(self.context))
-    #        zope.event.notify(ploneformbase.EditSavedEvent(self.context))
-    #        self.status = "Changes saved"
-    #    else:
-    #        zope.event.notify(ploneformbase.EditCancelledEvent(self.context))
-    #        self.status = "No changes"
+    label = _("heading_add_slide_form", default="")
+    description = _("description_add_slide_form", default="")
 
     def updateWidgets(self, prefix=None):
         super().updateWidgets(prefix)
-        index = self.request.get("eindex")
-        if index:
-            self.widgets['index'].value = index
+        index = self.request.get("eindex", -1)
+        if int(index) <0:
+            return
+        self.widgets["index"].value = index
+        settings = PageSliderSettings(self.context)
+        slides = settings.slides
+        self.widgets["slide"].value = RichTextValue(
+            slides[int(index)]["html"], "text/plain", "text/html"
+        )
+        self.widgets["overlay"].value = RichTextValue(
+            slides[int(index)]["overlay"], "text/plain", "text/html"
+        )
+        self.widgets["on_hover"].value = operator.truth(slides[int(index)]["on_hover"]) and ['selected'] or ['unselected']
+
 
     def getContent(self):
         annotations = IAnnotations(self.context)
-        if "collective.easyslider" not in annotations:
-            registry = getUtility(IRegistry)
-            defaults = PersistentMapping()
-            field_names = list(self.fields.keys())
-            for k in field_names:
-                defaults[k] = registry.get(
-                    "collective.easyslider.easy_slider_settings.{}".format(k)
-                )
-            annotations["collective.easyslider"] = defaults
         return annotations["collective.easyslider"]
 
     @button.buttonAndHandler("Ok")
@@ -135,7 +124,6 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
             self.status = self.formErrorsMessage
             return
 
-        changes = self.applyChanges(data)
         settings = PageSliderSettings(self.context)
         slides = settings.slides
         index = data.get("index", -1)
@@ -159,8 +147,6 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
             getMultiAdapter((self.context, self.request), name="absolute_url")()
             + "/@@slider-settings"
         )
-        if changes:
-            self.status = "Settings saved"
         self.request.response.redirect(url)
 
     @button.buttonAndHandler("Cancel")
