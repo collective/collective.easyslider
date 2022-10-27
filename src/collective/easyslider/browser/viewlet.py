@@ -6,6 +6,8 @@ from collective.easyslider.settings import ViewSliderSettings
 from plone.app.layout.viewlets.common import ViewletBase
 from plone.memoize.instance import memoize
 from Products.CMFCore.utils import getToolByName
+from plone.protect.interfaces import IDisableCSRFProtection
+from zope.interface import alsoProvides
 
 
 try:
@@ -26,6 +28,9 @@ class BaseSliderViewlet(ViewletBase):
     # show even if settings say not to.
     override_hidden = False
 
+    def __init__(self, context, request, view, manager=None):
+        super().__init__(context, request, view, manager)
+        alsoProvides(self.request, IDisableCSRFProtection)
     @memoize
     def get_settings(self):
         return PageSliderSettings(self.context)
