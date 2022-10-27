@@ -100,7 +100,7 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
     label = _('heading_add_slide_form', default="")
     description = _('description_add_slide_form', default="")
 
-    #def handle_save_action(self, action, data):
+    # def handle_save_action(self, action, data):
     #    if form.applyChanges(self.context, self.form_fields, data, self.adapters):
     #        zope.event.notify(zope.lifecycleevent.ObjectModifiedEvent(self.context))
     #        zope.event.notify(ploneformbase.EditSavedEvent(self.context))

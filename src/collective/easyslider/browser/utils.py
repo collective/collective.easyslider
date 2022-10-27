@@ -1,14 +1,18 @@
 from collective.easyslider.interfaces import ISliderPage
+from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider.interfaces import ISliderUtil
 from collective.easyslider.interfaces import ISliderUtilProtected
+from persistent.mapping import PersistentMapping
 from plone.app.customerize import registration
+from plone.protect.interfaces import IDisableCSRFProtection
+from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.interface import alsoProvides
 from zope.interface import implementer
-from zope.interface import implements
 from zope.interface import noLongerProvides
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.viewlet.interfaces import IViewlet
@@ -21,6 +25,25 @@ class SliderUtilProtected(BrowserView):
     enabling and disabling sliders
     """
 
+    def init_default_settings(self):
+        registry = getUtility(IRegistry)
+        annotations = IAnnotations(self.context)
+        settings = annotations.get("collective.easyslider", None)
+        if settings:
+            return
+        defaults = PersistentMapping()
+        field_names = self._get_field_names_from_schema()
+        for k in field_names:
+            defaults[k] = registry.get(
+                "collective.easyslider.easy_slider_settings.{}".format(k)
+            )
+        defaults["slides"] = []
+        annotations["collective.easyslider"] = defaults
+
+    def _get_field_names_from_schema(self):
+        names = ISliderSettings.names()
+        return names
+
     def enable(self):
         utils = getToolByName(self.context, "plone_utils")
 
@@ -31,8 +54,10 @@ class SliderUtilProtected(BrowserView):
             self.request.response.redirect(self.context.absolute_url())
 
         elif not ISliderPage.providedBy(self.context):
+            alsoProvides(self.request, IDisableCSRFProtection)
             alsoProvides(self.context, ISliderPage)
             self.context.reindexObject(idxs=["object_provides"])
+            self.init_default_settings()
             utils.addPortalMessage(
                 "You have added a slider to this page. "
                 " To customize, click the 'Slider "

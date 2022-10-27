@@ -1,17 +1,9 @@
-from Acquisition import aq_inner
 from Acquisition import aq_parent
-from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import (
-    IEasySliderSettings,
-)
 from collective.easyslider.interfaces import IPageSliderSettings
 from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider.interfaces import IViewSliderSettings
-from persistent.mapping import PersistentMapping
 from plone.registry.interfaces import IRegistry
-from Products.CMFCore.utils import getToolByName
-from z3c.form import interfaces
 from zope.annotation.interfaces import IAnnotations
-from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import implementer
 
@@ -26,11 +18,6 @@ class SliderSettings(object):
     """
 
     interfaces = []
-
-    def _get_global_setting(self, name):
-        return self._registry.get(
-            "collective.easyslider.easy_slider_settings.{}".format(name)
-        )
 
     def _get_field_names_from_schema(self):
         names = []
@@ -51,15 +38,15 @@ class SliderSettings(object):
             annotations = IAnnotations(self.context)
 
         self._metadata = annotations.get("collective.easyslider", None)
-        if self._metadata is None:
-            defaults = PersistentMapping()
-            field_names = self._get_field_names_from_schema()
-            for k in field_names:
-                defaults[k] = self._registry.get(
-                    "collective.easyslider.easy_slider_settings.{}".format(k)
-                )
-            self._metadata = defaults
-            annotations["collective.easyslider"] = self._metadata
+        # if self._metadata is None:
+        #     defaults = PersistentMapping()
+        #     field_names = self._get_field_names_from_schema()
+        #     for k in field_names:
+        #         defaults[k] = self._registry.get(
+        #             "collective.easyslider.easy_slider_settings.{}".format(k)
+        #         )
+        #     self._metadata = defaults
+        #     annotations["collective.easyslider"] = self._metadata
 
     @property
     def __parent__(self):
@@ -79,8 +66,6 @@ class SliderSettings(object):
         if name[0] == "_" or name in ["context", "interfaces"]:
             return self.__dict__[name]
         value = self._metadata.get(name)
-        if value is None:
-            return self._get_global_setting(name)
         return value
 
 
