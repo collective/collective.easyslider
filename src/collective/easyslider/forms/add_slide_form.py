@@ -142,8 +142,8 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
         slide = data["slide"]
         overlay = data["overlay"]
         value = {
-            "html": slide and slide.output,
-            "overlay": overlay and overlay.output,
+            "html": slide and slide.raw,
+            "overlay": overlay and overlay.raw,
             "on_hover": data["on_hover"],
         }
 
