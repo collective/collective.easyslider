@@ -27,6 +27,11 @@ class SliderSettings(object):
 
     interfaces = []
 
+    def _get_global_setting(self, name):
+        return self._registry.get(
+            "collective.easyslider.easy_slider_settings.{}".format(name)
+        )
+
     def _get_field_names_from_schema(self):
         names = []
         for iface in self.interfaces:
@@ -74,9 +79,8 @@ class SliderSettings(object):
         if name[0] == "_" or name in ["context", "interfaces"]:
             return self.__dict__[name]
         value = self._metadata.get(name)
-        # if value is None:
-        #     # print(f"using global setting: {name}")
-        #     return self._get_global_setting(name)
+        if value is None:
+            return self._get_global_setting(name)
         return value
 
 
