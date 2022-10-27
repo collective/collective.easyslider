@@ -38,9 +38,9 @@
     <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
   </class>
 
-  <!-- <class class="Products.ATContentTypes.content.folder.ATFolder">
+  <class class="plone.app.contenttypes.interfaces.IFolder">
     <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
-  </class> -->
+  </class>
 
   <include package=".browser" />
   <include package=".portlets" />
