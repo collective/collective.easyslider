@@ -8,9 +8,4 @@
       for="zope.schema.interfaces.IField
            collective.easyslider.interfaces.ISliderLayer" />
 
-    <!-- <adapter
-      factory=".hidden.HiddenWidget"
-      for="zope.schema.interfaces.IField
-           collective.easyslider.interfaces.ISliderLayer" /> -->
-
 </configure>

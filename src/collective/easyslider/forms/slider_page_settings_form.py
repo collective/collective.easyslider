@@ -84,18 +84,6 @@ class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
             annotations["collective.easyslider"] = defaults
         return annotations["collective.easyslider"]
 
-    # def updateWidgets(self, prefix=None):
-    #     super().updateWidgets(prefix)
-    #     annotations = IAnnotations(self.context)
-    #     for widget in self.widgets.values():
-    #         name = widget.name.split(".")[-1]
-    #         value = annotations["collective.easyslider"][name]
-    #         if name == 'slides' and value is None:
-    #             value = []
-    #         # if name == 'show':
-    #         #     import pdb; pdb.set_trace()  # NOQA: E702
-    #         widget.field.default = value
-
     @button.buttonAndHandler('Ok')
     def handleApply(self, action):
         data, errors = self.extractData()
