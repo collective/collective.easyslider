@@ -149,7 +149,7 @@ class ISliderSettings(Interface):
             "odd numbered slides (0 to use normal speed "
             "setting).",
         ),
-        default=0,
+        default=800,
     )
 
     auto = schema.Bool(
@@ -180,7 +180,7 @@ class ISliderSettings(Interface):
             "automatically transitioned for odd numbered "
             "slides (0 to use normal pause setting).",
         ),
-        default=0,
+        default=4000,
     )
 
     continuous = schema.Bool(
@@ -268,7 +268,7 @@ class ISliderSettings(Interface):
             "when mouse is over the slide",
         ),
         required=False,
-        default=False,
+        default=True,
     )
 
     resume_play = schema.Bool(
@@ -280,7 +280,7 @@ class ISliderSettings(Interface):
             "behavior will disabling playing the slider)",
         ),
         required=False,
-        default=False,
+        default=True,
     )
 
     randomize = schema.Bool(
