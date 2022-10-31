@@ -1,6 +1,6 @@
-from collective.easyslider.interfaces import ISliderLayer
 from collective.easyslider.testing import EasySlider_FUNCTIONAL_TESTING
 from collective.easyslider.testing import EasySlider_INTEGRATION_TESTING
+from collective.easyslider.interfaces import ICollectiveEasysliderLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from Products.CMFCore.utils import getToolByName
@@ -17,7 +17,7 @@ class BaseTest(unittest.TestCase):
         self.portal = self.layer["portal"]
         self.request = self.layer["request"]
         self.app = self.layer["app"]
-        alsoProvides(self.request, ISliderLayer)
+        alsoProvides(self.request, ICollectiveEasysliderLayer)
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
     def tearDown(self):

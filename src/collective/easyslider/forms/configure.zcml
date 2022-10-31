@@ -19,7 +19,7 @@
     for="collective.easyslider.interfaces.ISliderPage"
     class=".add_slide_form.AddSlideForm"
     permission="collective.easyslider.ManageSliderSettings"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     />
 
   <browser:page
@@ -27,7 +27,7 @@
     for="collective.easyslider.interfaces.ISliderPage"
     class=".slider_page_settings_form.SliderPageSettingsForm"
     permission="collective.easyslider.ManageSliderSettings"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     />
 
   <adapter

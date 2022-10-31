@@ -6,6 +6,6 @@
     <adapter
       factory=".slides.SlidesWidget"
       for="zope.schema.interfaces.IField
-           collective.easyslider.interfaces.ISliderLayer" />
+           collective.easyslider.interfaces.ICollectiveEasysliderLayer" />
 
 </configure>

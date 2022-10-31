@@ -15,7 +15,7 @@
     name="sliderview"
     for="collective.easyslider.interfaces.IViewEasySlider"
     permission="zope2.View"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     class=".views.SliderView"
     template="sliderview.pt" />
 
@@ -37,7 +37,7 @@
     permission="collective.easyslider.ManageSliderSettings"
     allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
     attribute="enable"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     class=".utils.SliderUtilProtected" />
 
   <browser:page
@@ -46,7 +46,7 @@
     permission="collective.easyslider.ManageSliderSettings"
     allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
     attribute="disable"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     class=".utils.SliderUtilProtected" />
 
   <browser:page
@@ -55,7 +55,7 @@
     permission="collective.easyslider.ManageSliderSettings"
     allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
     attribute="enable_view"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     class=".utils.SliderUtilProtected" />
 
   <browser:page
@@ -64,7 +64,7 @@
     permission="collective.easyslider.ManageSliderSettings"
     allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
     attribute="disable_view"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     class=".utils.SliderUtilProtected" />
 
    <browser:page
@@ -72,7 +72,7 @@
      for="*"
      permission="zope2.View"
      allowed_interface="collective.easyslider.interfaces.ISliderUtil"
-     layer="collective.easyslider.interfaces.ISliderLayer"
+     layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
      class=".utils.SliderUtil" />
 
   <browser:viewlet
@@ -80,7 +80,7 @@
     for="collective.easyslider.interfaces.ISliderPage"
     manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
     class=".viewlet.EasySlider"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="zope2.View"
     template="viewlet.pt" />
 
@@ -89,7 +89,7 @@
     for="collective.easyslider.interfaces.ISliderPage"
     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
     class=".viewlet.EasySlider"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="zope2.View"
     template="viewlet_below.pt" />
 
@@ -98,7 +98,7 @@
     name="collective.easyslider.head"
     manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
     class=".viewlet.EasySliderHead"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="zope2.View"
     template="headviewlet.pt" />
 
@@ -113,7 +113,7 @@
     for="collective.easyslider.interfaces.ISlideContext"
     class=".views.SlideView"
     attribute="move_up"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="collective.easyslider.ManageSliderSettings" />
 
   <browser:page
@@ -121,7 +121,7 @@
     for="collective.easyslider.interfaces.ISlideContext"
     class=".views.SlideView"
     attribute="move_down"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="collective.easyslider.ManageSliderSettings" />
 
   <browser:page
@@ -129,28 +129,28 @@
     for="collective.easyslider.interfaces.ISlideContext"
     class=".views.SlideView"
     attribute="remove"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="collective.easyslider.ManageSliderSettings" />
 
   <browser:page
     name="--slides--"
     for="collective.easyslider.interfaces.ISliderPage"
     class=".transient.SlidesContext"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="collective.easyslider.ManageSliderSettings" />
 
   <browser:page
     name="view"
     for="collective.easyslider.interfaces.ISlidesContext"
     class=".views.SlidesView"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="collective.easyslider.ManageSliderSettings" />
 
   <browser:page
     name="order-slides"
     for="collective.easyslider.interfaces.ISliderPage"
     class=".views.OrderSlides"
-    layer="collective.easyslider.interfaces.ISliderLayer"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     permission="collective.easyslider.ManageSliderSettings" />
 
   <browser:resource name="easySlider.js" file="files/easySlider.js" />

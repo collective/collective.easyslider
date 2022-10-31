@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from collective.easyslider import _
-from collective.easyslider.interfaces import ISliderLayer
+from collective.easyslider.interfaces import ICollectiveEasysliderLayer
 from collective.easyslider.interfaces import ISliderSettings
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
@@ -26,7 +26,7 @@ class EasySliderSettings(RegistryEditForm):
 EasySliderSettingsView = layout.wrap_form(EasySliderSettings, ControlPanelFormWrapper)
 
 
-@adapter(Interface, ISliderLayer)
+@adapter(Interface, ICollectiveEasysliderLayer)
 class EasySliderSettingsConfigletPanel(RegistryConfigletPanel):
     """Control Panel endpoint"""
 

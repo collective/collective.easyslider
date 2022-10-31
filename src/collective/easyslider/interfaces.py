@@ -8,7 +8,7 @@ from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
 
-class ISliderLayer(Interface):
+class ICollectiveEasysliderLayer(Interface):
     """
     marker interface for slider layer
     """

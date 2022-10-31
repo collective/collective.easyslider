@@ -1,4 +1,4 @@
 <layers>
-    <layer name="collective.easyslider" 
-           interface="collective.easyslider.interfaces.ISliderLayer" />
+    <layer name="collective.easyslider"
+           interface="collective.easyslider.interfaces.ICollectiveEasysliderLayer" />
 </layers>
