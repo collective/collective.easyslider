@@ -14,6 +14,12 @@ class ICollectiveEasysliderLayer(Interface):
     """
 
 
+class ISliderLayer(ICollectiveEasysliderLayer):
+    """
+    BBB
+    """
+
+
 class ISliderPage(Interface):
     """
     marker interface for a page that implements
