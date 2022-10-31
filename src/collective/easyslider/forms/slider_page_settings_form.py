@@ -1,15 +1,7 @@
-from Acquisition import aq_inner
-from Acquisition import aq_parent
 from collective.easyslider import _
-from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import (
-    IEasySliderSettings,
-)
 from collective.easyslider.interfaces import IPageSliderSettings
-from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider.widgets.slides import SlidesFieldWidget
-from persistent.dict import PersistentDict
 from persistent.mapping import PersistentMapping
-from plone import schema
 from plone.autoform import directives
 from plone.autoform.form import AutoExtensibleForm
 from plone.registry.interfaces import IRegistry
@@ -18,8 +10,6 @@ from z3c.form import button
 from z3c.form import form
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getUtility
-
-import transaction
 
 
 class ISliderPageSettingsForm(IPageSliderSettings):
