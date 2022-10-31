@@ -12,11 +12,34 @@
 </metal:css>
 
 <body>
-<metal:content-core fill-slot="content-core">
+
+<div metal:fill-slot="main">
+  <metal:main_macro define-macro="main">
     <metal:body define-macro="body_macro">
 
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+      <!-- <h1 class="documentFirstHeading">
+        <metal:field use-macro="python:view.widget('title', mode='view')">
+          Title
+        </metal:field>
+      </h1>
+
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+      <p class="documentDescription">
+        <metal:field use-macro="python:here.widget('description', mode='view')">
+          Description
+        </metal:field>
+      </p> -->
+
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
       <metal:slider define-macro="slider"  tal:define="uid context/UID|string:nouid">
-        <div id="slider-container" tal:attributes="class string:slider-${uid};" tal:define="image_scale view/scale; showtext not:python:view.settings.hidetext">
+        <div id="slider-container" tal:attributes="class string:slider-${uid};"
+          tal:define="image_scale view/scale;
+                      showtext not:python:view.settings.hidetext
+                      ">
           <div id="slider" tal:attributes="class string:slider-${uid};">
             <ul class="slides-list slider-list">
               <tal:rep tal:repeat="slide view/get_items">
@@ -28,7 +51,7 @@
                     <a tal:attributes="href slide/getURL">
                       <img class="news-slide-image"
                            tal:attributes="alt slide/Title;
-                                           src string:${slide/getURL}${image_scale}" />
+                                           src string:${slide/getURL}/@@images/image/${image_scale}" />
                     </a>
                     <div class="slide-news-content" tal:condition="showtext">
                       <p class="documentDescription">
@@ -48,31 +71,13 @@
                   </div>
                   <div class="slider-image">
                     <a tal:attributes="href slide/getURL">
-                      <img tal:attributes="src string:${slide/getURL}${image_scale};
+                      <img tal:attributes="src string:${slide/getURL}/@@images/image/${image_scale};
                                            title slide/Title;
                                            alt slide/Description" />
                     </a>
                   </div>
 
                 </li>
-                 <li class="slide" tal:condition="python: slide.portal_type == 'Cart Item'">
-                  <div class="slider-cartimage">
-                    <a tal:attributes="href slide/getURL">
-                    <img src="" tal:condition="slide/image|nothing" alt="" tal:replace="structure slide/image" /></a>
-                  </div>
-
-                  <div class="slide-infocart">
-                    <a tal:attributes="href slide/getURL">
-                    <h1 tal:content="slide/Title" tal:condition="showtext"  />
-                    </a>
-                    <p class="documentDescription" tal:content="slide/Description" tal:condition="showtext"/>
-                    <p><strong>Din pris:</strong>
-                    <span tal:content="python:context.getFormattedPrice(slide.getPrice())" />
-                   </p><br/>
-
-                  <a tal:attributes="href slide/getURL"  i18n:translate="read_more">Read More</a>
-                </div>
-              </li>
             </tal:rep>
           </ul>
         </div>
@@ -91,7 +96,9 @@
   </tal:subtopics>
   </metal:body>
 
+</metal:main_macro>
 
+</div>
 
 </body>
 </html>

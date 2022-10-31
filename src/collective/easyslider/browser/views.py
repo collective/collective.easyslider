@@ -21,12 +21,13 @@ class SliderView(BrowserView, AbstractSliderView):
 
     @property
     def scale(self):
-        scale = self.settings.image_scale
-        if not scale:
-            return "/image_preview"
-        if scale == ORIGINAL_SCALE_NAME:
-            return ""
-        return "/" + scale
+        return "large"
+        #scale = self.settings.image_scale
+        # if not scale:
+        #     return "large"
+        # if scale == ORIGINAL_SCALE_NAME:
+        #     return ""
+        # return "/" + scale
 
     def get_items(self):
         context = aq_inner(self.context)
