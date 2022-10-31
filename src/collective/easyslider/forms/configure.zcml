@@ -10,7 +10,7 @@
     name="view-slider-settings"
     for="collective.easyslider.interfaces.IViewEasySlider"
     class=".slider_view_settings_form.SliderViewSettingsForm"
-    permission="cmf.ManagePortal"
+    permission="collective.easyslider.ManageSliderSettings"
     layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     />
 
