@@ -1,4 +1,5 @@
 from collective.easyslider.interfaces import ISliderPage
+from collective.easyslider.interfaces import IViewEasySlider
 from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider.interfaces import ISliderUtil
 from collective.easyslider.interfaces import ISliderUtilProtected
@@ -54,7 +55,7 @@ class SliderUtilProtected(BrowserView):
             self.request.response.redirect(self.context.absolute_url())
 
         elif not ISliderPage.providedBy(self.context):
-            alsoProvides(self.request, IDisableCSRFProtection)
+            # alsoProvides(self.request, IDisableCSRFProtection)
             alsoProvides(self.context, ISliderPage)
             self.context.reindexObject(idxs=["object_provides"])
             self.init_default_settings()
@@ -83,6 +84,51 @@ class SliderUtilProtected(BrowserView):
                 del annotations["collective.easyslider"]
 
             utils.addPortalMessage("Slider removed.")
+
+        self.request.response.redirect(self.context.absolute_url())
+
+    def enable_view(self):
+        utils = getToolByName(self.context, "plone_utils")
+
+        # if utils.browserDefault(self.context)[1][0] == "sliderview":
+        #     utils.addPortalMessage(
+        #         "You can not add a slider to a page with a" "Slider view already!"
+        #     )
+        #     self.request.response.redirect(self.context.absolute_url())
+
+        if not IViewEasySlider.providedBy(self.context):
+            # alsoProvides(self.request, IDisableCSRFProtection)
+            self.context.manage_changeProperties(layout="sliderview")
+            alsoProvides(self.context, IViewEasySlider)
+            self.context.reindexObject(idxs=["object_provides"])
+            self.init_default_settings()
+            utils.addPortalMessage(
+                "You have added a slider view to this page. "
+                " To customize, click the 'Slider "
+                "Settings' button."
+            )
+            self.request.response.redirect(
+                "%s/@@slider-settings" % (self.context.absolute_url())
+            )
+        else:
+            self.request.response.redirect(self.context.absolute_url())
+
+    def disable_view(self):
+        utils = getToolByName(self.context, "plone_utils")
+
+        if IViewEasySlider.providedBy(self.context):
+            import pdb; pdb.set_trace()  # NOQA: E702
+            self.context.manage_delProperties(["layout"])
+            noLongerProvides(self.context, IViewEasySlider)
+            self.context.reindexObject(idxs=["object_provides"])
+
+            # now delete the annotation
+            annotations = IAnnotations(self.context)
+            metadata = annotations.get("collective.easyslider", None)
+            if metadata is not None:
+                del annotations["collective.easyslider"]
+
+            utils.addPortalMessage("Slider view removed.")
 
         self.request.response.redirect(self.context.absolute_url())
 

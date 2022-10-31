@@ -14,12 +14,24 @@
             <permission>collective.easyslider: Manage slider settings</permission>
         </action>
 
+        <action title="Enable Slider View" action_id="enable_slider_view" category="object_buttons"
+            condition_expr="not: object/@@slider_util/view_enabled"
+            url_expr="string:${object_url}/@@enable_slider_view" visible="True">
+            <permission>collective.easyslider: Manage slider settings</permission>
+        </action>
+
+        <action title="Disable Slider View" action_id="disable_slider_view" category="object_buttons"
+            condition_expr="object/@@slider_util/view_enabled"
+            url_expr="string:${object_url}/@@disable_slider_view" visible="True">
+            <permission>collective.easyslider: Manage slider settings</permission>
+        </action>
+
         <action title="Slider Settings" action_id="slider_settings" category="object"
             condition_expr="object/@@slider_util/enabled"
             url_expr="string:${object_url}/@@slider-settings" visible="True">
             <permission>collective.easyslider: Manage slider settings</permission>
         </action>
-        
+
         <action title="Slider Settings" action_id="view_slider_settings" category="object"
             condition_expr="object/@@slider_util/view_enabled"
             url_expr="string:${object_url}/@@view-slider-settings" visible="True">

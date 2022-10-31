@@ -49,6 +49,24 @@
     layer="collective.easyslider.interfaces.ISliderLayer"
     class=".utils.SliderUtilProtected" />
 
+  <browser:page
+    name="enable_slider_view"
+    for="*"
+    permission="collective.easyslider.ManageSliderSettings"
+    allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
+    attribute="enable_view"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    class=".utils.SliderUtilProtected" />
+
+  <browser:page
+    name="disable_slider_view"
+    for="*"
+    permission="collective.easyslider.ManageSliderSettings"
+    allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
+    attribute="disable_view"
+    layer="collective.easyslider.interfaces.ISliderLayer"
+    class=".utils.SliderUtilProtected" />
+
    <browser:page
      name="slider_util"
      for="*"
@@ -89,13 +107,6 @@
     provides="collective.easyslider.interfaces.ISlide"
     factory="collective.easyslider.forms.add_slide_form.AddSlideAdapter"
     />
-
-  <!-- <browser:page
-    name="edit-slide"
-    for="collective.easyslider.interfaces.ISliderPage"
-    class=".forms.AddSlideForm"
-    layer="collective.easyslider.interfaces.ISliderLayer"
-    permission="collective.easyslider.ManageSliderSettings" /> -->
 
   <browser:page
     name="move-slide-up"
