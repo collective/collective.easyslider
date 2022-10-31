@@ -1,6 +1,6 @@
-from collective.easyslider.testing import EasySlider_FUNCTIONAL_TESTING
-from collective.easyslider.testing import EasySlider_INTEGRATION_TESTING
 from collective.easyslider.interfaces import ICollectiveEasysliderLayer
+from collective.easyslider.testing import COLLECTIVE_EASYSLIDER_FUNCTIONAL_TESTING
+from collective.easyslider.testing import COLLECTIVE_EASYSLIDER_INTEGRATION_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from Products.CMFCore.utils import getToolByName
@@ -11,7 +11,7 @@ import unittest
 
 class BaseTest(unittest.TestCase):
 
-    layer = EasySlider_INTEGRATION_TESTING
+    layer = COLLECTIVE_EASYSLIDER_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
@@ -37,4 +37,4 @@ class BaseTest(unittest.TestCase):
 
 
 class BaseFunctionalTest(BaseTest):
-    layer = EasySlider_FUNCTIONAL_TESTING
+    layer = COLLECTIVE_EASYSLIDER_FUNCTIONAL_TESTING

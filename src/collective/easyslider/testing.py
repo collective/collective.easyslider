@@ -33,10 +33,10 @@ class EasySlider(PloneSandboxLayer):
 
 
 EasySlider_FIXTURE = EasySlider()
-EasySlider_INTEGRATION_TESTING = IntegrationTesting(
+COLLECTIVE_EASYSLIDER_INTEGRATION_TESTING = IntegrationTesting(
     bases=(EasySlider_FIXTURE,), name="EasySlider:Integration"
 )
-EasySlider_FUNCTIONAL_TESTING = FunctionalTesting(
+COLLECTIVE_EASYSLIDER_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(EasySlider_FIXTURE,), name="EasySlider:Functional"
 )
 
