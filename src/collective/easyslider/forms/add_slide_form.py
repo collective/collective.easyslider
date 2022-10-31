@@ -7,6 +7,7 @@ from z3c.form import button
 from z3c.form import form
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getMultiAdapter
+
 import operator
 
 
@@ -99,7 +100,7 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
     def updateWidgets(self, prefix=None):
         super().updateWidgets(prefix)
         index = self.request.get("eindex", -1)
-        if int(index) <0:
+        if int(index) < 0:
             return
         self.widgets["index"].value = index
         settings = PageSliderSettings(self.context)
@@ -110,8 +111,11 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
         self.widgets["overlay"].value = RichTextValue(
             slides[int(index)]["overlay"], "text/plain", "text/html"
         )
-        self.widgets["on_hover"].value = operator.truth(slides[int(index)]["on_hover"]) and ['selected'] or ['unselected']
-
+        self.widgets["on_hover"].value = (
+            operator.truth(slides[int(index)]["on_hover"])
+            and ["selected"]
+            or ["unselected"]
+        )
 
     def getContent(self):
         annotations = IAnnotations(self.context)

@@ -9,9 +9,9 @@ import logging
 logger = logging.getLogger("collective.easyslider")
 
 try:
-    from collective.easytemplate.engine import getEngine
     from .tags import SliderTag
     from .tags import SliderViewTag
+    from collective.easytemplate.engine import getEngine
 
     engine = getEngine()
     engine.addTag(SliderTag())

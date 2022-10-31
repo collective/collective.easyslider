@@ -7,6 +7,14 @@
  <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
+    name="view-slider-settings"
+    for="collective.easyslider.interfaces.IViewEasySlider"
+    class=".slider_view_settings_form.SliderViewSettingsForm"
+    permission="cmf.ManagePortal"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    />
+
+  <browser:page
     name="edit-slide"
     for="collective.easyslider.interfaces.ISliderPage"
     class=".add_slide_form.AddSlideForm"

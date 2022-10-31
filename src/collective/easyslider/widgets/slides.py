@@ -1,11 +1,12 @@
 from collective.easyslider.utils import slider_settings_css
 from persistent.mapping import PersistentMapping
+from plone.protect.utils import addTokenToUrl
 from z3c.form.interfaces import IMultiWidget
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from zope.interface import implementer
 from zope.interface import implementer_only
 from zope.interface import Interface
-from plone.protect.utils import addTokenToUrl
+
 import z3c.form.widget
 
 

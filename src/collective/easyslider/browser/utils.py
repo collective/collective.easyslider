@@ -1,8 +1,8 @@
 from collective.easyslider.interfaces import ISliderPage
-from collective.easyslider.interfaces import IViewEasySlider
 from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider.interfaces import ISliderUtil
 from collective.easyslider.interfaces import ISliderUtilProtected
+from collective.easyslider.interfaces import IViewEasySlider
 from persistent.mapping import PersistentMapping
 from plone.app.customerize import registration
 from plone.protect.interfaces import IDisableCSRFProtection
@@ -117,7 +117,9 @@ class SliderUtilProtected(BrowserView):
         utils = getToolByName(self.context, "plone_utils")
 
         if IViewEasySlider.providedBy(self.context):
-            import pdb; pdb.set_trace()  # NOQA: E702
+            import pdb
+
+            pdb.set_trace()  # NOQA: E702
             self.context.manage_delProperties(["layout"])
             noLongerProvides(self.context, IViewEasySlider)
             self.context.reindexObject(idxs=["object_provides"])

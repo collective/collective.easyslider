@@ -1,11 +1,11 @@
 from collective.easyslider import _ as _
 from OFS.interfaces import IItem
+from plone.app.textfield import RichText
 from zope import schema
 from zope.interface import Attribute
 from zope.interface import Interface
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
-from plone.app.textfield import RichText
 
 
 class ISliderLayer(Interface):
@@ -390,23 +390,19 @@ class IViewSliderSettings(ISliderSettings):
 class ISlide(Interface):
     # Make sure to import: from plone.app.textfield import RichText
     slide = RichText(
-        title=_(
-            "label_slide_title_slider_setting", default="Slide"
-        ),
-        default='',
+        title=_("label_slide_title_slider_setting", default="Slide"),
+        default="",
         required=False,
         readonly=False,
     )
 
     overlay = RichText(
-        title=_(
-            "label_slide_overlay_slider_settings", default="Slide Overlay"
-        ),
+        title=_("label_slide_overlay_slider_settings", default="Slide Overlay"),
         description=_(
             "desc_slide_overlay_slider_setting",
             default="Will be overlayed onto the bottom of slide",
         ),
-        default='',
+        default="",
         required=False,
         readonly=False,
     )

@@ -1,62 +1,65 @@
-from Acquisition import aq_inner, aq_parent
-from persistent.mapping import PersistentMapping
-from persistent.dict import PersistentDict
+from Acquisition import aq_inner
+from Acquisition import aq_parent
 from collective.easyslider import _
+from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import (
+    IEasySliderSettings,
+)
+from collective.easyslider.interfaces import IPageSliderSettings
+from collective.easyslider.interfaces import ISliderSettings
 from collective.easyslider.widgets.slides import SlidesFieldWidget
-from collective.easyslider.interfaces import ISliderSettings, IPageSliderSettings
-
-from collective.easyslider.controlpanels.easy_slider_settings.controlpanel import IEasySliderSettings
+from persistent.dict import PersistentDict
+from persistent.mapping import PersistentMapping
 from plone import schema
-from plone.supermodel import model
-from plone.autoform.form import AutoExtensibleForm
 from plone.autoform import directives
+from plone.autoform.form import AutoExtensibleForm
+from plone.registry.interfaces import IRegistry
+from plone.supermodel import model
 from z3c.form import button
 from z3c.form import form
 from zope.annotation.interfaces import IAnnotations
 from zope.component import getUtility
-from plone.registry.interfaces import IRegistry
+
 import transaction
 
 
 class ISliderPageSettingsForm(IPageSliderSettings):
-    """ Schema Interface for ISliderPageSettingsForm
-    """
-    directives.widget('slides', SlidesFieldWidget)
+    """Schema Interface for ISliderPageSettingsForm"""
+
+    directives.widget("slides", SlidesFieldWidget)
 
     model.fieldset(
-        'default',
-        label=u'Default',
+        "default",
+        label="Default",
         fields=[
-            'slides',
+            "slides",
         ],
     )
 
     model.fieldset(
-        'settings',
-        label=u'Settings',
+        "settings",
+        label="Settings",
         fields=[
-            'width',
-            'height',
-            'show',
-            'effect',
-            'vertical',
-            'speed',
-            'odd_speed',
-            'auto',
-            'pause',
-            'odd_pause',
-            'continuous',
-            'centered',
-            'navigation_type',
-            'navigation_buttons_rendering_type',
-            'fade_navigation',
-            'hover_pause',
-            'resume_play',
-            'randomize',
-            'sliderposition',
+            "width",
+            "height",
+            "show",
+            "effect",
+            "vertical",
+            "speed",
+            "odd_speed",
+            "auto",
+            "pause",
+            "odd_pause",
+            "continuous",
+            "centered",
+            "navigation_type",
+            "navigation_buttons_rendering_type",
+            "fade_navigation",
+            "hover_pause",
+            "resume_play",
+            "randomize",
+            "sliderposition",
         ],
     )
-
 
 
 class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
@@ -84,7 +87,7 @@ class SliderPageSettingsForm(AutoExtensibleForm, form.EditForm):
             annotations["collective.easyslider"] = defaults
         return annotations["collective.easyslider"]
 
-    @button.buttonAndHandler('Ok')
+    @button.buttonAndHandler("Ok")
     def handleApply(self, action):
         data, errors = self.extractData()
         if errors:

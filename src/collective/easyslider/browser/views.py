@@ -7,9 +7,9 @@ from collective.easyslider.utils import slider_settings_css
 from plone.app.contenttypes.interfaces import ICollection
 from plone.app.contenttypes.interfaces import IFolder
 from plone.app.querystring import queryparser
+from plone.protect.utils import addTokenToUrl
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.protect.utils import addTokenToUrl
 
 
 class SliderView(BrowserView, AbstractSliderView):
