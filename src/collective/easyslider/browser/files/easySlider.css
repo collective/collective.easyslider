@@ -1,6 +1,6 @@
 .slider-container,
 #slider-container {
-	border: 1px solid #b8b8b8;
+	/* border: 1px solid #b8b8b8; */
 	margin: auto;
 }
 
@@ -37,28 +37,28 @@ img.news-slide-image {
     position: relative;
 }
 
-#prevBtn, #nextBtn{ 
+#prevBtn, #nextBtn{
 	display:block;
 	width:30px;
 	height:77px;
 	position:relative;
 	left:-30px;
 	top:-130px;
-}	
-#nextBtn{ 
+}
+#nextBtn{
     top:-205px;
 }
 
-#prevBtn a, #nextBtn a{  
+#prevBtn a, #nextBtn a{
 	display:block;
 	color: transparent;
 	width:30px;
 	height:77px;
 	background:url(++resource++btn_prev.gif) no-repeat 0 0;
 	border-bottom: medium none !important;
-}	
-#nextBtn a{ 
-	background:url(++resource++btn_next.gif) no-repeat 0 0;	
+}
+#nextBtn a{
+	background:url(++resource++btn_next.gif) no-repeat 0 0;
 }
 
 #smallButtons {
@@ -67,10 +67,10 @@ img.news-slide-image {
 	top:-48px;
 	height: 30px;
 	display: inline-block;
-}	
+}
 
 #smallButtons #prevBtn,
-#smallButtons #nextBtn{  
+#smallButtons #nextBtn{
 top:  0;
 left: 0;
 display: block; float: left;
@@ -78,17 +78,17 @@ margin: 0 3px;
 }
 
 #smallButtons #prevBtn a,
-#smallButtons #nextBtn a{  
+#smallButtons #nextBtn a{
 	display:block;
 	float: left;
     color: transparent;
 	margin: 0 5px;
 	width:30px;
 	height:30px;
-	background:url(++resource++arrowl2.gif) no-repeat 0 0;	
-}	
-#smallButtons #nextBtn a{ 
-	background:url(++resource++arrowr2.gif) no-repeat 0 0;	
+	background:url(++resource++arrowl2.gif) no-repeat 0 0;
+}
+#smallButtons #nextBtn a{
+	background:url(++resource++arrowr2.gif) no-repeat 0 0;
 }
 
 .slider-text {
@@ -167,22 +167,22 @@ margin: 0 3px;
 	color: #000;
 }
 
-#prevBtn.easybutton  { 
+#prevBtn.easybutton  {
 	left:-52px;
     top: -300px !important;
 }
 
-#nextBtn.easybutton  { 
+#nextBtn.easybutton  {
 	margin-left:  10px;;
     top: -380px !important;
 }
 
-#prevBtn.easybutton  a{  
-	background: url(++resource++arrow-left.png) no-repeat 0 top;	
+#prevBtn.easybutton  a{
+	background: url(++resource++arrow-left.png) no-repeat 0 top;
 	width: 45px;
-}	
-#nextBtn.easybutton  a{ 
-	background: url(++resource++arrow-right.png) no-repeat 0 top;	
+}
+#nextBtn.easybutton  a{
+	background: url(++resource++arrow-right.png) no-repeat 0 top;
 	width: 45px;
 }
 
