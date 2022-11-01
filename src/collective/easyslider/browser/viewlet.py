@@ -102,7 +102,7 @@ class EasySlider(BaseSliderViewlet):
 
         #     if not errors:
         #         slide = text
-        print(slide)
+        # print(slide)
         return self.transform(slide)
 
 
