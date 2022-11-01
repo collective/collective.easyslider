@@ -17,6 +17,11 @@ from zope.interface import noLongerProvides
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.viewlet.interfaces import IViewlet
 
+import logging
+
+
+log = logging.getLogger("easyslider: ")
+
 
 @implementer(ISliderUtilProtected)
 class SliderUtilProtected(BrowserView):
@@ -146,7 +151,8 @@ class SliderUtil(BrowserView):
         utils = getToolByName(self.context, "plone_utils")
         try:
             return utils.browserDefault(self.context)[1][0] == "sliderview"
-        except:
+        except Exception as e:
+            log.warn(e)
             return False
 
     def should_include(self):
@@ -165,7 +171,8 @@ class SliderUtil(BrowserView):
         factory = viewlet.factory
         try:
             return factory(context, self.request, self, None).__of__(context)
-        except:
+        except Exception as e:
+            log.warn(e)
             return None
 
     def render_slider_resources(self):

@@ -1,10 +1,9 @@
-try:
-    from collective.templateengines.interfaces import ITag
-except:
-    from zope.interface import Interface as ITag
-
+# try:
+#     from collective.templateengines.interfaces import ITag
+# except:
 from zope.component import getMultiAdapter
 from zope.interface import implements
+from zope.interface import Interface as ITag
 
 
 class SliderTag(object):

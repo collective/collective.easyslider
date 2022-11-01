@@ -1,5 +1,6 @@
 from collective.easyslider.interfaces import ISliderPage
 from Products.CMFCore.utils import getToolByName
+from zope.annotation.interfaces import IAnnotations
 from zope.component.hooks import getSite
 from zope.interface import noLongerProvides
 
@@ -7,8 +8,6 @@ import logging
 
 
 logger = logging.getLogger("collective.easyslider")
-
-from zope.annotation.interfaces import IAnnotations
 
 
 def install(context):

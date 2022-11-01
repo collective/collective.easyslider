@@ -7,16 +7,16 @@ from plone.app.layout.viewlets.common import ViewletBase
 from plone.memoize.instance import memoize
 from Products.CMFCore.utils import getToolByName
 
-
-try:
-    from collective.easytemplate.engine import getTemplateContext
-    from collective.easytemplate.utils import applyTemplate
-
-    easytemplate_installed = True
-except:
-    easytemplate_installed = False
-
 import logging
+
+
+# try:
+#     from collective.easytemplate.engine import getTemplateContext
+#     from collective.easytemplate.utils import applyTemplate
+
+#     easytemplate_installed = True
+# except:
+#     easytemplate_installed = False
 
 
 logger = logging.getLogger("collective.easyslider")

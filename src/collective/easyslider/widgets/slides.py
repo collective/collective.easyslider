@@ -5,7 +5,6 @@ from z3c.form.interfaces import IMultiWidget
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 from zope.interface import implementer
 from zope.interface import implementer_only
-from zope.interface import Interface
 
 import z3c.form.widget
 

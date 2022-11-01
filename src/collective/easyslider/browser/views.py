@@ -2,7 +2,6 @@ from Acquisition import aq_inner
 from collective.easyslider.browser.base import AbstractSliderView
 from collective.easyslider.settings import PageSliderSettings
 from collective.easyslider.settings import ViewSliderSettings
-from collective.easyslider.utils import ORIGINAL_SCALE_NAME
 from collective.easyslider.utils import slider_settings_css
 from plone.app.contenttypes.interfaces import ICollection
 from plone.app.contenttypes.interfaces import IFolder
