@@ -60,10 +60,10 @@ class SliderViewSettingsForm(AutoExtensibleForm, form.EditForm):
     schema = ISliderViewSettingsForm
     ignoreContext = False
 
-    label = _(u"heading_slider_settings_form", default=u"Slider Settings")
+    label = _("heading_slider_settings_form", default="Slider Settings")
     description = _(
-        u"description_slider_settings_form",
-        default=u"Configure the parameters for this slider.",
+        "description_slider_settings_form",
+        default="Configure the parameters for this slider.",
     )
 
     # return annotation dict as form content

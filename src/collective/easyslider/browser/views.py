@@ -22,7 +22,7 @@ class SliderView(BrowserView, AbstractSliderView):
     @property
     def scale(self):
         return "large"
-        #scale = self.settings.image_scale
+        # scale = self.settings.image_scale
         # if not scale:
         #     return "large"
         # if scale == ORIGINAL_SCALE_NAME:

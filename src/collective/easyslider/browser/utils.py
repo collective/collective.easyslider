@@ -5,7 +5,6 @@ from collective.easyslider.interfaces import ISliderUtilProtected
 from collective.easyslider.interfaces import IViewEasySlider
 from persistent.mapping import PersistentMapping
 from plone.app.customerize import registration
-from plone.protect.interfaces import IDisableCSRFProtection
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -98,7 +97,7 @@ class SliderUtilProtected(BrowserView):
 
         if not IViewEasySlider.providedBy(self.context):
             # alsoProvides(self.request, IDisableCSRFProtection)
-            self.context.manage_changeProperties(layout="sliderview")
+            self.context.manage_addProperty("layout", "sliderview", "string")
             alsoProvides(self.context, IViewEasySlider)
             self.context.reindexObject(idxs=["object_provides"])
             self.init_default_settings()
@@ -108,7 +107,7 @@ class SliderUtilProtected(BrowserView):
                 "Settings' button."
             )
             self.request.response.redirect(
-                "%s/@@slider-settings" % (self.context.absolute_url())
+                "%s/@@view-slider-settings" % (self.context.absolute_url())
             )
         else:
             self.request.response.redirect(self.context.absolute_url())
@@ -117,9 +116,7 @@ class SliderUtilProtected(BrowserView):
         utils = getToolByName(self.context, "plone_utils")
 
         if IViewEasySlider.providedBy(self.context):
-            import pdb
 
-            pdb.set_trace()  # NOQA: E702
             self.context.manage_delProperties(["layout"])
             noLongerProvides(self.context, IViewEasySlider)
             self.context.reindexObject(idxs=["object_provides"])
