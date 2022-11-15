@@ -30,6 +30,7 @@ class SliderView(BrowserView, AbstractSliderView):
 
     def get_items(self):
         context = aq_inner(self.context)
+        res = []
         if IFolder.providedBy(context):
             res = self.context.getFolderContents(
                 contentFilter={
@@ -46,7 +47,6 @@ class SliderView(BrowserView, AbstractSliderView):
                 res = context.queryCatalog(batch=True, b_size=self.settings.limit)
             else:
                 res = context.queryCatalog(query)
-
         return res
 
 
