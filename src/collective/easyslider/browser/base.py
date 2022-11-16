@@ -15,6 +15,8 @@ class AbstractSliderView(object):
             return "nouid"
 
     def css(self):
+        width = self.settings.width or 0
+        height = self.settings.height or 0
         try:
             border_width = self.settings.border_width
         except AttributeError:
@@ -53,8 +55,8 @@ class AbstractSliderView(object):
             "uid": self.uid,
             "border_width": border_width,
             "padding": padding,
-            "slider_width": self.settings.width - (2*border_width) - (2*padding),
-            "slider_height": self.settings.height - (2*border_width) - (2*padding),
+            "slider_width": width - (2*border_width) - (2*padding),
+            "slider_height": height - (2*border_width) - (2*padding),
         }
         return css_str
 

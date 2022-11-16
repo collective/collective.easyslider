@@ -6,6 +6,8 @@ def slider_settings_css(settings):
     defined here because then it can be used in the widget
     and view that use the same .pt
     """
+    width = settings.width or 0
+    height = settings.height or 0
     try:
         border_width = settings.border_width
     except AttributeError:
@@ -33,7 +35,7 @@ def slider_settings_css(settings):
         "container_height": settings.height,
         "border_width": border_width,
         "padding": padding,
-        "slider_width": settings.width - border_width - padding,
-        "slider_height": settings.height - border_width - padding,
+        "slider_width": width - border_width - padding,
+        "slider_height": height - border_width - padding,
     }
     return css_str
