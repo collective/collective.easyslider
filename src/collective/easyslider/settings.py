@@ -76,6 +76,8 @@ class PageSliderSettings(SliderSettings):
         if name == "slides":
             # somehow this default value gets manually set. This prevents this
             # form happening on the slides...
+            if not self._metadata:
+                return []
             return self._metadata.get(name, [])
         return super().__getattr__(name)
 
