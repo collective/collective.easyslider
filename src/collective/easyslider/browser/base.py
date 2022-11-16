@@ -18,12 +18,12 @@ class AbstractSliderView(object):
         width = self.settings.width or 0
         height = self.settings.height or 0
         try:
-            border_width = self.settings.border_width
+            border_width = self.settings.border_width or 0
         except AttributeError:
             border_width = 0
 
         try:
-            padding = self.settings.padding
+            padding = self.settings.padding or 0
         except AttributeError:
             padding = 0
 
