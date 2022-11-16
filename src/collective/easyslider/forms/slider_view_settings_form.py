@@ -31,6 +31,8 @@ class ISliderViewSettingsForm(IViewSliderSettings):
         fields=[
             "width",
             "height",
+            "border_width",
+            "padding",
             "show",
             "effect",
             "vertical",

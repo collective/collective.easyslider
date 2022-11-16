@@ -15,18 +15,30 @@ class AbstractSliderView(object):
             return "nouid"
 
     def css(self):
-        return """
+        try:
+            border_width = self.settings.border_width
+        except AttributeError:
+            border_width = 0
+
+        try:
+            padding = self.settings.padding
+        except AttributeError:
+            padding = 0
+
+        css_str = """
 #slider-container.slider-%(uid)s{
     width: %(width)ipx;
     height: %(height)ipx;
     margin: %(centered)s;
+    border: %(border_width)ipx solid #f2f2f2;
+    padding: %(padding)ipx;
 }
 #slider.slider-%(uid)s, #slider.slider-%(uid)s li.slide{
-    width:%(width)ipx;
-    height:%(height)ipx;
+    width:%(slider_width)ipx;
+    height:%(slider_height)ipx;
 }
 .slider-%(uid)s #nextBtn{
-    left:%(width)ipx;
+    left:%(slider_width)ipx;
     top:-%(next_top)ipx
 }
 .slider-%(uid)s #prevBtn{
@@ -39,7 +51,12 @@ class AbstractSliderView(object):
             "prev_top": ((self.settings.height / 2) + 50),
             "centered": self.settings.centered and "auto" or "0",
             "uid": self.uid,
+            "border_width": border_width,
+            "padding": padding,
+            "slider_width": self.settings.width - (2*border_width) - (2*padding),
+            "slider_height": self.settings.height - (2*border_width) - (2*padding),
         }
+        return css_str
 
     def js(self):
         return """

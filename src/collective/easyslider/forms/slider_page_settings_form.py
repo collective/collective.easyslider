@@ -31,6 +31,8 @@ class ISliderPageSettingsForm(IPageSliderSettings):
         fields=[
             "width",
             "height",
+            "border_width",
+            "padding",
             "show",
             "effect",
             "vertical",
