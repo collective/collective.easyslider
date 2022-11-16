@@ -66,6 +66,8 @@ class SliderSettings(object):
         if name[0] == "_" or name in ["context", "interfaces"]:
             return self.__dict__[name]
         value = self._metadata.get(name)
+        if not self._metadata:
+            return
         return value
 
 
