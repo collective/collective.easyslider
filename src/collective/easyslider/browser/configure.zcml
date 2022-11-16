@@ -49,23 +49,39 @@
     layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
     class=".utils.SliderUtilProtected" />
 
-  <browser:page
-    name="enable_slider_view"
-    for="*"
-    permission="collective.easyslider.ManageSliderSettings"
-    allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
-    attribute="enable_view"
-    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
-    class=".utils.SliderUtilProtected" />
+  <browser:pages
+      class=".utils.SliderUtilProtected"
+      permission="collective.easyslider.ManageSliderSettings"
+      layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+      allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      >
+    <browser:page
+      name="enable_slider_view"
+      attribute="enable_view"
+      />
+    <browser:page
+      name="disable_slider_view"
+      attribute="disable_view"
+      />
+  </browser:pages>
 
-  <browser:page
-    name="disable_slider_view"
-    for="*"
-    permission="collective.easyslider.ManageSliderSettings"
-    allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
-    attribute="disable_view"
-    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
-    class=".utils.SliderUtilProtected" />
+  <browser:pages
+      class=".utils.SliderUtilProtected"
+      permission="collective.easyslider.ManageSliderSettings"
+      layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+      allowed_interface="collective.easyslider.interfaces.ISliderUtilProtected"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      >
+    <browser:page
+      name="enable_slider_view"
+      attribute="enable_view"
+      />
+    <browser:page
+      name="disable_slider_view"
+      attribute="disable_view"
+      />
+  </browser:pages>
 
    <browser:page
      name="slider_util"

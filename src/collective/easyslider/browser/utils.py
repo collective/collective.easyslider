@@ -4,6 +4,8 @@ from collective.easyslider.interfaces import ISliderUtil
 from collective.easyslider.interfaces import ISliderUtilProtected
 from collective.easyslider.interfaces import IViewEasySlider
 from persistent.mapping import PersistentMapping
+from plone.app.contenttypes.interfaces import ICollection
+from plone.app.contenttypes.interfaces import IFolder
 from plone.app.customerize import registration
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
@@ -102,7 +104,10 @@ class SliderUtilProtected(BrowserView):
 
         if not IViewEasySlider.providedBy(self.context):
             # alsoProvides(self.request, IDisableCSRFProtection)
-            self.context.manage_addProperty("layout", "sliderview", "string")
+            if not self.context.getProperty('layout'):
+                self.context.manage_addProperty("layout", "sliderview", "string")
+            else:
+                self.context.manage_changeProperties(layout="sliderview")
             alsoProvides(self.context, IViewEasySlider)
             self.context.reindexObject(idxs=["object_provides"])
             self.init_default_settings()
@@ -154,6 +159,10 @@ class SliderUtil(BrowserView):
         except Exception as e:
             log.warn(e)
             return False
+
+    def view_enableable(self):
+        ct_allowed = ICollection.providedBy(self.context) or IFolder.providedBy(self.context)
+        return ct_allowed and not self.enabled() and not self.view_enabled()
 
     def should_include(self):
         return self.enabled() or self.view_enabled()

@@ -54,7 +54,12 @@ class ISliderUtil(Interface):
 
     def view_enabled():
         """
-        checks if the slider view is selected
+        checks if the slider view is enabled
+        """
+
+    def view_enableable(self):
+        """
+        checks if we can enable the slider view
         """
 
     def should_include():
