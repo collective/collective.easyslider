@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        i18n:domain="collective.easyslider">
+
+        <records prefix="plone.bundles/easyslider"
+                interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+                <value key="enabled">True</value>
+                <value key="depends">plone</value>
+                <value key="jscompilation">++resource++easySlider.js</value>
+                <value key="csscompilation">++resource++easySlider.css</value>
+        </records>
+
+        <records prefix="plone.bundles/eayslider-portlet"
+                interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+                <value key="enabled">True</value>
+                <value key="depends">easyslider</value>
+                <value key="jscompilation">++resource++easyslider-portlet.js</value>
+                <value key="csscompilation">++resource++easyslider-portlet.css</value>
+        </records>
+
+        <records prefix="plone.bundles/eayslider-settings"
+                interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+                <value key="enabled">True</value>
+                <value key="expression">python: request.get('ACTUAL_URL').endswith('@@slider-settings')</value>
+                <value key="depends">easyslider</value>
+                <value key="jscompilation">++resource++slider-settings.js</value>
+                <value key="csscompilation">++resource++slider-settings.css</value>
+        </records>
+</registry>

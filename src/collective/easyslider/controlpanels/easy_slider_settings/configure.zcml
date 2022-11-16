@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.easyslider">
+
+  <browser:page
+    name="easyslider_controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".controlpanel.EasySliderSettingsView"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    permission="cmf.ManagePortal"
+    />
+
+  <include package="plone.restapi"  />
+  <adapter
+    factory=".controlpanel.EasySliderSettingsConfigletPanel"
+    name="easy_slider_settings" />
+
+
+</configure>

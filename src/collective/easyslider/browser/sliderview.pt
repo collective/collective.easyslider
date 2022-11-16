@@ -1,0 +1,104 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<metal:js fill-slot="javascript_head_slot">
+	<script type="text/javascript" tal:content="view/js">
+  </script>
+</metal:js>
+<metal:css fill-slot="style_slot">
+	<style tal:content="view/css" type="text/css" />
+</metal:css>
+
+<body>
+
+<div metal:fill-slot="main">
+  <metal:main_macro define-macro="main">
+    <metal:body define-macro="body_macro">
+
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+      <!-- <h1 class="documentFirstHeading">
+        <metal:field use-macro="python:view.widget('title', mode='view')">
+          Title
+        </metal:field>
+      </h1>
+
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+      <p class="documentDescription">
+        <metal:field use-macro="python:here.widget('description', mode='view')">
+          Description
+        </metal:field>
+      </p> -->
+
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+      <metal:slider define-macro="slider"  tal:define="uid context/UID|string:nouid">
+        <div id="slider-container" tal:attributes="class string:slider-${uid};"
+          tal:define="image_scale view/scale;
+                      showtext not:python:view.settings.hidetext
+                      ">
+          <div id="slider" tal:attributes="class string:slider-${uid};">
+            <ul class="slides-list slider-list">
+              <tal:rep tal:repeat="slide view/get_items">
+                <li class="slide" tal:condition="python: slide.portal_type == 'News Item'">
+                  <div class="news-slide">
+                    <h1 class="documentFirstHeading" tal:condition="showtext">
+                      <span tal:content="slide/Title" />
+                    </h1>
+                    <a tal:attributes="href slide/getURL">
+                      <img class="news-slide-image"
+                           tal:attributes="alt slide/Title;
+                                           src string:${slide/getURL}/@@images/image/${image_scale}" />
+                    </a>
+                    <div class="slide-news-content" tal:condition="showtext">
+                      <p class="documentDescription">
+                        <span tal:content="slide/Description" />
+                      </p>
+                      <a tal:attributes="href slide/getURL"  i18n:translate="read_more">Read More</a>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="slide" tal:condition="python: slide.portal_type == 'Image'">
+                  <div class="slider-text" tal:condition="showtext">
+                    <a tal:attributes="href slide/getURL">
+                      <h1 tal:content="slide/Title" />
+                    </a>
+                    <p class="documentDescription" tal:content="slide/Description" />
+                  </div>
+                  <div class="slider-image">
+                    <a tal:attributes="href slide/getURL">
+                      <img tal:attributes="src string:${slide/getURL}/@@images/image/${image_scale};
+                                           title slide/Title;
+                                           alt slide/Description" />
+                    </a>
+                  </div>
+
+                </li>
+            </tal:rep>
+          </ul>
+        </div>
+      </div>
+    </metal:slider>
+  </metal:body>
+
+  <metal:body define-macro="folderlisting_macro">
+  <tal:subtopics condition="here/hasSubtopics|nothing"
+                 define="folderContents here/getFolderContents">
+    <h2 i18n:domain="atcontenttypes"
+        i18n:translate="heading_contained_collections">
+      Also in this section
+    </h2>
+    <metal:list metal:use-macro="here/base/macros/folderlisting"/>
+  </tal:subtopics>
+  </metal:body>
+
+</metal:main_macro>
+
+</div>
+
+</body>
+</html>

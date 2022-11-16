@@ -1,8 +1,14 @@
 Changelog
 =========
 
-1.4.2 
+2.0.0a1 unreleased
 ------------------
+
+- Plone 6 compatibility [MrTango]
+
+
+1.4.2
+-----
 
 - add option for showing slider beneath content [espenmn]
 
@@ -65,7 +71,7 @@ Changelog
 
 - look at parent object if context is not anonatable.
   this will fix plone.app.event sub events breaking.
-  [vangheem] 
+  [vangheem]
 
 1.3.1 (2013-02-05)
 ------------------
@@ -201,14 +207,14 @@ Changelog
 
 - final release
   [vangheem]
-  
+
 
 0.7.2a1 ~ July 22, 2011
 -----------------------
 
 - More fixes for transitions on skipped slides--make it seemless.
   [vangheem]
-  
+
 - Allow to restart playing the slider after user interaction via configuration.
   [vangheem]
 
@@ -219,19 +225,19 @@ Changelog
 - fixed auto transitions and numbering for skipped
   navigation buttons.
   [vangheem]
-  
+
 
 0.7.1a1 ~ July 19, 2011
 -----------------------
 
 - continuous slide now no longer has "rewind" effect.
   [vangheem]
-  
-- allow some customization of what numbers show up 
+
+- allow some customization of what numbers show up
   for Navigation buttons.
   [vangheem]
-  
-- implement locking behavior on transitions to help 
+
+- implement locking behavior on transitions to help
   keep transitions and buttons clicks seem a little more
   controllable
   [vangheem]
@@ -243,7 +249,7 @@ Changelog
 - add ability to have different transition and pause speeds
   for even and odd slides.
   [vangheem]
-  
+
 
 0.6.2rc1 ~ July 8, 2011
 -----------------------
@@ -263,7 +269,7 @@ Changelog
 
 - reference css and js from root
   [vangheem]
-  
+
 
 0.6.0 ~ July 6, 2011
 --------------------
@@ -273,10 +279,10 @@ Changelog
 
 - Add french translations and improve localization
   [toutpt]
-  
+
 - add ability to render the sliderview inline and with easytemplate
   [vangheem]
-  
+
 
 0.5.4 ~ February 20, 2011
 -------------------------
@@ -284,14 +290,14 @@ Changelog
 - Fixed automatic transition not turning off when using
   the fade effect. Fixes http://plone.org/products/collective.easyslider/issues/18
   [vangheem]
-  
+
 - fixed slider view only showing last slide. Fixes http://plone.org/products/collective.easyslider/issues/16
   [vangheem]
-  
+
 - provide ability to choose the image scale used for image and news item collection
   slider views. Implements http://plone.org/products/collective.easyslider/issues/2
   [vangheem]
-  
+
 
 0.5.3 ~ February 14, 2011
 -------------------------
@@ -303,7 +309,7 @@ Changelog
 0.5.2 ~ January 8, 2011
 -----------------------
 
-- Add old style uninstall method so 
+- Add old style uninstall method so
   the uninstall profile is automatically called.
   [vangheem]
 
@@ -325,7 +331,7 @@ Changelog
   [vangheem]
 
 
-0.4.1 ~ January 7, 2011 
+0.4.1 ~ January 7, 2011
 -----------------------
 
 - fix slider not being able to be customized TTW in Plone 4
@@ -367,7 +373,7 @@ Changelog
 * no longer open edit slide in light box thing by tranversing a transient
   object--now works with any editor(TinyMCE) fixes http://plone.org/products/collective.easyslider/issues/1
   [vangheem]
-  
+
 
 0.3rc4 ~ April 4, 2010
 ----------------------
@@ -379,7 +385,7 @@ Changelog
 
 * added type='text/css' to style tags
   [vangheem]
-  
+
 
 0.3rc3 ~ April 16, 2010
 -----------------------
@@ -390,10 +396,10 @@ Changelog
 
 * added pause/play button ability for navigation buttons.
   [vangheem]
-  
-* adds fading navigation functionality 
+
+* adds fading navigation functionality
   [vangheem]
-  
+
 
 0.3rc2
 ------

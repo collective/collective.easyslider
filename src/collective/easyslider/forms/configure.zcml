@@ -1,0 +1,39 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.easyslider">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <browser:page
+    name="view-slider-settings"
+    for="collective.easyslider.interfaces.IViewEasySlider"
+    class=".slider_view_settings_form.SliderViewSettingsForm"
+    permission="collective.easyslider.ManageSliderSettings"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    />
+
+  <browser:page
+    name="edit-slide"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".add_slide_form.AddSlideForm"
+    permission="collective.easyslider.ManageSliderSettings"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    />
+
+  <browser:page
+    name="slider-settings"
+    for="collective.easyslider.interfaces.ISliderPage"
+    class=".slider_page_settings_form.SliderPageSettingsForm"
+    permission="collective.easyslider.ManageSliderSettings"
+    layer="collective.easyslider.interfaces.ICollectiveEasysliderLayer"
+    />
+
+  <adapter
+    for="persistent.mapping.PersistentMapping zope.schema.interfaces.IField"
+    provides="z3c.form.interfaces.IDataManager"
+    factory="z3c.form.datamanager.DictionaryField"
+  />
+
+</configure>

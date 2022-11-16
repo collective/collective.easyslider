@@ -1,0 +1,88 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  i18n_domain="collective.easyslider">
+
+  <!-- <five:registerPackage package="." initialize=".initialize" /> -->
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package="Products.CMFCore" file="permissions.zcml" />
+
+  <!-- Zope 2.9 / 3.2 support -->
+  <configure zcml:condition="installed zope.app.annotation.tests">
+    <include package="zope.app.annotation" />
+  </configure>
+
+  <!-- Zope 2.10 / 3.3 support -->
+  <configure zcml:condition="installed zope.annotation">
+    <include package="zope.annotation" />
+  </configure>
+
+  <!-- permission for managing slideshow settings -->
+  <permission
+    id="collective.easyslider.ManageSliderSettings"
+    title="collective.easyslider: Manage slider settings"
+    />
+
+  <class class="plone.app.contenttypes.interfaces.ICollection">
+    <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
+  </class>
+
+  <class class="plone.app.contenttypes.interfaces.IFolder">
+    <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
+  </class>
+
+  <include package=".browser" />
+  <include package=".portlets" />
+
+  <genericsetup:registerProfile
+    name="default"
+    title="collective.easyslider"
+    directory="profiles/default"
+    description='Installation for easy slider support in plone.'
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
+
+  <genericsetup:registerProfile
+    name="uninstall"
+    title="collective.easyslider uninstall"
+    directory="profiles/uninstall"
+    description="Removes collective.easyslider"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
+
+  <utility
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    component=".vocabularies.ImageSizesVocabulary"
+    name="collective.easyslider.imagesizes" />
+
+<!-- we use settings from plone.registry now!  -->
+  <!-- <adapter
+    for='Products.CMFPlone.interfaces.IPloneSiteRoot'
+    provides='collective.easyslider.interfaces.ISliderSettings'
+    factory='collective.easyslider.settings.SliderSettings'
+    /> -->
+
+<!-- we use a new controlpal see controlpanels folder -->
+  <!-- <browser:page
+    name="easyslider_controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".configlet.EasySliderControlPanelView"
+    permission="cmf.ManagePortal"
+    /> -->
+
+<!-- -*- extra stuff goes here -*- -->
+
+  <include package=".upgrades" />
+
+  <include package=".forms" />
+  <include package=".widgets" />
+
+  <include package=".controlpanels" />
+
+</configure>

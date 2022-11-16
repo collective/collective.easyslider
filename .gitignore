@@ -8,3 +8,14 @@ collective.easyslider.egg-info/*
 
 
 *.gz
+/bin/
+/parts
+/.vscode/
+/.python-version
+/.installed.cfg
+/.mr.developer.cfg
+**/*.egg-info
+/develop-eggs
+/var
+/src/collective/easyslider/profiles/default/controlpanel.xml_bak
+/reports

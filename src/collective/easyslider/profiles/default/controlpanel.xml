@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel" xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="collective.easyslider">
+
+    <!-- -*- extra stuff goes here -*- -->
+
+  <configlet
+      i18n:attributes="title"
+      title="Easy Slider Settings"
+      action_id="easyslieder"
+      appId="easyslider"
+      category="Products"
+      condition_expr=""
+      icon_expr=""
+      url_expr="string:${portal_url}/@@easyslider_controlpanel"
+      visible="True">
+    <permission>Manage Portal</permission>
+  </configlet>
+
+
+</object>

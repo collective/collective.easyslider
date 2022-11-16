@@ -1,4 +1,0 @@
-<layers>
-    <layer name="collective.easyslider" 
-           interface="collective.easyslider.interfaces.ISliderLayer" />
-</layers>
