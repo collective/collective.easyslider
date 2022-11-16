@@ -8,6 +8,11 @@ def slider_settings_css(settings):
     """
     return """
     .slider-container,
+        width: %(width)ipx;
+        height: %(height)ipx;
+        border: %(border_width)ipx solid #f2f2f2;
+        padding: %(padding)ipx;
+    }
     .slider,
     .slider li.slide {
         width: %(width)ipx;
@@ -16,4 +21,6 @@ def slider_settings_css(settings):
     """ % {
         "width": settings.width,
         "height": settings.height,
+        "border_width": settings.border_width,
+        "padding": settings.padding,
     }

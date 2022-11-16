@@ -109,6 +109,26 @@ class ISliderSettings(Interface):
         required=True,
     )
 
+    border_width = schema.Int(
+        title=_("label_border_width_title_slider_setting", default="Border width"),
+        description=_(
+            "label_border_width_description_slider_setting",
+            default="The fixed border width in pixel.",
+        ),
+        default=1,
+        required=True,
+    )
+
+    padding = schema.Int(
+        title=_("label_padding_title_slider_setting", default="Padding"),
+        description=_(
+            "label_padding_description_slider_setting",
+            default="The fixed slider padding in pixel.",
+        ),
+        default=6,
+        required=True,
+    )
+
     show = schema.Bool(
         title=_("label_show_title_slider_setting", default="Show it?"),
         description=_(
