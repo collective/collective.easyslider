@@ -1,0 +1,25 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:registerProfile name="6"
+    title="Load slider setting to update new settings border_width and padding."
+    directory="6"
+    description='Configuration for version 6'
+    for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+    provides="Products.GenericSetup.interfaces.EXTENSION" />
+
+  <gs:upgradeSteps source="5"
+    destination="6"
+    profile="collective.easyslider:default">
+
+    <gs:upgradeStep title="Load slider setting to update new settings border_width and padding."
+      description=""
+      handler=".v6.upgrade" />
+
+    <gs:upgradeDepends title="Load slider setting to update new settings border_width and padding. (GS profile)"
+      description=""
+      import_profile="collective.easyslider.upgrades:6" />
+
+  </gs:upgradeSteps>
+
+</configure>

@@ -4,6 +4,8 @@
 
  <!-- -*- extra stuff goes here -*- -->
 
+  <include file="6.zcml" />
+
   <include file="5.zcml" />
 
 </configure>
