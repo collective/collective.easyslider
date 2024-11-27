@@ -29,16 +29,17 @@
     title="collective.easyslider: Manage slider settings"
     />
 
-  <class class="Products.ATContentTypes.content.topic.ATTopic">
-    <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
-  </class>
+  <configure zcml:condition="installed Products.ATContentTypes">
+    <class class="Products.ATContentTypes.content.topic.ATTopic">
+      <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
+    </class>
+    <class class="Products.ATContentTypes.content.folder.ATFolder">
+      <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
+    </class>
+  </configure>
 
   <class class="plone.app.collection.collection.Collection"
-     zcml:condition="installed plone.app.collection">
-    <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
-  </class>
-
-  <class class="Products.ATContentTypes.content.folder.ATFolder">
+         zcml:condition="installed plone.app.collection">
     <implements interface="collective.easyslider.interfaces.IViewEasySlider" />
   </class>
 

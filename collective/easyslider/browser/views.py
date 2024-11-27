@@ -1,9 +1,16 @@
 from Acquisition import aq_inner
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.interface import Interface
 
-from Products.ATContentTypes.interface.topic import IATTopic
-from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
+class IProductMissing(Interface):
+    pass
+
+try:
+    from Products.ATContentTypes.interface.topic import IATTopic
+    from Products.ATContentTypes.interface.folder import IATFolder, IATBTreeFolder
+except ImportError:
+    IATBTreeFolder = IATTopic =  IATFolder = IATBTreeFolder = IProductMissing
 
 from collective.easyslider.settings import PageSliderSettings
 from collective.easyslider.settings import ViewSliderSettings

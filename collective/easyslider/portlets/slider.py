@@ -6,9 +6,13 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
-from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
-
 from collective.easyslider import easyslider_message_factory as _
+
+try:
+    from plone.app.form.widgets.wysiwygwidget import WYSIWYGWidget
+except ImportError:
+    from plone.app.z3cform.wysiwyg import  WysiwygFieldWidget as  WYSIWYGWidget
+
 
 
 class ISliderPortlet(IPortletDataProvider):
