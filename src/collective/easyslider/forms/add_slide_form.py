@@ -5,12 +5,19 @@ from plone.app.textfield.value import RichTextValue
 from plone.autoform.form import AutoExtensibleForm
 from z3c.form import button
 from z3c.form import form
-from zope.annotation.interfaces import IAnnotations
 from zope.component import getMultiAdapter
-
+from zope.interface import implementer
 import operator
 
 
+def _to_richtext_value(value):
+    if isinstance(value, RichTextValue):
+        return value
+    if not value:
+        return None
+    return RichTextValue(value, "text/html", "text/x-html-safe")
+
+@implementer(ISlide)
 class AddSlideAdapter:
     """
     This is getting a little ugly....  Store index
@@ -23,14 +30,14 @@ class AddSlideAdapter:
 
     def get_slide(self):
         if self.index == -1:  # creating new
-            return ""
+            return None
         else:
             val = self.settings.slides[self.index]
             if isinstance(val, str):
-                return val
+                return _to_richtext_value(val)
             elif isinstance(val, dict) and "html" in val:
-                return val["html"]
-        return ""
+                return _to_richtext_value(val["html"])
+        return None
 
     def set_slide(self, value):
         """
@@ -43,12 +50,12 @@ class AddSlideAdapter:
 
     def get_overlay(self):
         if self.index == -1:  # creating new
-            return ""
+            return None
         else:
             val = self.settings.slides[self.index]
             if isinstance(val, dict) and "overlay" in val:
-                return val["overlay"]
-        return ""
+                return _to_richtext_value(val["overlay"])
+        return None
 
     def set_overlay(self, value):
         """
@@ -78,7 +85,7 @@ class AddSlideAdapter:
     on_hover = property(get_on_hover, set_on_hover)
 
     def get_index(self):
-        return int(self.request.get("index", "-1"))
+        return int(self.request.get("eindex", self.request.get("index", "-1")))
 
     def set_index(self, value):
         pass
@@ -105,12 +112,8 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
         self.widgets["index"].value = index
         settings = PageSliderSettings(self.context)
         slides = settings.slides
-        self.widgets["slide"].value = RichTextValue(
-            slides[int(index)]["html"], "text/plain", "text/html"
-        )
-        self.widgets["overlay"].value = RichTextValue(
-            slides[int(index)]["overlay"], "text/plain", "text/html"
-        )
+        self.widgets["slide"].value = _to_richtext_value(slides[int(index)]["html"])
+        self.widgets["overlay"].value = _to_richtext_value(slides[int(index)]["overlay"])
         self.widgets["on_hover"].value = (
             operator.truth(slides[int(index)]["on_hover"])
             and ["selected"]
@@ -118,8 +121,7 @@ class AddSlideForm(AutoExtensibleForm, form.EditForm):
         )
 
     def getContent(self):
-        annotations = IAnnotations(self.context)
-        return annotations["collective.easyslider"]
+        return AddSlideAdapter(self.context)
 
     @button.buttonAndHandler("Ok")
     def handleApply(self, action):
